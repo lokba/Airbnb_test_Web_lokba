@@ -3,7 +3,7 @@ import { HeaderBox } from './styled';
 import { BiSearch } from "react-icons/bi";
 import { MdLanguage } from "react-icons/md";
 import { IoIosMenu } from "react-icons/io";
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 const Header = ({ match, flex_search }) => {
 
@@ -33,10 +33,10 @@ const Header = ({ match, flex_search }) => {
 
     return (
         <HeaderBox className="headerBox">
-            <div className="logoArea">
+            <Link to="/" className="logoArea">
                 <img className="logoImg" src=" /images/icons/red_logo.png" alt="" />
                 <div className="logoTxt">airbnb</div>
-            </div>
+            </Link>
             {
                 flex_search ?
                     (
