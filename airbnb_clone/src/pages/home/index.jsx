@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Corona from '../../components/common/corona';
 import Footer from '../../components/common/footer';
 import Header from '../../components/common/Header';
@@ -84,8 +85,8 @@ const HomePage = () => {
                 <div className="nearArea_tit">가까운 여행지 둘러보기</div>
                 <div className="nearArea_list">
                     {
-                        nearAreaLists.map(item =>
-                            <div className="nearArea_item">
+                        nearAreaLists.map((item, idx) =>
+                            <div className="nearArea_item" key={idx}>
                                 <img src={item.imgURL} alt="" />
                                 <div className="nearArea_txt">
                                     <div className="nearArea_name">{item.name}</div>
@@ -98,20 +99,21 @@ const HomePage = () => {
             </NearArea>
 
             <FlexibleSearch>
-                <img src="/images/home/banner/search.png" alt="" />
-                <div className="search_bnr_txt">
-                    <div>어디든 상관없이<br /> 떠나고 싶을 때<br />에어비앤비가<br />도와드립니다!</div>
-                    <div className="search_bnr_btn">유연한 검색</div>
-                </div>
+                <Link to="/flex_search">
+                    <img src="/images/home/banner/search.png" alt="" />
+                    <div className="search_bnr_txt">
+                        <div>어디든 상관없이<br /> 떠나고 싶을 때<br />에어비앤비가<br />도와드립니다!</div>
+                        <div className="search_bnr_btn">유연한 검색</div>
+                    </div>
+                </Link>
             </FlexibleSearch>
-
 
             <TravelBox>
                 <div className="travel_tit">어디에서나, 여행은 살아보는 거야!</div>
                 <div className="travel_list">
                     {
-                        travelLists.map(item =>
-                            <div className="travel_item">
+                        travelLists.map((item, idx) =>
+                            <div className="travel_item" key={idx}>
                                 <img src={item.imgURL} alt="" />
                                 <div>{item.txt}</div>
                             </div>
@@ -128,7 +130,6 @@ const HomePage = () => {
                     <div className="hosting_bnr_btn">자세히 알아보기</div>
                 </div>
             </HostingBanner>
-
             <Footer />
         </HomePageBox>
     );
