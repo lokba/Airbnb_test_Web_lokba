@@ -2,6 +2,7 @@ import React from 'react';
 import { CoronaBox } from './styled';
 
 const Corona = () => {
+
     return (
         <CoronaBox>
             <div className="corona_alert">

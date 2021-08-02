@@ -7,6 +7,9 @@ export const CoronaBox = styled.div`
     justify-content: center;
     align-items: center;
     background: #222222;
+    position:absolute;
+    top:0;
+    z-index:100;
 
     .corona_alert{
         color:#a3a3a3;

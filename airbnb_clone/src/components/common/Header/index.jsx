@@ -5,8 +5,20 @@ import { MdLanguage } from "react-icons/md";
 import { IoIosMenu } from "react-icons/io";
 
 const Header = () => {
+
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('.headerBox');
+        if (window.pageYOffset >= 0 && window.pageYOffset < 58) {
+            const top = 58 - `${window.pageYOffset}`;
+
+            header.style.top = `${top}px`;
+        }
+        else {
+            header.style.top = '0px';
+        }
+    })
     return (
-        <HeaderBox>
+        <HeaderBox className="headerBox">
             <div className="logoArea">
                 <img className="logoImg" src=" /images/icons/red_logo.png" alt="" />
                 <div className="logoTxt">airbnb</div>
