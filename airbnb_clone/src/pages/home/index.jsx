@@ -85,8 +85,8 @@ const HomePage = () => {
                 <div className="nearArea_tit">가까운 여행지 둘러보기</div>
                 <div className="nearArea_list">
                     {
-                        nearAreaLists.map(item =>
-                            <div className="nearArea_item">
+                        nearAreaLists.map((item, idx) =>
+                            <div className="nearArea_item" key={idx}>
                                 <img src={item.imgURL} alt="" />
                                 <div className="nearArea_txt">
                                     <div className="nearArea_name">{item.name}</div>
@@ -112,8 +112,8 @@ const HomePage = () => {
                 <div className="travel_tit">어디에서나, 여행은 살아보는 거야!</div>
                 <div className="travel_list">
                     {
-                        travelLists.map(item =>
-                            <div className="travel_item">
+                        travelLists.map((item, idx) =>
+                            <div className="travel_item" key={idx}>
                                 <img src={item.imgURL} alt="" />
                                 <div>{item.txt}</div>
                             </div>

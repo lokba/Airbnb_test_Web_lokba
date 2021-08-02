@@ -4,7 +4,7 @@ import Header from '../../components/common/Header';
 const FlexSearch = () => {
     return (
         <div>
-            <Header />
+            <Header flex_search />
         </div>
     );
 };
