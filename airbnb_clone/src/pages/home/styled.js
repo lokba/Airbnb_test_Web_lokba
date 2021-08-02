@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const HomePageBox = styled.div`
     height:auto;
-    height:2000px; //test 용 
+    height:3000px; //test 용 
 `
 
 export const MainBnrBox = styled.div`
@@ -104,6 +104,8 @@ export const FlexibleSearch = styled.div`
     position:relative;
     margin-bottom:22px;
 
+    cursor:pointer;
+
     img{
         width:100%;
         height:100%;
@@ -135,9 +137,40 @@ export const FlexibleSearch = styled.div`
                 align-items: center;
                 justify-content: center;
                 margin-top:30px;
-                cursor:pointer;
                 letter-spacing:normal;
             }
             
     }
 `;
+
+export const TravelBox = styled.div`
+    margin:0 80px;
+    height:auto;
+    display:flex;
+    flex-direction:column;
+    padding:50px 0 30px;;
+    
+    .travel_tit{
+        font-size:32px;
+        margin-bottom:24px;
+        font-weight:700;
+        letter-spacing:1.7px;
+    }
+    .travel_list{
+        display:flex;
+
+        .travel_item{
+            width:25%;
+            margin-right:15px;
+            font-size:18px;
+            font-weight:500;
+            cursor:pointer;
+            img{
+                width:100%;
+                border-radius:10px;
+                margin-bottom:7px;
+            }
+        }
+    }
+`;
+

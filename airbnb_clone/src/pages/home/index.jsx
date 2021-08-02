@@ -1,10 +1,10 @@
 import React from 'react';
 import Corona from '../../components/common/corona';
 import Header from '../../components/common/Header';
-import { FlexibleSearch, HomePageBox, MainBnrBox, NearArea } from './styled';
+import { FlexibleSearch, HomePageBox, MainBnrBox, NearArea, TravelBox } from './styled';
 
 const HomePage = () => {
-    const nearArealists = [
+    const nearAreaLists = [
         {
             imgURL: '/images/home/near_destination/seoul.png',
             name: '서울',
@@ -47,6 +47,25 @@ const HomePage = () => {
         },
     ];
 
+    const travelLists = [
+        {
+            imgURL: "/images/home/travel/travel1.png",
+            txt: "자연생활을 만끽할 수 있는 숙소"
+        },
+        {
+            imgURL: "/images/home/travel/travel2.png",
+            txt: "독특한 공간"
+        },
+        {
+            imgURL: "/images/home/travel/travel3.png",
+            txt: "집 전체"
+        },
+        {
+            imgURL: "/images/home/travel/travel4.png",
+            txt: "반려동물 동반 가능"
+        },
+    ];
+
 
     return (
         <HomePageBox>
@@ -64,7 +83,7 @@ const HomePage = () => {
                 <div className="nearArea_tit">가까운 여행지 둘러보기</div>
                 <div className="nearArea_list">
                     {
-                        nearArealists.map(item =>
+                        nearAreaLists.map(item =>
                             <div className="nearArea_item">
                                 <img src={item.imgURL} alt="" />
                                 <div className="nearArea_txt">
@@ -84,6 +103,21 @@ const HomePage = () => {
                     <div className="search_bnr_btn">유연한 검색</div>
                 </div>
             </FlexibleSearch>
+
+
+            <TravelBox>
+                <div className="travel_tit">어디에서나, 여행은 살아보는 거야!</div>
+                <div className="travel_list">
+                    {
+                        travelLists.map(item =>
+                            <div className="travel_item">
+                                <img src={item.imgURL} alt="" />
+                                <div>{item.txt}</div>
+                            </div>
+                        )
+                    }
+                </div>
+            </TravelBox>
 
         </HomePageBox>
     );
