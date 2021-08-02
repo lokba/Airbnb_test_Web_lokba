@@ -69,7 +69,76 @@ const FlexSearch = () => {
             imgURL: "/images/flex_search/icons/barn.jpeg",
             name: "헛간",
         },
-    ]
+    ];
+
+    const areas = [
+        {
+            imgURL: "/images/flex_search/items/item1.png",
+            distance: "3,026",
+            location: "Balamban, 중부 비사야",
+            price: "443,216",
+            checkin: [11, 12],
+            checkout: [11, 14],
+        },
+        {
+            imgURL: "/images/flex_search/items/item2.png",
+            distance: "5,835",
+            location: "문나르(Munnar),케랄라 주",
+            price: "204,857",
+            checkin: [1, 28],
+            checkout: [1, 30],
+        },
+        {
+            imgURL: "/images/flex_search/items/item3.png",
+            distance: "2,439",
+            location: "바기오, Cordillera Administrative Region",
+            price: "303,626",
+            checkin: [11, 5],
+            checkout: [11, 7],
+        },
+        {
+            imgURL: "/images/flex_search/items/item4.png",
+            distance: "5,248",
+            location: "Baturiti,발리",
+            price: "36,407",
+            checkin: [1, 28],
+            checkout: [1, 30],
+        },
+        {
+            imgURL: "/images/flex_search/items/item5.png",
+            distance: "5,269",
+            location: "우붓,발리",
+            price: "322,387",
+            checkin: [12, 17],
+            checkout: [12, 19],
+        },
+        {
+            imgURL: "/images/flex_search/items/item6.png",
+            distance: "4,567",
+            location: "Fagu, 히마찰프라데시 주(Himachal Pradesh)",
+            price: "78,867",
+            checkin: [10, 8],
+            checkout: [10, 10],
+        },
+        {
+            imgURL: "/images/flex_search/items/item7.png",
+            distance: "5,268",
+            location: "Kecamatan Ubud,발리",
+            price: "78,871",
+            checkin: [12, 10],
+            checkout: [12, 12],
+        },
+        {
+            imgURL: "/images/flex_search/items/item8.png",
+            distance: "4,542",
+            location: "Jibhi, 히마찰프라데시 주(Himachal Pradesh)",
+            price: "117,312",
+            checkin: [10, 29],
+            checkout: [10, 31],
+        },
+    ];
+
+
     return (
         <FlexSearchBox>
             <Header flex_search />
