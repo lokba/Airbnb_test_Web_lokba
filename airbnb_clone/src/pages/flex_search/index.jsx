@@ -3,6 +3,8 @@ import Header from '../../components/common/Header';
 import { FlexSearchBox, FlexSearchHeader, SearchBox, SearchItemBox } from './styled';
 import { RiArrowDownSLine, RiEqualizerLine } from "react-icons/ri";
 import Footer from '../../components/common/footer';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 const FlexSearch = () => {
 
@@ -84,6 +86,7 @@ const FlexSearch = () => {
             price: "443,216",
             checkin: [11, 12],
             checkout: [11, 14],
+            heart: false,
         },
         {
             imgURL: "/images/flex_search/items/item2.png",
@@ -92,6 +95,7 @@ const FlexSearch = () => {
             price: "204,857",
             checkin: [1, 28],
             checkout: [1, 30],
+            heart: true,
         },
         {
             imgURL: "/images/flex_search/items/item3.png",
@@ -100,6 +104,7 @@ const FlexSearch = () => {
             price: "303,626",
             checkin: [11, 5],
             checkout: [11, 7],
+            heart: true,
         },
         {
             imgURL: "/images/flex_search/items/item4.png",
@@ -108,6 +113,7 @@ const FlexSearch = () => {
             price: "36,407",
             checkin: [1, 28],
             checkout: [1, 30],
+            heart: false,
         },
         {
             imgURL: "/images/flex_search/items/item5.png",
@@ -116,6 +122,7 @@ const FlexSearch = () => {
             price: "322,387",
             checkin: [12, 17],
             checkout: [12, 19],
+            heart: false,
         },
         {
             imgURL: "/images/flex_search/items/item6.png",
@@ -124,6 +131,7 @@ const FlexSearch = () => {
             price: "78,867",
             checkin: [10, 8],
             checkout: [10, 10],
+            heart: false,
         },
         {
             imgURL: "/images/flex_search/items/item7.png",
@@ -132,6 +140,7 @@ const FlexSearch = () => {
             price: "78,871",
             checkin: [12, 10],
             checkout: [12, 12],
+            heart: false,
         },
         {
             imgURL: "/images/flex_search/items/item8.png",
@@ -140,6 +149,7 @@ const FlexSearch = () => {
             price: "117,312",
             checkin: [10, 29],
             checkout: [10, 31],
+            heart: false,
         },
     ];
 
@@ -183,7 +193,8 @@ const FlexSearch = () => {
                         location,
                         price,
                         checkin,
-                        checkout
+                        checkout,
+                        heart
                     }, index) =>
                         <SearchItem
                             key={index}
@@ -193,6 +204,7 @@ const FlexSearch = () => {
                             price={price}
                             checkin={checkin}
                             checkout={checkout}
+                            heart={heart}
                         />
                     )
                 }
@@ -212,6 +224,7 @@ const SearchItem = ({
     price,
     checkin,
     checkout,
+    heart,
 }) => {
     return (
         <SearchItemBox>
@@ -223,8 +236,16 @@ const SearchItem = ({
                 <div>₩{price} / 박</div>
             </div>
             <div className="search_info">
-                <div>{distance}km 거리</div>
-                <div>{checkin[0]}월 {checkin[1]}일 - {checkout[0]}월 {checkout[1]}일</div>
+                <div className="distance">{distance}km 거리</div>
+                <div className="date">{checkin[0]}월 {checkin[1]}일 - {checkout[0]}월 {checkout[1]}일</div>
+            </div>
+            <div className="heart_icon">
+                {
+                    heart ?
+                        <FavoriteIcon className="heart_on" />
+                        :
+                        <FavoriteBorderIcon className="heart_off" />
+                }
             </div>
         </SearchItemBox>
     )

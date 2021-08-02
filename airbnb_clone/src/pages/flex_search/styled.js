@@ -92,11 +92,13 @@ export const SearchBox = styled.div`
 export const SearchItemBox = styled.div`
     width:24%;
     margin-bottom:30px;
+    position:relative;
     
     .search_img{
         position:relative;
         width:100%;
         margin-bottom:10px;
+        cursor:pointer;
 
         img{
             border-radius:10px;
@@ -120,6 +122,25 @@ export const SearchItemBox = styled.div`
 
         .location{
             font-weight:600;
+            cursor:pointer;
+        }  
+        .distance, .date{
+            cursor:pointer;
+        }
+    }
+
+    .heart_icon{
+        position:absolute;
+        z-index:100;
+        right:16px;
+        top:12px;
+        cursor:pointer;
+        
+        .heart_on{
+            color:#FF385C;
+        }
+        .heart_off{
+            color:white;
         }
     }
 `;
