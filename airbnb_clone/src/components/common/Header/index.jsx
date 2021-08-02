@@ -1,22 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HeaderBox } from './styled';
 import { BiSearch } from "react-icons/bi";
 import { MdLanguage } from "react-icons/md";
 import { IoIosMenu } from "react-icons/io";
+import { withRouter } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ match }) => {
 
-    window.addEventListener('scroll', () => {
+    useEffect(() => {
         const header = document.querySelector('.headerBox');
-        if (window.pageYOffset >= 0 && window.pageYOffset < 58) {
-            const top = 58 - `${window.pageYOffset}`;
+        console.log("header", header);
 
-            header.style.top = `${top}px`;
+        if (header) {
+            if (match.url === '/') {
+                window.addEventListener('scroll', () => {
+                    console.log("header", header);
+                    if (window.pageYOffset >= 0 && window.pageYOffset < 58) {
+                        const top = 58 - `${window.pageYOffset}`;
+
+                        header.style.top = `${top}px`;
+                    }
+                    else {
+                        header.style.top = '0px';
+                    }
+                });
+            }
+            else {
+                header.style.top = '0px';
+            }
         }
-        else {
-            header.style.top = '0px';
-        }
-    })
+
+    }, [match.url]);
+
+
     return (
         <HeaderBox className="headerBox">
             <div className="logoArea">
@@ -46,4 +62,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default withRouter(Header);
