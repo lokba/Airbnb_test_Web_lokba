@@ -12,7 +12,7 @@ export const FlexSearchHeader = styled.div`
     /* align-items: center; */
 
     height:80px;
-    border:1px solid gray;
+    /* border:1px solid gray; */
     
     .menus{
         display:flex;
@@ -77,3 +77,49 @@ export const FlexSearchHeader = styled.div`
         }
     }
 `
+
+export const SearchBox = styled.div`
+    padding-top:16px;
+    margin:0 80px;
+
+    height:auto;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+`;
+
+
+export const SearchItemBox = styled.div`
+    width:24%;
+    margin-bottom:30px;
+    
+    .search_img{
+        position:relative;
+        width:100%;
+        margin-bottom:10px;
+
+        img{
+            border-radius:10px;
+            position:absolute;
+            width:100%;
+            height:100%;
+        }
+    }
+
+    .search_img:after{
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+    }
+
+    .search_info{
+        display:flex;
+        justify-content: space-between;
+        font-size:16px;
+        margin-bottom:5px;
+
+        .location{
+            font-weight:600;
+        }
+    }
+`;

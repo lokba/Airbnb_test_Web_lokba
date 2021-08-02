@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/common/Header';
-import { FlexSearchBox, FlexSearchHeader } from './styled';
+import { FlexSearchBox, FlexSearchHeader, SearchBox, SearchItemBox } from './styled';
 import { RiArrowDownSLine, RiEqualizerLine } from "react-icons/ri";
+import Footer from '../../components/common/footer';
 
 const FlexSearch = () => {
 
     const [menuOn, setMenuOn] = useState(0);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const menus = [
         {
@@ -168,11 +173,59 @@ const FlexSearch = () => {
                         <RiEqualizerLine className="filter" />
                         <div>필터</div>
                     </div>
-
                 </div>
             </FlexSearchHeader>
+            <SearchBox>
+                {
+                    areas.map(({
+                        distance,
+                        imgURL,
+                        location,
+                        price,
+                        checkin,
+                        checkout
+                    }, index) =>
+                        <SearchItem
+                            key={index}
+                            distance={distance}
+                            imgURL={imgURL}
+                            location={location}
+                            price={price}
+                            checkin={checkin}
+                            checkout={checkout}
+                        />
+                    )
+                }
+            </SearchBox>
+            <Footer />
         </FlexSearchBox >
     );
 };
 
 export default FlexSearch;
+
+
+const SearchItem = ({
+    imgURL,
+    distance,
+    location,
+    price,
+    checkin,
+    checkout,
+}) => {
+    return (
+        <SearchItemBox>
+            <div className="search_img">
+                <img src={imgURL} alt="" />
+            </div>
+            <div className="search_info">
+                <div className="location">{location.length > 18 ? (location.slice(0, 18) + '...') : (location)}</div>
+                <div>₩{price} / 박</div>
+            </div>
+            <div className="search_info">
+                <div>{distance}km 거리</div>
+                <div>{checkin[0]}월 {checkin[1]}일 - {checkout[0]}월 {checkout[1]}일</div>
+            </div>
+        </SearchItemBox>
+    )
+}

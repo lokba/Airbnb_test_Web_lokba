@@ -88,7 +88,7 @@ export const HeaderBox = styled.div`
 
         .info_host{
             cursor:pointer;
-            padding-top:2px;
+            margin-top:3px;
             height:100%;
             display:flex;
             align-items: center;
