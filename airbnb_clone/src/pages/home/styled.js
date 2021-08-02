@@ -174,3 +174,61 @@ export const TravelBox = styled.div`
     }
 `;
 
+
+export const HostingBanner = styled.div`
+    width:100%;
+    padding:0 80px;
+    height:477px;
+    
+    position:relative;
+    margin-bottom:46px;
+    margin-top:40px;
+
+    cursor:pointer;
+
+    img{
+        width:100%;
+        height:100%;
+        object-fit:fill;
+        border-radius:20px;
+    }
+
+    .hosting_bnr_txt{
+            position:absolute;
+            top:140px;
+            left:160px;
+
+            width :500px;
+
+            line-height:1.15;
+            color:white;
+
+            .hosting_bnr_tit{
+                font-size:48px;
+                font-weight:700;
+                letter-spacing: 3px;
+                margin-bottom:12px;
+            }
+
+            .hosting_bnr_sub{
+                font-size:18px;
+                margin-bottom:40px;
+                line-height:1.3;
+            }
+
+            .hosting_bnr_btn{
+                width: 148px;
+                height:48px;
+
+                font-size:15px;
+                color:black;
+                background:white;
+                border-radius:10px;
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                letter-spacing:normal;
+            }
+    }
+`;
+
