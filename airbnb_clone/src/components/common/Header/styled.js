@@ -13,8 +13,13 @@ export const HeaderBox = styled.div`
     position:fixed;
     left:0;
     right:0;
+    top:58px;
+
+    background:white;
+    z-index:10;
+    box-shadow:0px 3px 3px 0px #DDDDDD;
     
-    border:1px solid gray;
+    /* border:1px solid gray; */
     
     .logoArea{
         display:flex;
@@ -37,7 +42,7 @@ export const HeaderBox = styled.div`
         padding-left:8px;
         position: relative;
         cursor:pointer;
-        
+
         .inputBox{
             display:flex;
             align-items: center;
@@ -50,8 +55,7 @@ export const HeaderBox = styled.div`
             font-size:14px;
             color:black;
             font-weight:500;
-
-
+            box-shadow:0px 3px 3px 0px #DDDDDD;
         }
 
         .inputIconBox{
