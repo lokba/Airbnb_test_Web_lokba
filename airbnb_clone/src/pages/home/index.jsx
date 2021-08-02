@@ -86,13 +86,13 @@ const HomePage = () => {
                 <div className="nearArea_list">
                     {
                         nearAreaLists.map((item, idx) =>
-                            <div className="nearArea_item" key={idx}>
+                            <Link to={`/local_search?location=${item.name}`} className="nearArea_item" key={idx}>
                                 <img src={item.imgURL} alt="" />
                                 <div className="nearArea_txt">
                                     <div className="nearArea_name">{item.name}</div>
                                     <div>{item.distance}</div>
                                 </div>
-                            </div>
+                            </Link>
                         )
                     }
                 </div>
@@ -131,7 +131,7 @@ const HomePage = () => {
                 </div>
             </HostingBanner>
             <Footer />
-        </HomePageBox>
+        </HomePageBox >
     );
 };
 

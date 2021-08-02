@@ -6,7 +6,7 @@ import Footer from '../../components/common/footer';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
-const FlexSearch = () => {
+const FlexSearchPage = () => {
 
     const [menuOn, setMenuOn] = useState(0);
 
@@ -214,7 +214,7 @@ const FlexSearch = () => {
     );
 };
 
-export default FlexSearch;
+export default FlexSearchPage;
 
 
 const SearchItem = ({
