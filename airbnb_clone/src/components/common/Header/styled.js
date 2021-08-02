@@ -18,7 +18,7 @@ export const HeaderBox = styled.div`
     background:white;
     z-index:10;
     
-    border:1px solid gray;
+    /* border:1px solid gray; */
     
     .logoArea{
         display:flex;

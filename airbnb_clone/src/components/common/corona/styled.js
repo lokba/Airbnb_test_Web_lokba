@@ -15,5 +15,6 @@ export const CoronaBox = styled.div`
         color:#a3a3a3;
         text-decoration:underline;
         cursor:pointer;
+        font-size:14px;
     }
 `;
