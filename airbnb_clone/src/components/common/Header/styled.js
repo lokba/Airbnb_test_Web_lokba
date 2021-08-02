@@ -13,6 +13,9 @@ export const HeaderBox = styled.div`
     position:fixed;
     left:0;
     right:0;
+
+    background:white;
+    z-index:10;
     
     border:1px solid gray;
     
