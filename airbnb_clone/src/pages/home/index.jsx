@@ -1,7 +1,7 @@
 import React from 'react';
 import Corona from '../../components/common/corona';
 import Header from '../../components/common/Header';
-import { HomePageBox, MainBnrBox, NearArea } from './styled';
+import { FlexibleSearch, HomePageBox, MainBnrBox, NearArea } from './styled';
 
 const HomePage = () => {
     const nearArealists = [
@@ -76,6 +76,14 @@ const HomePage = () => {
                     }
                 </div>
             </NearArea>
+
+            <FlexibleSearch>
+                <img src="/images/home/banner/search.png" alt="" />
+                <div className="search_bnr_txt">
+                    <div>어디든 상관없이<br /> 떠나고 싶을 때<br />에어비앤비가<br />도와드립니다!</div>
+                    <div className="search_bnr_btn">유연한 검색</div>
+                </div>
+            </FlexibleSearch>
 
         </HomePageBox>
     );

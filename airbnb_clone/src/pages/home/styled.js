@@ -43,7 +43,6 @@ export const MainBnrBox = styled.div`
                 cursor:pointer;
                 letter-spacing:normal;
             }
-            
         }
 `;
 
@@ -93,5 +92,52 @@ export const NearArea = styled.div`
                 
             }
         }
+    }
+`;
+
+
+export const FlexibleSearch = styled.div`
+    width:100%;
+    padding:0 80px;
+    height:477px;
+    
+    position:relative;
+    margin-bottom:22px;
+
+    img{
+        width:100%;
+        height:100%;
+        object-fit:fill;
+        border-radius:20px;
+    }
+
+    .search_bnr_txt{
+            position:absolute;
+            top:87px;
+            left:160px;
+
+            width :360px;
+            font-size:48px;
+            font-weight:700;
+            line-height:1.15;
+            color:black;
+            letter-spacing: 3px;
+
+            .search_bnr_btn{
+                width: 125px;
+                height:48px;
+
+                font-size:15px;
+                color:white;
+                background:#222222;
+                border-radius:10px;
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                margin-top:30px;
+                cursor:pointer;
+                letter-spacing:normal;
+            }
+            
     }
 `;
