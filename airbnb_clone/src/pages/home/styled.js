@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const HomePageBox = styled.div`
     height:auto;
-    height:3000px; //test 용 
 `
 
 export const MainBnrBox = styled.div`
@@ -109,7 +108,6 @@ export const FlexibleSearch = styled.div`
     img{
         width:100%;
         height:100%;
-        object-fit:fill;
         border-radius:20px;
     }
 
@@ -154,7 +152,6 @@ export const TravelBox = styled.div`
         font-size:32px;
         margin-bottom:24px;
         font-weight:700;
-        letter-spacing:1.7px;
     }
     .travel_list{
         display:flex;
@@ -181,7 +178,7 @@ export const HostingBanner = styled.div`
     height:477px;
     
     position:relative;
-    margin-bottom:46px;
+    margin-bottom:56px;
     margin-top:40px;
 
     cursor:pointer;
@@ -189,7 +186,6 @@ export const HostingBanner = styled.div`
     img{
         width:100%;
         height:100%;
-        object-fit:fill;
         border-radius:20px;
     }
 
@@ -231,4 +227,5 @@ export const HostingBanner = styled.div`
             }
     }
 `;
+
 

@@ -42,7 +42,7 @@ export const HeaderBox = styled.div`
         padding-left:8px;
         position: relative;
         cursor:pointer;
-        
+
         .inputBox{
             display:flex;
             align-items: center;
@@ -55,8 +55,7 @@ export const HeaderBox = styled.div`
             font-size:14px;
             color:black;
             font-weight:500;
-
-
+            box-shadow:0px 3px 3px 0px #DDDDDD;
         }
 
         .inputIconBox{

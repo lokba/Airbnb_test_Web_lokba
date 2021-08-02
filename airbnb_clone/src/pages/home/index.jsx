@@ -1,5 +1,6 @@
 import React from 'react';
 import Corona from '../../components/common/corona';
+import Footer from '../../components/common/footer';
 import Header from '../../components/common/Header';
 import { FlexibleSearch, HomePageBox, HostingBanner, MainBnrBox, NearArea, TravelBox } from './styled';
 
@@ -127,7 +128,8 @@ const HomePage = () => {
                     <div className="hosting_bnr_btn">자세히 알아보기</div>
                 </div>
             </HostingBanner>
-            fqefqw
+
+            <Footer />
         </HomePageBox>
     );
 };
