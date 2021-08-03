@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 // color:#ff5a60;   에어비앤비 대표 컬러
 
@@ -10,13 +10,23 @@ export const HeaderBox = styled.div`
     height:80px;
     padding: 0 80px;
 
+    ${props =>
+        props.local_area && css`
+        padding:0 24px;
+    `}
+
+    ${props =>
+        props.travel && css`
+        padding:0 24px;
+    `}
+
     position:fixed;
     left:0;
     right:0;
     top:58px;
 
     background:white;
-    z-index:10;
+    z-index:1000;
     box-shadow:0px 3px 3px 0px #DDDDDD;
     
     /* border:1px solid gray; */
@@ -46,7 +56,6 @@ export const HeaderBox = styled.div`
         .inputBox{
             display:flex;
             align-items: center;
-            
             width:300px;
             height:48px;
             border-radius:30px;
@@ -56,6 +65,30 @@ export const HeaderBox = styled.div`
             color:black;
             font-weight:500;
             box-shadow:0px 3px 3px 0px #DDDDDD;
+
+            .inputTxt{
+                display:flex;
+                width:230px;
+                
+                .area{
+                    padding:0 12px;
+                    cursor:pointer;
+                }
+                .date{
+                    padding:0 12px;
+                    border-left : 2px solid #DDDDDD;
+                    border-right : 2px solid #DDDDDD;
+                    cursor:pointer;
+                }
+                .guest{
+                    padding:0 12px;
+                    cursor:pointer;
+                    color:#717171;
+                }
+            }
+            .localArea{
+                justify-content:center;
+            }
         }
 
         .inputIconBox{

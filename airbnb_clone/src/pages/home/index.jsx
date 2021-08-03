@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Corona from '../../components/common/corona';
 import Footer from '../../components/common/footer';
@@ -6,6 +6,11 @@ import Header from '../../components/common/Header';
 import { FlexibleSearch, HomePageBox, HostingBanner, MainBnrBox, NearArea, TravelBox } from './styled';
 
 const HomePage = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const nearAreaLists = [
         {
             imgURL: '/images/home/near_destination/seoul.png',
@@ -64,7 +69,7 @@ const HomePage = () => {
         },
         {
             imgURL: "/images/home/travel/travel4.png",
-            txt: "반려동물 동반 가능"
+            txt: "반려동물 동반 가능 숙소"
         },
     ];
 
@@ -86,20 +91,20 @@ const HomePage = () => {
                 <div className="nearArea_list">
                     {
                         nearAreaLists.map((item, idx) =>
-                            <div className="nearArea_item" key={idx}>
+                            <Link to={`/search/local?location=${item.name}`} className="nearArea_item" key={idx}>
                                 <img src={item.imgURL} alt="" />
                                 <div className="nearArea_txt">
                                     <div className="nearArea_name">{item.name}</div>
                                     <div>{item.distance}</div>
                                 </div>
-                            </div>
+                            </Link>
                         )
                     }
                 </div>
             </NearArea>
 
             <FlexibleSearch>
-                <Link to="/flex_search">
+                <Link to="/search/flex">
                     <img src="/images/home/banner/search.png" alt="" />
                     <div className="search_bnr_txt">
                         <div>어디든 상관없이<br /> 떠나고 싶을 때<br />에어비앤비가<br />도와드립니다!</div>
@@ -113,10 +118,10 @@ const HomePage = () => {
                 <div className="travel_list">
                     {
                         travelLists.map((item, idx) =>
-                            <div className="travel_item" key={idx}>
+                            <Link to={`/search/travel?location=${item.txt}`} className="travel_item" key={idx}>
                                 <img src={item.imgURL} alt="" />
                                 <div>{item.txt}</div>
-                            </div>
+                            </Link>
                         )
                     }
                 </div>
@@ -131,7 +136,7 @@ const HomePage = () => {
                 </div>
             </HostingBanner>
             <Footer />
-        </HomePageBox>
+        </HomePageBox >
     );
 };
 

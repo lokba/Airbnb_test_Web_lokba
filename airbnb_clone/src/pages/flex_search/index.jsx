@@ -6,7 +6,7 @@ import Footer from '../../components/common/footer';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
-const FlexSearch = () => {
+const FlexSearchPage = () => {
 
     const [menuOn, setMenuOn] = useState(0);
 
@@ -214,7 +214,7 @@ const FlexSearch = () => {
     );
 };
 
-export default FlexSearch;
+export default FlexSearchPage;
 
 
 const SearchItem = ({
@@ -226,13 +226,40 @@ const SearchItem = ({
     checkout,
     heart,
 }) => {
+
+    //한글, 영어 문자열의 바이트 계산하는 함수
+    let getTextLength = function (str) {
+        let len = 0;
+        for (let i = 0; i < str.length; i++) {
+            if (escape(str.charAt(i)).length === 6) {
+                len++;
+            }
+            len++;
+        }
+        return len;
+    };
+
+    //한글 영어 문자열의 바이트가 45까지 slice한 문자열을 반환하는 함수
+    let getText = function (str) {
+        let len = 0;
+        for (let i = 0; i < str.length; i++) {
+            if (escape(str.charAt(i)).length === 6) {
+                len++;
+            }
+            len++;
+            if (len > 25) {
+                return str.slice(0, i);
+            }
+        }
+    };
+
     return (
         <SearchItemBox>
             <div className="search_img">
                 <img src={imgURL} alt="" />
             </div>
             <div className="search_info">
-                <div className="location">{location.length > 18 ? (location.slice(0, 18) + '...') : (location)}</div>
+                <div className="location">{getTextLength(location) > 25 ? getText(location) + '...' : (location)}</div>
                 <div>₩{price} / 박</div>
             </div>
             <div className="search_info">
