@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import Header from '../../components/common/Header';
-import { LocalBox, LocalContent, LocalContentHeader, LocalContentList } from './styled';
+import { LocalBox, LocalContent, LocalContentHeader, LocalContentList, Pagination } from './styled';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import StarRateIcon from '@material-ui/icons/StarRate';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import Footer from '../../components/common/footer';
 
 const LocalSearchPage = ({ location }) => {
 
@@ -18,9 +22,9 @@ const LocalSearchPage = ({ location }) => {
         setArea(searchParam('location'));
     }, [location.search]);
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+    // useEffect(() => {
+    //     window.scrollTo(0, 0);
+    // }, []);
 
 
 
@@ -284,7 +288,33 @@ const LocalSearchPage = ({ location }) => {
                         ))
                     }
                 </LocalContentList>
+                <Pagination>
+                    <div className="pagination_content">
+                        <div className="navigation">
+                            <div className="icon arrow">
+                                <NavigateBeforeIcon />
+                            </div>
+                            <div className="pageNumber">1</div>
+                            <div className="pageNumber">2</div>
+                            <div className="pageNumber">3</div>
+                            <div className="pageNumber">4</div>
+                            <div className="pageNumber">5</div>
+                            <div className="icon">
+                                <MoreHorizIcon />
+                            </div>
+                            <div className="pageNumber">15</div>
+                            <div className="icon arrow">
+                                <NavigateNextIcon />
+                            </div>
+                        </div>
+                        <div className="roomNumber">숙소 300개 이상 중 1 - 20</div>
+                        <div className="pagination_notice">전체 요금을 보려면 날짜를 입력하세요. 추가 요금이 적용되고 세금이 추가될 수 있습니다.</div>
+                    </div>
+
+                </Pagination>
+
             </LocalContent>
+            <Footer />
         </LocalBox >
     );
 };
