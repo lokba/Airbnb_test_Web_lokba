@@ -22,9 +22,9 @@ const LocalSearchPage = ({ location }) => {
         setArea(searchParam('location'));
     }, [location.search]);
 
-    // useEffect(() => {
-    //     window.scrollTo(0, 0);
-    // }, []);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
 
 
@@ -240,7 +240,7 @@ const LocalSearchPage = ({ location }) => {
 
     return (
         <LocalBox>
-            <Header />
+            <Header local_area={area} />
             <LocalContent>
 
                 <LocalContentHeader>
