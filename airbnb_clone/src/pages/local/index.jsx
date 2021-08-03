@@ -26,8 +26,6 @@ const LocalSearchPage = ({ location }) => {
         window.scrollTo(0, 0);
     }, []);
 
-
-
     //한글, 영어 문자열의 바이트 계산하는 함수
     let getTextLength = function (str) {
         let len = 0;
@@ -247,7 +245,7 @@ const LocalSearchPage = ({ location }) => {
                     <div className="headerSub">300개 이상의 숙소</div>
                     <div className="headerTit">{area}의 숙소</div>
                     <div className="controller">
-                        <div className="btn">취소 수수료 없음</div>
+                        <div className="btn">취소 가능</div>
                         <div className="btn">숙소 유형</div>
                         <div className="btn">요금</div>
                         <div className="btn">즉시 예약</div>

@@ -21,7 +21,7 @@ export const HeaderBox = styled.div`
     top:58px;
 
     background:white;
-    z-index:10;
+    z-index:1000;
     box-shadow:0px 3px 3px 0px #DDDDDD;
     
     /* border:1px solid gray; */

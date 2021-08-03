@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Corona from '../../components/common/corona';
 import Footer from '../../components/common/footer';
@@ -6,6 +6,11 @@ import Header from '../../components/common/Header';
 import { FlexibleSearch, HomePageBox, HostingBanner, MainBnrBox, NearArea, TravelBox } from './styled';
 
 const HomePage = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const nearAreaLists = [
         {
             imgURL: '/images/home/near_destination/seoul.png',
