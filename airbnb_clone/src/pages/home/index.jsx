@@ -69,7 +69,7 @@ const HomePage = () => {
         },
         {
             imgURL: "/images/home/travel/travel4.png",
-            txt: "반려동물 동반 가능"
+            txt: "반려동물 동반 가능 숙소"
         },
     ];
 
@@ -118,10 +118,10 @@ const HomePage = () => {
                 <div className="travel_list">
                     {
                         travelLists.map((item, idx) =>
-                            <div className="travel_item" key={idx}>
+                            <Link className="travel_item" key={idx}>
                                 <img src={item.imgURL} alt="" />
                                 <div>{item.txt}</div>
-                            </div>
+                            </Link>
                         )
                     }
                 </div>
