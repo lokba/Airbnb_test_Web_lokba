@@ -5,7 +5,7 @@ import { MdLanguage } from "react-icons/md";
 import { IoIosMenu } from "react-icons/io";
 import { Link, withRouter } from 'react-router-dom';
 
-const Header = ({ match, flex_search, local_area }) => {
+const Header = ({ match, flex_search, local_area, travel }) => {
 
     useEffect(() => {
         const header = document.querySelector('.headerBox');
@@ -32,7 +32,7 @@ const Header = ({ match, flex_search, local_area }) => {
 
 
     return (
-        <HeaderBox className="headerBox" local_area={local_area}>
+        <HeaderBox className="headerBox" local_area={local_area} travel={travel}>
             <Link to="/" className="logoArea">
                 <img className="logoImg" src="/images/icons/red_logo.png" alt="" />
                 <div className="logoTxt">airbnb</div>

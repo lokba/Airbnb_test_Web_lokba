@@ -15,6 +15,11 @@ export const HeaderBox = styled.div`
         padding:0 24px;
     `}
 
+    ${props =>
+        props.travel && css`
+        padding:0 24px;
+    `}
+
     position:fixed;
     left:0;
     right:0;

@@ -91,7 +91,7 @@ const HomePage = () => {
                 <div className="nearArea_list">
                     {
                         nearAreaLists.map((item, idx) =>
-                            <Link to={`/local_search?location=${item.name}`} className="nearArea_item" key={idx}>
+                            <Link to={`/search/local?location=${item.name}`} className="nearArea_item" key={idx}>
                                 <img src={item.imgURL} alt="" />
                                 <div className="nearArea_txt">
                                     <div className="nearArea_name">{item.name}</div>
@@ -104,7 +104,7 @@ const HomePage = () => {
             </NearArea>
 
             <FlexibleSearch>
-                <Link to="/flex_search">
+                <Link to="/search/flex">
                     <img src="/images/home/banner/search.png" alt="" />
                     <div className="search_bnr_txt">
                         <div>어디든 상관없이<br /> 떠나고 싶을 때<br />에어비앤비가<br />도와드립니다!</div>
@@ -118,7 +118,7 @@ const HomePage = () => {
                 <div className="travel_list">
                     {
                         travelLists.map((item, idx) =>
-                            <Link className="travel_item" key={idx}>
+                            <Link to={`/search/travel?location=${item.txt}`} className="travel_item" key={idx}>
                                 <img src={item.imgURL} alt="" />
                                 <div>{item.txt}</div>
                             </Link>
