@@ -98,7 +98,7 @@ export const LocalContentList = styled.div`
                 .localItem_head{
                     .content_sector{
                         color:#717171;
-                        margin-bottom:8px;
+                        margin-bottom:10px;
                     }
                     .content_moto{
                         font-size:18px;
@@ -107,7 +107,7 @@ export const LocalContentList = styled.div`
                     .line{
                         width:50px;
                         border:1px solid #dddddd;
-                        margin-bottom:10px;
+                        margin-bottom:12px;
                     }
                     .content_info{
                         margin-bottom:5px;
