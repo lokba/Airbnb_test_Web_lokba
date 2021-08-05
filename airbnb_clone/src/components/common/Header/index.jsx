@@ -11,8 +11,19 @@ const Header = ({ match, flex_search, local_area, travel }) => {
     const [onProfile, setOnProfile] = useState(false);
     const [signModal, setSignModal] = useState(false);
     const [signStage, setSignStage] = useState(1);
+    const [error, setError] = useState(false);
 
+    const clickStageTwoBtn = () => {
+        const email = document.querySelector(".emailInput");
 
+        email.value.length === 0 ? setError(true) : setSignStage(3);
+    }
+
+    const onCloseModal = () => {
+        setSignModal(false);
+        setSignStage(1);
+        setError(false);
+    }
     useEffect(() => {
         const header = document.querySelector('.headerBox');
 
@@ -113,10 +124,10 @@ const Header = ({ match, flex_search, local_area, travel }) => {
                             signStage === 1 && (
                                 <div className="modal_box stage1">
                                     <div className="modal_header">
-                                        <CloseIcon onClick={() => { setSignModal(false); setSignStage(1); }} />
+                                        <CloseIcon onClick={onCloseModal} />
                                         <div>로그인 또는 회원 가입</div>
                                     </div>
-                                    <div className="modal_content">
+                                    <div className="stage1_content">
                                         <div className="sign_btn" onClick={() => setSignStage(2)}>
                                             <img src="/images/icons/mail.png" alt="" />
                                             <div>이메일로 로그인하기</div>
@@ -129,11 +140,29 @@ const Header = ({ match, flex_search, local_area, travel }) => {
                             signStage === 2 && (
                                 <div className="modal_box stage2">
                                     <div className="modal_header">
-                                        <CloseIcon onClick={() => { setSignModal(false); setSignStage(1); }} />
+                                        <CloseIcon onClick={onCloseModal} />
                                         <div>로그인 또는 회원 가입</div>
                                     </div>
-                                    <div className="modal_content">
-                                        fefe
+                                    <div className="stage2_content">
+                                        <div className="stage2_tit">에어비앤비에 오신 것을 환영합니다.</div>
+                                        <div className="inputBox">
+                                            <input className="emailInput" placeholder="이메일" />
+                                            {error && <div className="errorMessage">*이메일이 필요합니다.</div>}
+                                        </div>
+                                        <div className="stage2_btn" onClick={() => clickStageTwoBtn()}>계속</div>
+                                    </div>
+                                </div>
+                            )
+                        }
+                        {
+                            signStage === 3 && (
+                                <div className="modal_box stage3">
+                                    <div className="modal_header">
+                                        <CloseIcon onClick={onCloseModal} />
+                                        <div>로그인 또는 회원 가입</div>
+                                    </div>
+                                    <div className="stage3_content">
+
                                     </div>
                                 </div>
                             )
