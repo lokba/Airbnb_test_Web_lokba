@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HeaderBox } from './styled';
 import { BiSearch } from "react-icons/bi";
 import { MdLanguage } from "react-icons/md";
@@ -6,6 +6,8 @@ import { IoIosMenu } from "react-icons/io";
 import { Link, withRouter } from 'react-router-dom';
 
 const Header = ({ match, flex_search, local_area, travel }) => {
+
+    const [onProfile, setOnProfile] = useState(false);
 
     useEffect(() => {
         const header = document.querySelector('.headerBox');
@@ -29,6 +31,8 @@ const Header = ({ match, flex_search, local_area, travel }) => {
         }
 
     }, [match.url]);
+
+
 
 
     return (
@@ -75,14 +79,29 @@ const Header = ({ match, flex_search, local_area, travel }) => {
             }
 
             <div className="infoArea">
-                <div className="info_host">호스트 모드로 전환</div>
+                <div className="info_host">호스트 되기</div>
                 <div className="info_lang">
                     <MdLanguage />
                 </div>
                 <div className="info_profile">
-                    <IoIosMenu />
-                    <img src="/images/icons/profile.png" alt="" />
+                    <div className="profile_box" onClick={() => setOnProfile(!onProfile)}>
+                        <IoIosMenu />
+                        <img src="/images/icons/profile.png" alt="" />
+                    </div>
+
+                    {
+                        onProfile && (
+                            <div className="profile_option">
+                                <div className="login">로그인</div>
+                                <div className="register">회원가입</div>
+                                <span className="bar"></span>
+                                <div className="host">숙소 호스트 되기</div>
+                                <div className="help">도움말</div>
+                            </div>
+                        )
+                    }
                 </div>
+
             </div>
         </HeaderBox >
     );
