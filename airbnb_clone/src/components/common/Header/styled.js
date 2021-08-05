@@ -224,3 +224,78 @@ export const HeaderBox = styled.div`
     }
     
 `;
+
+export const SignModal = styled.div`
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background:rgba(0,0,0,0.5);
+    
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+    .stage1{
+            height:250px;
+    }
+
+    .stage2{
+            height:400px;
+    }
+    .modal_box{
+        width:550px;
+        background:white;
+        border-radius:15px;
+
+        .modal_header{
+            position:relative;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            height:55px;
+            font-size:18px;
+            font-weight:700;
+            border-bottom:1px solid #dddddd;
+            
+            svg{
+                position:absolute;
+                left:15px;
+                cursor:pointer;
+                width:20px;
+                height:20px;
+            }
+        }
+        .modal_content{
+            display:flex;
+            justify-content: center;
+            margin-top:60px;
+
+            .sign_btn{
+                border:1px solid gray;
+                width:90%;
+                border-radius:10px;
+                height:50px;
+                position:relative;
+                cursor:pointer;
+                display:flex;
+                justify-content: center;
+                align-items:center;
+                font-weight:700;
+
+                &:hover{
+                    border:2px solid black;
+                }
+                
+                img{
+                    position:absolute;
+                    left:20px;
+                    width:20px;
+                    height:20px;
+                }
+            }
+        }
+    }
+`;
+
