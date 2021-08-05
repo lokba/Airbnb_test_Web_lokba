@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { HeaderBox, SignModal } from './styled';
+import { ErrorMessage, HeaderBox, SignModal, SubmitButton } from './styled';
 import { BiSearch } from "react-icons/bi";
 import { MdLanguage } from "react-icons/md";
 import { IoIosMenu } from "react-icons/io";
 import { Link, withRouter } from 'react-router-dom';
 import CloseIcon from '@material-ui/icons/Close';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 
 const Header = ({ match, flex_search, local_area, travel }) => {
 
@@ -14,9 +15,15 @@ const Header = ({ match, flex_search, local_area, travel }) => {
     const [error, setError] = useState(false);
 
     const clickStageTwoBtn = () => {
-        const email = document.querySelector(".emailInput");
+        const email = document.querySelector(".email");
 
-        email.value.length === 0 ? setError(true) : setSignStage(3);
+        if (email.value.length === 0) {
+            setError("*이메일이 필요합니다.");
+        }
+        else {
+            setSignStage(3);
+            setError(false);
+        }
     }
 
     const onCloseModal = () => {
@@ -24,6 +31,7 @@ const Header = ({ match, flex_search, local_area, travel }) => {
         setSignStage(1);
         setError(false);
     }
+
     useEffect(() => {
         const header = document.querySelector('.headerBox');
 
@@ -124,7 +132,7 @@ const Header = ({ match, flex_search, local_area, travel }) => {
                             signStage === 1 && (
                                 <div className="modal_box stage1">
                                     <div className="modal_header">
-                                        <CloseIcon onClick={onCloseModal} />
+                                        <CloseIcon className="closeIcon" onClick={onCloseModal} />
                                         <div>로그인 또는 회원 가입</div>
                                     </div>
                                     <div className="stage1_content">
@@ -140,29 +148,34 @@ const Header = ({ match, flex_search, local_area, travel }) => {
                             signStage === 2 && (
                                 <div className="modal_box stage2">
                                     <div className="modal_header">
-                                        <CloseIcon onClick={onCloseModal} />
+                                        <CloseIcon className="closeIcon" onClick={onCloseModal} />
                                         <div>로그인 또는 회원 가입</div>
                                     </div>
                                     <div className="stage2_content">
                                         <div className="stage2_tit">에어비앤비에 오신 것을 환영합니다.</div>
                                         <div className="inputBox">
-                                            <input className="emailInput" placeholder="이메일" />
-                                            {error && <div className="errorMessage">*이메일이 필요합니다.</div>}
+                                            <input className="email" placeholder="이메일" />
+                                            {error && <ErrorMessage>{error}</ErrorMessage>}
                                         </div>
-                                        <div className="stage2_btn" onClick={() => clickStageTwoBtn()}>계속</div>
+                                        <SubmitButton onClick={() => clickStageTwoBtn()}>계속</SubmitButton>
                                     </div>
                                 </div>
                             )
                         }
                         {
+                            //회원 가입이 되어 있는 상태일 경우 -> 비밀번호 입력하는 곳
                             signStage === 3 && (
                                 <div className="modal_box stage3">
                                     <div className="modal_header">
-                                        <CloseIcon onClick={onCloseModal} />
-                                        <div>로그인 또는 회원 가입</div>
+                                        <NavigateBeforeIcon className="beforeIcon" onClick={() => setSignStage(2)} />
+                                        <div>로그인</div>
                                     </div>
                                     <div className="stage3_content">
-
+                                        <div className="inputBox">
+                                            <input className="password" placeholder="비밀번호" />
+                                            {error && <ErrorMessage>{error}</ErrorMessage>}
+                                        </div>
+                                        <SubmitButton>로그인</SubmitButton>
                                     </div>
                                 </div>
                             )

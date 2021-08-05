@@ -243,7 +243,11 @@ export const SignModal = styled.div`
 
     .stage2{
             height:350px;
+    }  
+    .stage3{
+        height:300px;
     }
+
     .modal_box{
         width:550px;
         background:white;
@@ -259,13 +263,24 @@ export const SignModal = styled.div`
             font-weight:700;
             border-bottom:1px solid #dddddd;
             
+
             svg{
                 position:absolute;
                 left:15px;
                 cursor:pointer;
+            }
+
+            .closeIcon{
                 width:20px;
                 height:20px;
             }
+
+            .beforeIcon{
+                width:30px;
+                height:30px;
+            }
+
+            
         }
         .stage1_content{
             display:flex;
@@ -324,34 +339,54 @@ export const SignModal = styled.div`
                     box-sizing:border-box;
                     margin-bottom:10px;
                 }
-                .errorMessage{
-                    font-size:12px;
-                    color:red;
-                }
-            }
-            .stage2_btn{
-                background:#dd1a60;
-                color:white;
-                height:50px;
-                border-radius:10px;
-                display:flex;
-                align-items: center;
-                justify-content: center;
-                font-size:18px;
-                cursor:pointer;
+                
             }
         }
 
         .stage3_content{
-            /* display:flex;
+            display:flex;
+            flex-direction:column;
             justify-content: center;
             align-items:center;
-             */
-             
             height: calc(100% - 55px);
+            
+            div,input{
+                width:90%;
+            }
+            .inputBox{
+                height:90px;
+                input{
+                    border-radius:10px;
+                    border:1px solid gray;
+                    font-size:16px;
+                    width:100%;
+                    padding:15px;
+                    box-sizing:border-box;
+                    margin-bottom:10px;
+                }
+            }
         }
 
 
     }
 `;
+
+export const ErrorMessage = styled.div`
+    font-size:12px;
+    color:red;
+`;
+
+export const SubmitButton = styled.div`
+    background:#dd1a60;
+    color:white;
+    height:50px;
+    border-radius:10px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-size:18px;
+    cursor:pointer;
+`;
+
+
 
