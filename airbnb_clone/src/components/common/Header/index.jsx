@@ -27,6 +27,10 @@ const Header = ({ match, flex_search, local_area, travel }) => {
             setCheckLogin(false);
     }, [checkLogin]);
 
+    const onLogout = () => {
+        localStorage.removeItem("ACCESS_TOKEN");
+        setCheckLogin(false);
+    };
 
     const clickStageTwoBtn = () => {
         const email = document.querySelector(".email");
@@ -131,34 +135,26 @@ const Header = ({ match, flex_search, local_area, travel }) => {
                         (checkLogin ?
                             (
                                 <div className="profile_option">
-                                    <div>위시 리스트</div>
+                                    <div className="stress" >위시 리스트</div>
                                     <span className="bar"></span>
-                                    <div>숙소 관리</div>
+                                    <div>숙소 호스팅 되기</div>
                                     <div>계정 관리</div>
                                     <span className="bar"></span>
                                     <div className="help">도움말</div>
-                                    <div className="logout" onClick={() => { setOnProfile(!onProfile) }}>로그아웃</div>
+                                    <div className="logout" onClick={() => { onLogout(); setOnProfile(!onProfile) }}>로그아웃</div>
                                 </div>
                             )
                             :
                             (
                                 <div className="profile_option">
-                                    <div className="login" onClick={() => { setSignModal(true); setOnProfile(!onProfile) }}>로그인</div>
+                                    <div className="stress" onClick={() => { setSignModal(true); setOnProfile(!onProfile) }}>로그인</div>
                                     <div className="register" onClick={() => { setSignModal(true); setOnProfile(!onProfile) }}>회원가입</div>
                                     <span className="bar"></span>
                                     <div className="host">숙소 호스트 되기</div>
                                     <div className="help">도움말</div>
                                 </div>
-                            ))
-                        // (
-                        //     <div className="profile_option">
-                        //         <div className="login" onClick={() => { setSignModal(true); setOnProfile(!onProfile) }}>로그인</div>
-                        //         <div className="register" onClick={() => { setSignModal(true); setOnProfile(!onProfile) }}>회원가입</div>
-                        //         <span className="bar"></span>
-                        //         <div className="host">숙소 호스트 되기</div>
-                        //         <div className="help">도움말</div>
-                        //     </div>
-                        // )
+                            )
+                        )
                     }
                 </div>
             </div>
