@@ -42,7 +42,7 @@ const LocalContentList = ({ areas }) => {
                     <Link to={`/rooms/${area.roomId}`} className="localItemBox">
                         <div className="localItem">
                             <div className="localItem_img">
-                                <img src={area.imgURL} alt="" />
+                                <img src={area.imgURL[0]} alt="" />
                             </div>
                             <div className="localItem_content">
                                 <div className="localItem_head">

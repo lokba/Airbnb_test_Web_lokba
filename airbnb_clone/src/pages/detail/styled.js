@@ -87,3 +87,43 @@ export const RoomDetailHeader = styled.div`
         }
     }
 `;
+
+
+export const RoomDetailImgBox = styled.div`
+    display:flex;
+    height:400px;
+    /* border:1px solid red; */
+
+
+    .mainImg{
+        width:50%;
+        margin-right:8px;
+        img{
+            width:100%;
+            height:100%;
+            border-radius:10px;
+            cursor:pointer;
+        }
+    }
+    .subImg{
+        width:50%;
+        height:100%;
+
+        div{
+            display:flex;
+            justify-content: space-between;
+            height:50%;
+            width:100%;
+
+            img{
+                width:49%;
+                height:98%;
+                cursor:pointer;
+            }
+        }
+
+        .subImg_under{
+            align-items: flex-end;
+        }
+    }
+`;
