@@ -214,7 +214,7 @@ export const HeaderBox = styled.div`
                     border:1px solid #DDDDDD;
                 }
 
-                .login{
+                .stress{
                     font-weight:700;
                 }
             }
