@@ -74,6 +74,8 @@ export const NearArea = styled.div`
             height:64px;
             margin-bottom:16px;
             cursor:pointer;
+            text-decoration:none;
+            color:black;
 
             img{
                 width:64px;
@@ -162,6 +164,8 @@ export const TravelBox = styled.div`
             font-size:18px;
             font-weight:500;
             cursor:pointer;
+            text-decoration:none;
+            color:black;
             img{
                 width:100%;
                 border-radius:10px;

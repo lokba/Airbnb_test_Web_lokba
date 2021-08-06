@@ -20,6 +20,11 @@ export const HeaderBox = styled.div`
         padding:0 24px;
     `}
 
+    ${props =>
+        props.detail && css`
+        padding:0 12%;
+    `}
+
     position:fixed;
     left:0;
     right:0;
@@ -36,6 +41,7 @@ export const HeaderBox = styled.div`
         align-items: center;
         cursor:pointer;
         width:300px;
+        text-decoration:none;
         
         .logoImg{
             margin-right:7px;
