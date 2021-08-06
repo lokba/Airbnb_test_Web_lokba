@@ -17,6 +17,17 @@ const Header = ({ match, flex_search, local_area, travel }) => {
     const [signStage, setSignStage] = useState(1);
     const [error, setError] = useState(false);
 
+    const [checkLogin, setCheckLogin] = useState(false);
+
+
+    useEffect(() => {
+        localStorage.getItem("ACCESS_TOKEN") ?
+            setCheckLogin(true)
+            :
+            setCheckLogin(false);
+    }, [checkLogin]);
+
+
     const clickStageTwoBtn = () => {
         const email = document.querySelector(".email");
 
@@ -116,15 +127,38 @@ const Header = ({ match, flex_search, local_area, travel }) => {
                     </div>
 
                     {
-                        onProfile && (
-                            <div className="profile_option">
-                                <div className="login" onClick={() => { setSignModal(true); setOnProfile(!onProfile) }}>로그인</div>
-                                <div className="register" onClick={() => { setSignModal(true); setOnProfile(!onProfile) }}>회원가입</div>
-                                <span className="bar"></span>
-                                <div className="host">숙소 호스트 되기</div>
-                                <div className="help">도움말</div>
-                            </div>
-                        )
+                        onProfile &&
+                        (checkLogin ?
+                            (
+                                <div className="profile_option">
+                                    <div>위시 리스트</div>
+                                    <span className="bar"></span>
+                                    <div>숙소 관리</div>
+                                    <div>계정 관리</div>
+                                    <span className="bar"></span>
+                                    <div className="help">도움말</div>
+                                    <div className="logout" onClick={() => { setOnProfile(!onProfile) }}>로그아웃</div>
+                                </div>
+                            )
+                            :
+                            (
+                                <div className="profile_option">
+                                    <div className="login" onClick={() => { setSignModal(true); setOnProfile(!onProfile) }}>로그인</div>
+                                    <div className="register" onClick={() => { setSignModal(true); setOnProfile(!onProfile) }}>회원가입</div>
+                                    <span className="bar"></span>
+                                    <div className="host">숙소 호스트 되기</div>
+                                    <div className="help">도움말</div>
+                                </div>
+                            ))
+                        // (
+                        //     <div className="profile_option">
+                        //         <div className="login" onClick={() => { setSignModal(true); setOnProfile(!onProfile) }}>로그인</div>
+                        //         <div className="register" onClick={() => { setSignModal(true); setOnProfile(!onProfile) }}>회원가입</div>
+                        //         <span className="bar"></span>
+                        //         <div className="host">숙소 호스트 되기</div>
+                        //         <div className="help">도움말</div>
+                        //     </div>
+                        // )
                     }
                 </div>
             </div>
@@ -202,7 +236,8 @@ const Header = ({ match, flex_search, local_area, travel }) => {
                                             <InputModel name="signup_pwd" txt="비밀번호" />
                                             <div className="notice">아래의 <em>동의 및 계속하기 버튼</em>을 선택하면, 에어비앤비의 <span>서비스 약관, 결제 서비스 약관, 개인정보 처리방침, 차별 금지 정책</span>에 동의하는 것입니다.</div>
                                         </div>
-                                        <SubmitButton onClick={onCloseModal}>동의 및 계속하기</SubmitButton>
+                                        {/* 우선은 일단 모달창 닫는걸로 구현 */}
+                                        <SubmitButton onClick={() => { onCloseModal(); localStorage.setItem("ACCESS_TOKEN", "TEST_ACCESS_TOKEN"); window.location.reload(); }}>동의 및 계속하기</SubmitButton>
                                     </div>
                                 </div>
                             )
