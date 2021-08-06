@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../../components/common/footer';
 import Header from '../../components/common/Header';
-import { RoomDetailBox, RoomDetailHeader, RoomDetailImgBox } from './styled';
+import { RoomDetailBox, RoomDetailHeader, RoomDetailImgBox, RoomDetailContent, RoomHosterInfo } from './styled';
 import StarRateIcon from '@material-ui/icons/StarRate';
 import PersonIcon from '@material-ui/icons/Person';
 import ShareIcon from '@material-ui/icons/Share';
@@ -22,8 +22,10 @@ const RoomDetailPage = () => {
         heart: false,
         roomId: 1,
         location: "강남구,서울,한국",
-        seller: {
+        hoster: {
             grade: "슈퍼호스트",
+            name: "Bella",
+
 
         }
     };
@@ -44,7 +46,7 @@ const RoomDetailPage = () => {
                             <div>∙</div>
                             <div>
                                 <PersonIcon className="stress" />
-                                <div>{room.seller.grade}</div>
+                                <div>{room.hoster.grade}</div>
                             </div>
                             <div>∙</div>
                             <div className="locate">{room.location}</div>
@@ -78,6 +80,18 @@ const RoomDetailPage = () => {
                         </div>
                     </div>
                 </RoomDetailImgBox>
+                <RoomDetailContent>
+                    <div className="content">
+                        <RoomHosterInfo>
+                            <div className="hosterInfo">{room.hoster.name}님이 호스팅하는 공동 주택 전체</div>
+                            <div className="roomInfo">{room.info[0]}</div>
+                        </RoomHosterInfo>
+                    </div>
+                    <div className="reservation">
+
+                    </div>
+                </RoomDetailContent>
+
             </div>
         </RoomDetailBox>
     );

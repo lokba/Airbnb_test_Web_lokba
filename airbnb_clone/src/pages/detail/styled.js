@@ -5,7 +5,7 @@ export const RoomDetailBox = styled.div`
     .RoomDetailBody{
         margin-top:80px;
         padding: 0 12%;
-        background: rgba(0,0,0,0.03);
+        /* background: rgba(0,0,0,0.03); */
     }
 `;
 
@@ -127,3 +127,32 @@ export const RoomDetailImgBox = styled.div`
         }
     }
 `;
+
+
+export const RoomDetailContent = styled.div`
+    display:flex;
+    
+    .content{
+        width:60%;
+        
+    }
+    .reservation{
+        width:40%;
+    }
+`;
+
+export const RoomHosterInfo = styled.div`
+    height:120px;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    font-size:16px;
+    border-bottom:1px solid #dddddd;
+
+    .hosterInfo{
+        font-size:22px;
+        padding-bottom:5px;
+        font-weight:600;
+    }
+`;
+
