@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../../components/common/footer';
 import Header from '../../components/common/Header';
-import { RoomDetailBox, RoomDetailHeader, RoomDetailImgBox, RoomDetailContent, RoomHosterInfo, RoomAboutInfo } from './styled';
+import { RoomDetailBox, RoomDetailHeader, RoomDetailImgBox, RoomDetailContent, RoomHosterInfo, RoomAboutInfo, RoomDetailInfo } from './styled';
 import StarRateIcon from '@material-ui/icons/StarRate';
 import PersonIcon from '@material-ui/icons/Person';
 import ShareIcon from '@material-ui/icons/Share';
@@ -123,9 +123,19 @@ const RoomDetailPage = () => {
                                     <div className="list_txt">슈퍼호스트는 풍부한 경험과 높은 평점을 자랑하며 게스트가 숙소에서 편안히 머무를 수 있도록 최선을 다하는 호스트입니다.</div>
                                 </div>
                             </div>
-
                         </RoomAboutInfo>
-
+                        <RoomDetailInfo>
+                            <div className="location">강남역 1번 출구 바로 옆 편리하고 깔끔한 숙소입니다.</div>
+                            <div className="detailInfo">
+                                <div>- 전철까지 도보 30초</div>
+                                <div>- 침구로 매번 깨끗이 교체</div>
+                                <div>- 코너창층으로 좋은 전망</div>
+                                <div>- 세탁기 + 건조기</div>
+                                <div>- 지하창고에 짐 보관 무료</div>
+                                <div>- 주차는 1시간에 1000원으로 꼭 미리 문의 주셔야합니다</div>
+                                <div>- 정말 좋은 헬스장 도보 3분 (하루 만원)</div>
+                            </div>
+                        </RoomDetailInfo>
                     </div>
                     <div className="reservation">
 

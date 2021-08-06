@@ -207,3 +207,18 @@ export const RoomAboutInfo = styled.div`
     }
 `;
 
+
+export const RoomDetailInfo = styled.div`
+    padding:40px 0;
+    font-size:16px;
+    border-bottom :1px solid #dddddd;
+
+    .location{
+        padding-bottom:30px;
+    }
+    .detailInfo{
+        div{
+            margin-bottom:2px;
+        }
+    }
+`;
