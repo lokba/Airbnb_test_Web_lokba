@@ -31,6 +31,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.74",
             comments: "54",
             heart: false,
+            roomId: 1,
         },
         {
             imgURL: "/images/local/area/area2.png",
@@ -40,6 +41,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.82",
             comments: "83",
             heart: true,
+            roomId: 2,
         },
         {
             imgURL: "/images/local/area/area3.png",
@@ -49,6 +51,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.87",
             comments: "47",
             heart: false,
+            roomId: 3,
         },
         {
             imgURL: "/images/local/area/area4.png",
@@ -58,6 +61,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.87",
             comments: "40",
             heart: false,
+            roomId: 4,
         },
         {
             imgURL: "/images/local/area/area5.png",
@@ -67,6 +71,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.94",
             comments: "369",
             heart: false,
+            roomId: 5,
         },
         {
             imgURL: "/images/local/area/area1.png",
@@ -76,6 +81,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.74",
             comments: "54",
             heart: false,
+            roomId: 6,
         },
         {
             imgURL: "/images/local/area/area2.png",
@@ -85,6 +91,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.82",
             comments: "83",
             heart: true,
+            roomId: 7,
         },
         {
             imgURL: "/images/local/area/area3.png",
@@ -94,6 +101,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.87",
             comments: "47",
             heart: false,
+            roomId: 8,
         },
         {
             imgURL: "/images/local/area/area4.png",
@@ -103,6 +111,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.87",
             comments: "40",
             heart: false,
+            roomId: 9,
         },
         {
             imgURL: "/images/local/area/area5.png",
@@ -112,6 +121,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.94",
             comments: "369",
             heart: false,
+            roomId: 10,
         },
         {
             imgURL: "/images/local/area/area1.png",
@@ -121,6 +131,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.74",
             comments: "54",
             heart: false,
+            roomId: 11,
         },
         {
             imgURL: "/images/local/area/area2.png",
@@ -130,6 +141,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.82",
             comments: "83",
             heart: true,
+            roomId: 12,
         },
         {
             imgURL: "/images/local/area/area3.png",
@@ -139,6 +151,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.87",
             comments: "47",
             heart: false,
+            roomId: 13,
         },
         {
             imgURL: "/images/local/area/area4.png",
@@ -148,6 +161,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.87",
             comments: "40",
             heart: false,
+            roomId: 14,
         },
         {
             imgURL: "/images/local/area/area5.png",
@@ -157,6 +171,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.94",
             comments: "369",
             heart: false,
+            roomId: 15,
         },
         {
             imgURL: "/images/local/area/area1.png",
@@ -166,6 +181,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.74",
             comments: "54",
             heart: false,
+            roomId: 16,
         },
         {
             imgURL: "/images/local/area/area2.png",
@@ -175,6 +191,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.82",
             comments: "83",
             heart: true,
+            roomId: 17,
         },
         {
             imgURL: "/images/local/area/area3.png",
@@ -184,6 +201,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.87",
             comments: "47",
             heart: false,
+            roomId: 18,
         },
         {
             imgURL: "/images/local/area/area4.png",
@@ -193,6 +211,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.87",
             comments: "40",
             heart: false,
+            roomId: 19,
         },
         {
             imgURL: "/images/local/area/area5.png",
@@ -202,6 +221,7 @@ const LocalSearchPage = ({ location }) => {
             star: "4.94",
             comments: "369",
             heart: false,
+            roomId: 20,
         },
     ];
 

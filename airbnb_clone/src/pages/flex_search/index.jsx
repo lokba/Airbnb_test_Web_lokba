@@ -87,6 +87,7 @@ const FlexSearchPage = () => {
             checkin: [11, 12],
             checkout: [11, 14],
             heart: false,
+            roomId: 100,
         },
         {
             imgURL: "/images/flex_search/items/item2.png",
@@ -96,6 +97,7 @@ const FlexSearchPage = () => {
             checkin: [1, 28],
             checkout: [1, 30],
             heart: true,
+            roomId: 101,
         },
         {
             imgURL: "/images/flex_search/items/item3.png",
@@ -105,6 +107,7 @@ const FlexSearchPage = () => {
             checkin: [11, 5],
             checkout: [11, 7],
             heart: true,
+            roomId: 102,
         },
         {
             imgURL: "/images/flex_search/items/item4.png",
@@ -114,6 +117,7 @@ const FlexSearchPage = () => {
             checkin: [1, 28],
             checkout: [1, 30],
             heart: false,
+            roomId: 103,
         },
         {
             imgURL: "/images/flex_search/items/item5.png",
@@ -123,6 +127,7 @@ const FlexSearchPage = () => {
             checkin: [12, 17],
             checkout: [12, 19],
             heart: false,
+            roomId: 104,
         },
         {
             imgURL: "/images/flex_search/items/item6.png",
@@ -132,6 +137,7 @@ const FlexSearchPage = () => {
             checkin: [10, 8],
             checkout: [10, 10],
             heart: false,
+            roomId: 105,
         },
         {
             imgURL: "/images/flex_search/items/item7.png",
@@ -141,6 +147,7 @@ const FlexSearchPage = () => {
             checkin: [12, 10],
             checkout: [12, 12],
             heart: false,
+            roomId: 106,
         },
         {
             imgURL: "/images/flex_search/items/item8.png",
@@ -150,6 +157,8 @@ const FlexSearchPage = () => {
             checkin: [10, 29],
             checkout: [10, 31],
             heart: false,
+            roomId: 107,
+
         },
     ];
 
