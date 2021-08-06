@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const InputBox = styled.div`
-    width:100%;
+    width:100% !important;
     border:1px solid gray;
     border-radius:10px;
     height:60px;
@@ -16,6 +16,7 @@ export const InputBox = styled.div`
     input{
         border:none;
         height:35px;
+        width:100%;
         outline:none;
         font-size:16px;
         padding:15px;

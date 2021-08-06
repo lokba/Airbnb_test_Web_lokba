@@ -249,7 +249,7 @@ export const SignModal = styled.div`
     }
 
     .stage4{
-        height:600px;
+        height:650px;
     }
 
     .modal_box{
@@ -334,8 +334,6 @@ export const SignModal = styled.div`
             }
             .inputBox{
                 height:90px;
-                width:100%;
-                margin-left:55px;
             }
         }
 
@@ -350,7 +348,7 @@ export const SignModal = styled.div`
                 width:90%;
             }
             .inputBox{
-                height:80px;
+                height:90px;
             }
         }
 
@@ -365,6 +363,24 @@ export const SignModal = styled.div`
             div{
                 width:90%;
             } 
+
+            .inputBox{
+                .notice{
+                    font-size:12px;
+                    color:gray;
+                    padding:8px 0 20px 3px;
+                    line-height:1.4;
+                    em{
+                        font-weight:800;
+                    }
+                    span{
+                        color:blue;
+                        text-decoration:underline;
+                        cursor:pointer;
+                        font-weight:600;
+                    }
+                }
+            }
 
         }
         
