@@ -3,6 +3,7 @@ import { LocalContentListBox } from './styled';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import StarRateIcon from '@material-ui/icons/StarRate';
+import { Link } from 'react-router-dom';
 
 const LocalContentList = ({ areas }) => {
 
@@ -38,10 +39,10 @@ const LocalContentList = ({ areas }) => {
         <LocalContentListBox>
             {
                 areas.map(area => (
-                    <div className="localItemBox">
+                    <Link to={`/rooms/${area.roomId}`} className="localItemBox">
                         <div className="localItem">
                             <div className="localItem_img">
-                                <img src={area.imgURL} alt="" />
+                                <img src={area.imgURL[0]} alt="" />
                             </div>
                             <div className="localItem_content">
                                 <div className="localItem_head">
@@ -63,7 +64,7 @@ const LocalContentList = ({ areas }) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 ))
             }
         </LocalContentListBox>

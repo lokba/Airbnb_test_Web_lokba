@@ -6,11 +6,9 @@ import { IoIosMenu } from "react-icons/io";
 import { Link, withRouter } from 'react-router-dom';
 import CloseIcon from '@material-ui/icons/Close';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import InputModel from '../InputBox';
 
-const Header = ({ match, flex_search, local_area, travel }) => {
+const Header = ({ match, flex_search, local_area, travel, detail }) => {
 
     const [onProfile, setOnProfile] = useState(false);
     const [signModal, setSignModal] = useState(false);
@@ -18,7 +16,6 @@ const Header = ({ match, flex_search, local_area, travel }) => {
     const [error, setError] = useState(false);
 
     const [checkLogin, setCheckLogin] = useState(false);
-
 
     useEffect(() => {
         localStorage.getItem("ACCESS_TOKEN") ?
@@ -77,7 +74,7 @@ const Header = ({ match, flex_search, local_area, travel }) => {
 
 
     return (
-        <HeaderBox className="headerBox" local_area={local_area} travel={travel}>
+        <HeaderBox className="headerBox" local_area={local_area} travel={travel} detail={detail}>
             <Link to="/" className="logoArea">
                 <img className="logoImg" src="/images/icons/red_logo.png" alt="" />
                 <div className="logoTxt">airbnb</div>

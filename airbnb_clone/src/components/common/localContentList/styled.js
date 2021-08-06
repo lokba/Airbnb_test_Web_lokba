@@ -9,6 +9,9 @@ export const LocalContentListBox = styled.div`
         cursor:pointer;
         position:relative;
 
+        text-decoration:none;
+        color:black;
+
         .localItem{
             height:200px;
             display:flex;

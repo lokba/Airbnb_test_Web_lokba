@@ -1,10 +1,11 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const FooterBox = styled.div`
     width:100%;
     border-top:1px solid #dddddd;
     background : #f7f7f7;
 
+        
     .content{
         margin:0 80px;
         display:flex;
@@ -38,7 +39,6 @@ export const FooterBox = styled.div`
     .copyright{
         margin:0 80px;
         padding:29px 0;
-        height:69px;
         font-size:14px;
         
         display:flex;
@@ -48,7 +48,6 @@ export const FooterBox = styled.div`
             margin-right:10px;
         }
 
-        
         .copyright_list{
             display:flex;
             margin-right:7px;
@@ -63,4 +62,9 @@ export const FooterBox = styled.div`
             }
         }
     }
+    
+    .detail{
+        margin:0 12%;
+    }
+
 `;
