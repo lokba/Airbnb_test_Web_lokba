@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { ErrorMessage, HeaderBox, SignModal, SubmitButton } from './styled';
+import { ErrorMessage, HeaderBox, InputBox, SignModal, SubmitButton } from './styled';
 import { BiSearch } from "react-icons/bi";
 import { MdLanguage } from "react-icons/md";
 import { IoIosMenu } from "react-icons/io";
 import { Link, withRouter } from 'react-router-dom';
 import CloseIcon from '@material-ui/icons/Close';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import InputModel from '../InputBox';
 
 const Header = ({ match, flex_search, local_area, travel }) => {
 
@@ -21,7 +24,7 @@ const Header = ({ match, flex_search, local_area, travel }) => {
             setError("*이메일이 필요합니다.");
         }
         else {
-            setSignStage(3);
+            setSignStage(4);
             setError(false);
         }
     }
@@ -154,7 +157,7 @@ const Header = ({ match, flex_search, local_area, travel }) => {
                                     <div className="stage2_content">
                                         <div className="stage2_tit">에어비앤비에 오신 것을 환영합니다.</div>
                                         <div className="inputBox">
-                                            <input className="email" placeholder="이메일" />
+                                            <InputModel txt="이메일" />
                                             {error && <ErrorMessage>{error}</ErrorMessage>}
                                         </div>
                                         <SubmitButton onClick={() => clickStageTwoBtn()}>계속</SubmitButton>
@@ -171,11 +174,42 @@ const Header = ({ match, flex_search, local_area, travel }) => {
                                         <div>로그인</div>
                                     </div>
                                     <div className="stage3_content">
-                                        <div className="inputBox">
-                                            <input className="password" placeholder="비밀번호" />
+                                        {/* <div className="inputBox">
+                                            <InputBox className="password" placeholder="비밀번호" />
                                             {error && <ErrorMessage>{error}</ErrorMessage>}
-                                        </div>
+                                        </div> */}
                                         <SubmitButton>로그인</SubmitButton>
+                                    </div>
+                                </div>
+                            )
+                        }
+                        {
+                            //회원 가입 하는 곳
+                            signStage === 4 && (
+                                <div className="modal_box stage4">
+                                    <div className="modal_header">
+                                        <NavigateBeforeIcon className="beforeIcon" onClick={() => setSignStage(2)} />
+                                        <div>회원 가입 완료하기</div>
+                                    </div>
+                                    <div className="stage4_content">
+                                        <div className="inputBox">
+                                            {/* <InputBox placeholder="이름(예: 길동)" />
+                                            <div className=""></div>
+                                            <InputBox placeholder="성(예: 홍)" />
+                                            <div>정부 발급 신분증에 표시된 이름과 일치하는지 확인하세요.</div>
+                                            <InputBox placeholder="생년월일" />
+                                            <div>만 18세 이상의 성인만 회원으로 가입할 수 있습니다. 생일은 에어비앤비의 다른 회원에게 공개되지 않습니다.</div>
+                                            <InputBox placeholder="" />
+                                            <div>예약 확인과 영수증을 이메일로 보내드립니다.</div>
+                                            <InputBox placeholder="" />
+                                            <div>아래의 동의 및 계속하기 버튼을 선택하면, 에어비앤비의 서비스 약관, 결제 서비스 약관, 개인정보 처리방침, 차별 금지 정책에 동의하는 것입니다.</div> */}
+                                        </div>
+                                        <SubmitButton>동의 및 계속하기</SubmitButton>
+                                        <div>에어비앤비 회원 전용 할인, 추천 여행 정보, 마케팅 이메일, 푸시 알림을 보내드립니다. 계정 설정 또는 마케팅 알림에서 언제든지 메세지 수신을 거부할 수 있습니다.</div>
+                                        <div>
+                                            <CheckBoxOutlineBlankIcon />
+                                            <div>에어비앤비에서 보내는 마케팅 메시지를 받고 싶지 않습니다.</div>
+                                        </div>
                                     </div>
                                 </div>
                             )
@@ -188,3 +222,8 @@ const Header = ({ match, flex_search, local_area, travel }) => {
 };
 
 export default withRouter(Header);
+
+
+//inputBox 수정하기
+
+

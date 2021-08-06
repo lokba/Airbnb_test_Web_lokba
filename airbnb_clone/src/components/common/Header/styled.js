@@ -248,6 +248,10 @@ export const SignModal = styled.div`
         height:300px;
     }
 
+    .stage4{
+        height:600px;
+    }
+
     .modal_box{
         width:550px;
         background:white;
@@ -319,7 +323,7 @@ export const SignModal = styled.div`
             align-items:center;
             height: calc(100% - 55px);
             
-            div,input{
+            div{
                 width:90%;
             }
 
@@ -330,16 +334,8 @@ export const SignModal = styled.div`
             }
             .inputBox{
                 height:90px;
-                input{
-                    border-radius:10px;
-                    border:1px solid gray;
-                    font-size:16px;
-                    width:100%;
-                    padding:15px;
-                    box-sizing:border-box;
-                    margin-bottom:10px;
-                }
-                
+                width:100%;
+                margin-left:55px;
             }
         }
 
@@ -354,18 +350,24 @@ export const SignModal = styled.div`
                 width:90%;
             }
             .inputBox{
-                height:90px;
-                input{
-                    border-radius:10px;
-                    border:1px solid gray;
-                    font-size:16px;
-                    width:100%;
-                    padding:15px;
-                    box-sizing:border-box;
-                    margin-bottom:10px;
-                }
+                height:80px;
             }
         }
+
+        .stage4_content{
+            display:flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items:center;
+            height: calc(100% - 55px);
+
+
+            div{
+                width:90%;
+            } 
+
+        }
+        
 
 
     }
@@ -373,6 +375,7 @@ export const SignModal = styled.div`
 
 export const ErrorMessage = styled.div`
     font-size:12px;
+    margin-top:10px;
     color:red;
 `;
 
@@ -385,8 +388,6 @@ export const SubmitButton = styled.div`
     align-items: center;
     justify-content: center;
     font-size:18px;
+    margin-top:10px;
     cursor:pointer;
 `;
-
-
-
