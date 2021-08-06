@@ -222,3 +222,35 @@ export const RoomDetailInfo = styled.div`
         }
     }
 `;
+
+export const RoomPlace = styled.div`
+    padding:40px 0;
+    border-bottom :1px solid #dddddd;
+
+    .tit{
+        padding-bottom:24px;
+        font-size:22px;
+        font-weight:600;
+    }
+    .content{
+        padding:24px;
+        border:1px solid #dddddd;
+        border-radius:10px;
+        width:230px;
+
+        img{
+            width:24px;
+            height:24px;
+            padding-bottom:16px;
+        }
+        .content_tit{
+            padding-bottom:8px;
+            font-size:16px;
+            font-weight:600;
+        }
+        .content_sub{
+            font-size:14px;
+        }
+
+    }
+`;

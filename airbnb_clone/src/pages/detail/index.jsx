@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../../components/common/footer';
 import Header from '../../components/common/Header';
-import { RoomDetailBox, RoomDetailHeader, RoomDetailImgBox, RoomDetailContent, RoomHosterInfo, RoomAboutInfo, RoomDetailInfo } from './styled';
+import { RoomDetailBox, RoomDetailHeader, RoomDetailImgBox, RoomDetailContent, RoomHosterInfo, RoomAboutInfo, RoomDetailInfo, RoomPlace } from './styled';
 import StarRateIcon from '@material-ui/icons/StarRate';
 import PersonIcon from '@material-ui/icons/Person';
 import ShareIcon from '@material-ui/icons/Share';
@@ -136,6 +136,15 @@ const RoomDetailPage = () => {
                                 <div>- 정말 좋은 헬스장 도보 3분 (하루 만원)</div>
                             </div>
                         </RoomDetailInfo>
+                        <RoomPlace>
+                            <div className="tit">숙박 장소</div>
+                            <div className="content">
+                                <img src="/images/detail/icons/bed.png" alt="" />
+                                <div className="content_tit">1번 침실</div>
+                                <div className="content_sub">퀸사이즈 침대 1개, 요와 이불 1개</div>
+                            </div>
+                        </RoomPlace>
+
                     </div>
                     <div className="reservation">
 
@@ -143,7 +152,7 @@ const RoomDetailPage = () => {
                 </RoomDetailContent>
 
             </div>
-        </RoomDetailBox>
+        </RoomDetailBox >
     );
 };
 
