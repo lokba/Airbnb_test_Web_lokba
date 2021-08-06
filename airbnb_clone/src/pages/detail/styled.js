@@ -254,3 +254,35 @@ export const RoomPlace = styled.div`
 
     }
 `;
+
+export const RoomFacility = styled.div`
+    padding:50px 0;
+    border-bottom :1px solid #dddddd;
+
+    .tit{
+        padding-bottom:24px;
+        font-size:22px;
+        font-weight:600;
+    }
+    .content{
+        font-size:16px;
+
+        li{
+            padding-bottom:7px;
+        }
+        
+        .seeAllBtn{
+            border-radius:10px;
+            border:1px solid black;
+            cursor:pointer;
+            width:180px;
+            padding:13px 23px;
+            text-align:center;
+            margin-top:30px;
+
+            &:hover{
+                background :#f8f9fa;
+            }
+        }
+    }
+`

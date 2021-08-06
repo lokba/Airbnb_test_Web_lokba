@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../../components/common/footer';
 import Header from '../../components/common/Header';
-import { RoomDetailBox, RoomDetailHeader, RoomDetailImgBox, RoomDetailContent, RoomHosterInfo, RoomAboutInfo, RoomDetailInfo, RoomPlace } from './styled';
+import { RoomDetailBox, RoomDetailHeader, RoomDetailImgBox, RoomDetailContent, RoomHosterInfo, RoomAboutInfo, RoomDetailInfo, RoomPlace, RoomFacility } from './styled';
 import StarRateIcon from '@material-ui/icons/StarRate';
 import PersonIcon from '@material-ui/icons/Person';
 import ShareIcon from '@material-ui/icons/Share';
@@ -144,7 +144,17 @@ const RoomDetailPage = () => {
                                 <div className="content_sub">퀸사이즈 침대 1개, 요와 이불 1개</div>
                             </div>
                         </RoomPlace>
-
+                        <RoomFacility>
+                            <div className="tit">숙박 편의시설</div>
+                            <div className="content">
+                                <li>주방</li>
+                                <li>무선 인터넷</li>
+                                <li>TV + 일반 케이블 TV</li>
+                                <li>엘리베이터</li>
+                                <li>세탁기</li>
+                                <div className="seeAllBtn">편의시설 35개 모두 보기</div>
+                            </div>
+                        </RoomFacility>
                     </div>
                     <div className="reservation">
 
