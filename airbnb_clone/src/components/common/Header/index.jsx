@@ -8,7 +8,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import InputModel from '../InputBox';
 
-const Header = ({ match, flex_search, local_area, travel, detail }) => {
+const Header = ({ match, flex_search, local_area, travel, detail, book }) => {
 
     const [onProfile, setOnProfile] = useState(false);
     const [signModal, setSignModal] = useState(false);
@@ -74,7 +74,13 @@ const Header = ({ match, flex_search, local_area, travel, detail }) => {
 
 
     return (
-        <HeaderBox className="headerBox" local_area={local_area} travel={travel} detail={detail}>
+        <HeaderBox
+            className="headerBox"
+            local_area={local_area}
+            travel={travel}
+            detail={detail}
+            book={book}
+        >
             <Link to="/" className="logoArea">
                 <img className="logoImg" src="/images/icons/red_logo.png" alt="" />
                 <div className="logoTxt">airbnb</div>
@@ -102,7 +108,7 @@ const Header = ({ match, flex_search, local_area, travel, detail }) => {
                         )
                         :
                         (
-                            <div className="inputArea">
+                            <div className={book ? "inputArea book" : "inputArea"}>
                                 <div className="inputBox">
                                     <div className="inputTxt">
                                         검색 시작하기
@@ -116,7 +122,7 @@ const Header = ({ match, flex_search, local_area, travel, detail }) => {
 
             }
 
-            <div className="infoArea">
+            <div className={book ? "infoArea book" : "infoArea"} >
                 <div className="info_host">호스트 되기</div>
                 <div className="info_lang">
                     <MdLanguage />

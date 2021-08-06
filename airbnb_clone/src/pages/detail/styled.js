@@ -239,7 +239,7 @@ export const RoomPlace = styled.div`
         padding:24px;
         border:1px solid #dddddd;
         border-radius:10px;
-        width:230px;
+        width:180px;
 
         img{
             width:24px;
@@ -328,7 +328,7 @@ export const ReservationBox = styled.div`
         padding-bottom:30px;
 
         svg{
-            color:#dd1a60;
+            color:#ff5a60;
         }
         div{
             padding-top:3px;
@@ -423,7 +423,7 @@ export const CommentBox = styled.div`
         padding-bottom:40px;
         font-weight:600;
         svg{
-            color:#dd1a60;
+            color:#ff5a60;
         }
     }
 
@@ -483,7 +483,6 @@ export const CommentBox = styled.div`
 
 export const HostingMap = styled.div`
     padding:40px 0;
-    border-bottom:1px solid #dddddd;
     box-sizing:border-box;
     height:700px;
 

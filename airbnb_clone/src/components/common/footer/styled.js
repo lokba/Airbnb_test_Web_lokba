@@ -4,8 +4,7 @@ export const FooterBox = styled.div`
     width:100%;
     border-top:1px solid #dddddd;
     background : #f7f7f7;
-
-        
+    margin-bottom:-10px;
     .content{
         margin:0 80px;
         display:flex;
@@ -40,8 +39,8 @@ export const FooterBox = styled.div`
         margin:0 80px;
         padding:29px 0;
         font-size:14px;
-        
         display:flex;
+        
         color:#222222;
 
         .company{
@@ -62,9 +61,15 @@ export const FooterBox = styled.div`
             }
         }
     }
-    
+
+    //숙소 상세 페이지
     .detail{
         margin:0 12%;
+    }
+
+    //숙소 예약 페이지
+    .reserve{
+        display:none;
     }
 
 `;

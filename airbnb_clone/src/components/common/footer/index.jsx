@@ -1,10 +1,10 @@
 import React from 'react';
 import { FooterBox } from './styled';
 
-const Footer = ({ detail }) => {
+const Footer = ({ detail, reserve }) => {
     return (
         <FooterBox>
-            <div className={detail ? "content detail" : "content"} >
+            <div className={`content ${reserve} ${detail}`} >
                 <div className="content_item">
                     <span className="content_item_tit">소개</span>
                     <div>에어비앤비 이용 방법</div>
