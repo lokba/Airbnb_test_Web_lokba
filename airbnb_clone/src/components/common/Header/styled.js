@@ -168,6 +168,7 @@ export const HeaderBox = styled.div`
             height:100%;
             width:77px;
             padding:0 7px;
+            box-sizing:border-box;
             position:relative;
 
             .profile_box{

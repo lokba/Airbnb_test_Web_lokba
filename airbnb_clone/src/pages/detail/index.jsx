@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../../components/common/footer';
 import Header from '../../components/common/Header';
-import { RoomDetailBox, RoomDetailHeader, RoomDetailImgBox, RoomDetailContent, RoomHosterInfo, RoomAboutInfo, RoomDetailInfo, RoomPlace, RoomFacility, RoomCheckIn, ReservationBox, CommentBox } from './styled';
+import { RoomDetailBox, RoomDetailHeader, RoomDetailImgBox, RoomDetailContent, RoomHosterInfo, RoomAboutInfo, RoomDetailInfo, RoomPlace, RoomFacility, RoomCheckIn, ReservationBox, CommentBox, HostingMap } from './styled';
 import StarRateIcon from '@material-ui/icons/StarRate';
 import PersonIcon from '@material-ui/icons/Person';
 import ShareIcon from '@material-ui/icons/Share';
@@ -256,9 +256,13 @@ const RoomDetailPage = () => {
                     </div>
                     <div className="seeAllBtn">후기 {room.comments}개 모두 보기</div>
                 </CommentBox>
+                <HostingMap>
+                    <div className="tit">호스팅 지역</div>
+                    <div className="location">강남구, 서울, 한국</div>
+                </HostingMap>
 
             </div >
-            <Footer />
+            <Footer detail />
         </RoomDetailBox >
     );
 };

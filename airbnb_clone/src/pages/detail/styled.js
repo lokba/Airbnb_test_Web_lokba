@@ -412,7 +412,7 @@ export const ReservationBox = styled.div`
 `;
 
 export const CommentBox = styled.div`
-    padding:50px 0;
+    padding:40px 0;
     border-top:1px solid #dddddd;
     border-bottom:1px solid #dddddd;
 
@@ -479,4 +479,21 @@ export const CommentBox = styled.div`
         border-radius:10px;
     }
 
+`;
+
+export const HostingMap = styled.div`
+    padding:40px 0;
+    border-bottom:1px solid #dddddd;
+    box-sizing:border-box;
+    height:700px;
+
+    .tit{
+        font-size:22px;
+        margin-bottom:24px;
+        font-weight:600;
+    }
+    .location{
+        font-size:16px;
+        margin-bottom:24px;
+    }
 `;

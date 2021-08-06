@@ -17,7 +17,6 @@ const Header = ({ match, flex_search, local_area, travel, detail }) => {
 
     const [checkLogin, setCheckLogin] = useState(false);
 
-
     useEffect(() => {
         localStorage.getItem("ACCESS_TOKEN") ?
             setCheckLogin(true)

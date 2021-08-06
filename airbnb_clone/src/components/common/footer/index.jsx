@@ -1,10 +1,10 @@
 import React from 'react';
 import { FooterBox } from './styled';
 
-const Footer = () => {
+const Footer = ({ detail }) => {
     return (
         <FooterBox>
-            <div className="content">
+            <div className={detail ? "content detail" : "content"} >
                 <div className="content_item">
                     <span className="content_item_tit">소개</span>
                     <div>에어비앤비 이용 방법</div>
@@ -46,7 +46,7 @@ const Footer = () => {
                     <div>신뢰와 안전</div>
                 </div>
             </div>
-            <div className="copyright">
+            <div className={detail ? "copyright detail" : "copyright"} >
                 <div className="company">© 2021 Airbnb, Inc.</div>
                 <div className="copyright_list">
                     <div>·</div>
