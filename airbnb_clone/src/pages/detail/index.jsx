@@ -267,7 +267,7 @@ const RoomDetailPage = ({ history }) => {
                 </HostingMap>
 
             </div >
-            <Footer detail />
+            <Footer detail="detail" />
         </RoomDetailBox >
     );
 };

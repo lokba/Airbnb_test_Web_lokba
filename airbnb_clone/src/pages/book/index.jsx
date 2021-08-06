@@ -115,7 +115,7 @@ const BookPage = ({ history }) => {
 
                 </BookPageContent>
             </div>
-            <Footer />
+            <Footer reserve="reserve" />
         </BookPageBox >
     );
 };
