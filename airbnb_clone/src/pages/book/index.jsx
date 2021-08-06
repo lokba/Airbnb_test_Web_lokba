@@ -1,8 +1,10 @@
 import React from 'react';
 import Header from '../../components/common/Header';
-import { BookPageBox } from './styled';
+import { BookPageBox, BookPageHeader } from './styled';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import { withRouter } from 'react-router-dom';
 
-const BookPage = () => {
+const BookPage = ({ history }) => {
     const room = {
         imgURL: ["/images/local/area/area1.png",
             "/images/local/area/area2.png",
@@ -26,8 +28,15 @@ const BookPage = () => {
     return (
         <BookPageBox>
             <Header book />
-        </BookPageBox>
+            <div className="bookPageBody">
+                <BookPageHeader>
+                    <div className="icon" onClick={() => history.goBack()}><NavigateBeforeIcon /></div>
+                    <div className="tit">확인 및 결제</div>
+                </BookPageHeader>
+
+            </div>
+        </BookPageBox >
     );
 };
 
-export default BookPage;
+export default withRouter(BookPage);
