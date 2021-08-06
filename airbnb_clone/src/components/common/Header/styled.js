@@ -21,6 +21,11 @@ export const HeaderBox = styled.div`
     `}
 
     ${props =>
+        props.book && css`
+        padding: 0 24px;
+    `}
+
+    ${props =>
         props.detail && css`
         padding:0 12%;
     `}
@@ -116,6 +121,7 @@ export const HeaderBox = styled.div`
             }
         }
     }
+
 
     .infoArea{
         display:flex;
@@ -228,6 +234,11 @@ export const HeaderBox = styled.div`
             
         }
         
+    }
+    
+    //숙소 예약 페이지에서는 검색창과 프로필이 없기 때문이다.
+    .book{
+        display:none;
     }
     
 `;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Footer from '../../components/common/footer';
 import Header from '../../components/common/Header';
 import { RoomDetailBox, RoomDetailHeader, RoomDetailImgBox, RoomDetailContent, RoomHosterInfo, RoomAboutInfo, RoomDetailInfo, RoomPlace, RoomFacility, RoomCheckIn, ReservationBox, CommentBox, HostingMap } from './styled';
@@ -7,8 +7,9 @@ import PersonIcon from '@material-ui/icons/Person';
 import ShareIcon from '@material-ui/icons/Share';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import { withRouter } from 'react-router-dom';
 
-const RoomDetailPage = () => {
+const RoomDetailPage = ({ history }) => {
     const room = {
         imgURL: ["/images/local/area/area1.png",
             "/images/local/area/area2.png",
@@ -60,6 +61,10 @@ const RoomDetailPage = () => {
             },
         ]
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     // const reserveBox = document.querySelector(".reservation");
 
@@ -221,7 +226,7 @@ const RoomDetailPage = () => {
                                     <KeyboardArrowDownIcon />
                                 </div>
                             </div>
-                            <div className="reserveBtn">예약 가능 여부 보기</div>
+                            <div className="reserveBtn" onClick={() => history.push(`/book/${room.roomId}`)}>예약 가능 여부 보기</div>
                         </ReservationBox>
                     </div>
                 </RoomDetailContent>
@@ -267,4 +272,4 @@ const RoomDetailPage = () => {
     );
 };
 
-export default RoomDetailPage;
+export default withRouter(RoomDetailPage);

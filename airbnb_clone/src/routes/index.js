@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import BookPage from "../pages/book";
 import RoomDetailPage from "../pages/detail";
 import FlexSearchPage from "../pages/flex_search";
 import HomePage from "../pages/home";
@@ -17,6 +18,7 @@ const RootRoute = () => {
                 <Route path='/search/local' component={LocalSearchPage} exact />
                 <Route path='/search/travel' component={TravelSearchPage} exact />
                 <Route path='/rooms/:roomId' component={RoomDetailPage} exact />
+                <Route path='/book/:roodId' component={BookPage} exact />
 
                 {/* 경료가 유효하지 않을 때 */}
                 <Route path='*' component={NoMatchPage} />
