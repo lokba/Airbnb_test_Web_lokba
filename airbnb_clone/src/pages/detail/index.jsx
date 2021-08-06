@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../../components/common/footer';
 import Header from '../../components/common/Header';
-import { RoomDetailBox, RoomDetailHeader, RoomDetailImgBox, RoomDetailContent, RoomHosterInfo, RoomAboutInfo, RoomDetailInfo, RoomPlace, RoomFacility, RoomCheckIn, ReservationBox } from './styled';
+import { RoomDetailBox, RoomDetailHeader, RoomDetailImgBox, RoomDetailContent, RoomHosterInfo, RoomAboutInfo, RoomDetailInfo, RoomPlace, RoomFacility, RoomCheckIn, ReservationBox, CommentBox } from './styled';
 import StarRateIcon from '@material-ui/icons/StarRate';
 import PersonIcon from '@material-ui/icons/Person';
 import ShareIcon from '@material-ui/icons/Share';
@@ -26,9 +26,39 @@ const RoomDetailPage = () => {
         hoster: {
             grade: "슈퍼호스트",
             name: "Bella",
-
-
-        }
+        },
+        commentList: [
+            {
+                writer: "다미",
+                date: "2021년 6월",
+                comment: "모든 것이 완벽했던",
+            },
+            {
+                writer: "준영",
+                date: "2021년 3월",
+                comment: "좋은 가격에 하루 잘 쉬다가 갑니다. 깔끔하고 위치도 좋고 정말 최고",
+            },
+            {
+                writer: "정민",
+                date: "2021년 3월",
+                comment: "조용하고 깨끗해요. 강남 한복판 도심이지만 조용하고 편안하게 지낼 수 있었어요",
+            },
+            {
+                writer: "미경",
+                date: "2021년 3월",
+                comment: "위치가 강남역 바로앞이고 무엇보다 트인 전망이 너무좋은 숙소였어요",
+            },
+            {
+                writer: "Lee",
+                date: "2020년 12월",
+                comment: "숙소가 예쁘고 위치도 좋아서 아예 살고 싶어지네요 조용합니다 만족하네요",
+            },
+            {
+                writer: "재민",
+                date: "2020년 12월",
+                comment: "굿",
+            },
+        ]
     };
 
     // const reserveBox = document.querySelector(".reservation");
@@ -166,7 +196,6 @@ const RoomDetailPage = () => {
                             <div className="tit">체크인 날짜를 선택해주세요.</div>
                             <div className="sub">여행 날짜를 입력하여 정확한 요금을 확인하세요.</div>
                         </RoomCheckIn>
-
                     </div>
                     <div className="reservation">
                         <ReservationBox>
@@ -197,7 +226,39 @@ const RoomDetailPage = () => {
                     </div>
                 </RoomDetailContent>
 
+                <CommentBox>
+                    <div className="grade">
+                        <StarRateIcon />
+                        <div>{room.star}</div>
+                        <div>∙</div>
+                        <div>후기 {room.comments}개</div>
+                    </div>
+
+                    <div className="commentList">
+                        {
+                            room.commentList.map(v => (
+                                <div className="commentItem">
+                                    <div className="header">
+                                        <div className="profile">
+                                            <img src="/images/icons/profile.png" alt="" />
+                                        </div>
+                                        <div className="writer">
+                                            <div className="name">{v.writer}</div>
+                                            <div className="date">{v.date}</div>
+                                        </div>
+                                    </div>
+                                    <div className="txt">
+                                        <div>{v.comment}</div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                    <div className="seeAllBtn">후기 {room.comments}개 모두 보기</div>
+                </CommentBox>
+
             </div >
+            <Footer />
         </RoomDetailBox >
     );
 };

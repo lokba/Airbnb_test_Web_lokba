@@ -292,7 +292,8 @@ export const RoomFacility = styled.div`
 
 export const RoomCheckIn = styled.div`
     padding:50px 0;
-    border-bottom :1px solid #dddddd;
+    box-sizing:border-box;
+    height:500px;
 
     .tit{
         padding-bottom:8px;
@@ -408,4 +409,74 @@ export const ReservationBox = styled.div`
         font-weight:600;
         cursor:pointer;
     }
+`;
+
+export const CommentBox = styled.div`
+    padding:50px 0;
+    border-top:1px solid #dddddd;
+    border-bottom:1px solid #dddddd;
+
+    .grade{
+        display:flex;
+        align-items: center;
+        font-size:22px;
+        padding-bottom:40px;
+        font-weight:600;
+        svg{
+            color:#dd1a60;
+        }
+    }
+
+    .commentList{
+        display:flex;
+        flex-wrap:wrap;
+
+        .commentItem{
+            width:50%;
+            padding-bottom:40px;
+
+            .header{
+                display:flex;
+                align-items: center;
+                padding-bottom:10px;
+
+                .profile{
+                    padding-right:12px;
+                    img{
+                        width:56px;
+                        height:56px;
+                        border-radius:50%;
+                        
+                    }
+                }
+                .writer{
+                    .name{
+                        font-size:16px;
+                        font-weight:600;
+                    }
+                    .date{
+                        font-size:12px;
+                        color:#717171;
+                    }
+                }
+            }
+            .txt{
+                font-size:16px;
+            }
+        }
+    }
+
+    .seeAllBtn{
+        cursor:pointer;
+        box-sizing:border-box;
+        border:1px solid black;
+        width:173px;
+        height:48px;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        font-size:16px;
+        border-radius:10px;
+    }
+
 `;
