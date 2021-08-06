@@ -328,7 +328,7 @@ export const ReservationBox = styled.div`
         padding-bottom:30px;
 
         svg{
-            color:#dd1a60;
+            color:#ff5a60;
         }
         div{
             padding-top:3px;
@@ -423,7 +423,7 @@ export const CommentBox = styled.div`
         padding-bottom:40px;
         font-weight:600;
         svg{
-            color:#dd1a60;
+            color:#ff5a60;
         }
     }
 
