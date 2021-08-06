@@ -138,6 +138,9 @@ export const RoomDetailContent = styled.div`
     }
     .reservation{
         width:40%;
+        display:flex;
+        justify-content: flex-end;
+        padding-top:25px;
     }
 `;
 
@@ -276,7 +279,7 @@ export const RoomFacility = styled.div`
             border:1px solid black;
             cursor:pointer;
             width:180px;
-            padding:13px 23px;
+            padding:15px 23px;
             text-align:center;
             margin-top:30px;
 
@@ -286,3 +289,123 @@ export const RoomFacility = styled.div`
         }
     }
 `
+
+export const RoomCheckIn = styled.div`
+    padding:50px 0;
+    border-bottom :1px solid #dddddd;
+
+    .tit{
+        padding-bottom:8px;
+        font-size:22px;
+        font-weight:600;
+    }
+    .sub{
+        font-size:14px;
+        color :#717171;
+    }
+`;
+
+export const ReservationBox = styled.div`
+    border:1px solid #dddddd;
+    /* box-shadow:0px 3px 3px 0px #DDDDDD; */
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    box-sizing:border-box;
+    border-radius:20px;
+    width:370px;
+    height:355px;
+    padding:24px;
+    position:absolute;
+
+
+    .tit{
+        font-size:22px;
+        padding-bottom:7px;
+    }
+    .sub{
+        display:flex;
+        align-items:center;
+        padding-bottom:30px;
+
+        svg{
+            color:#dd1a60;
+        }
+        div{
+            padding-top:3px;
+
+            span{
+                margin-left:3px;
+                color:#717171;
+                text-decoration:underline;
+                cursor:pointer;
+            }
+        }
+    }
+
+    .reserveBox{
+        /* display:flex; */
+        width:100%;
+        border-radius:10px;
+        border:1px solid gray;
+        cursor:pointer;
+        margin-bottom:20px;
+
+        .checkInOut{
+            display:flex;
+            border-bottom:1px solid gray;
+            >div{
+                width:50%;
+                padding:10px;
+                height:56px;
+                box-sizing:border-box;
+
+                .opt_tit{
+                    font-size:12px;
+                    padding-bottom:3px;
+                }
+                .opt_txt{
+                    font-size:14px;
+                    color:#717171;
+                }
+            }
+            .checkIn{
+                border-right:1px solid gray;
+            }
+
+        }
+        .guest{
+            padding:10px;
+            height:56px;
+            box-sizing:border-box;
+            position:relative;
+
+            .opt_tit{
+                font-size:12px;
+                padding-bottom:3px;
+            }
+            .opt_txt{
+                font-size:14px;
+                color:#717171;
+            }
+            svg{
+                position:absolute;
+                right:7px;
+                top:8px;
+                width:40px;
+                height:40px;
+            }
+        }
+    }
+    .reserveBtn{
+        border:1px solid red;
+        border-radius:10px;
+        width:100%;
+        height:48px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        background:#dd1a60;
+        color:white;
+        font-weight:600;
+        cursor:pointer;
+    }
+`;

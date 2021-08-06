@@ -1,11 +1,12 @@
 import React from 'react';
 import Footer from '../../components/common/footer';
 import Header from '../../components/common/Header';
-import { RoomDetailBox, RoomDetailHeader, RoomDetailImgBox, RoomDetailContent, RoomHosterInfo, RoomAboutInfo, RoomDetailInfo, RoomPlace, RoomFacility } from './styled';
+import { RoomDetailBox, RoomDetailHeader, RoomDetailImgBox, RoomDetailContent, RoomHosterInfo, RoomAboutInfo, RoomDetailInfo, RoomPlace, RoomFacility, RoomCheckIn, ReservationBox } from './styled';
 import StarRateIcon from '@material-ui/icons/StarRate';
 import PersonIcon from '@material-ui/icons/Person';
 import ShareIcon from '@material-ui/icons/Share';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 
 const RoomDetailPage = () => {
     const room = {
@@ -29,6 +30,12 @@ const RoomDetailPage = () => {
 
         }
     };
+
+    // const reserveBox = document.querySelector(".reservation");
+
+    // window.addEventListener("scroll", () => {
+
+    // });
 
 
     return (
@@ -155,13 +162,42 @@ const RoomDetailPage = () => {
                                 <div className="seeAllBtn">편의시설 35개 모두 보기</div>
                             </div>
                         </RoomFacility>
+                        <RoomCheckIn>
+                            <div className="tit">체크인 날짜를 선택해주세요.</div>
+                            <div className="sub">여행 날짜를 입력하여 정확한 요금을 확인하세요.</div>
+                        </RoomCheckIn>
+
                     </div>
                     <div className="reservation">
-
+                        <ReservationBox>
+                            <div className="tit">요금을 확인하려면 날짜를<br />입력하세요.</div>
+                            <div className="sub">
+                                <StarRateIcon />
+                                <div>{room.star}<span>(후기 {room.comments}개)</span></div>
+                            </div>
+                            <div className="reserveBox">
+                                <div className="checkInOut">
+                                    <div className="checkIn">
+                                        <div className="opt_tit">체크인</div>
+                                        <div className="opt_txt">날짜 추가</div>
+                                    </div>
+                                    <div className="checkOut">
+                                        <div className="opt_tit" >체크아웃</div>
+                                        <div className="opt_txt">날짜 추가</div>
+                                    </div>
+                                </div>
+                                <div className="guest">
+                                    <div className="opt_tit">인원</div>
+                                    <div className="opt_txt">게스트 1명</div>
+                                    <KeyboardArrowDownIcon />
+                                </div>
+                            </div>
+                            <div className="reserveBtn">예약 가능 여부 보기</div>
+                        </ReservationBox>
                     </div>
                 </RoomDetailContent>
 
-            </div>
+            </div >
         </RoomDetailBox >
     );
 };
