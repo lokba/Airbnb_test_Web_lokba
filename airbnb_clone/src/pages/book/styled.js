@@ -50,8 +50,7 @@ export const BookPageContent = styled.div`
 
 export const BookInfoBox = styled.div`
     width:50%;
-    border-bottom:1px solid #dddddd;
-
+    margin-bottom:100px;
     .tit{
         font-size:22px;
         padding-bottom:24px;
@@ -60,6 +59,7 @@ export const BookInfoBox = styled.div`
 
     .bookInfoList{
         font-size:16px;
+        border-bottom:1px solid #dddddd;
         .bookInfoItem{
             padding-bottom:24px;
             .itemTit{
@@ -78,6 +78,55 @@ export const BookInfoBox = styled.div`
             }
         }
     }
+
+    .refund{
+        padding:24px 0%;
+        color:#717171;
+        font-size:16px;
+        border-bottom:1px solid #dddddd;
+
+        .refund_tit{
+            font-size:22px;
+            padding-bottom:24px;
+            font-weight:600;
+            color:black;
+        }
+        .detail_charge{
+            margin-bottom:16px;
+        }
+        .detail_corona{
+            padding:12px 0;
+        }
+        span,u{
+            font-weight:600;
+            color:black;
+        }
+        u{
+            cursor:pointer;
+        }
+    }
+    .notice{
+        font-size:12px;
+        margin:8px 0;
+        padding:24px 0;
+        span{
+            font-weight:600;
+            color:black;
+            text-decoration:underline;
+            cursor:pointer;
+        }
+    }
+    .submitBtn{
+        background :#dd1a60;
+        color:white;
+        width:130px;
+        height:48px;
+        border-radius:10px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        cursor:pointer;
+    }
 `;
 
 export const BookChargeBox = styled.div`
@@ -87,6 +136,7 @@ export const BookChargeBox = styled.div`
     .chargeBox{
         width:85%;
         border:1px solid #dddddd;
+        height:420px;
         border-radius:10px;
         padding:24px;
         box-sizing:border-box;
@@ -135,7 +185,6 @@ export const BookChargeBox = styled.div`
                 }
             }
         }
-
         .chargeTit{
             padding:24px 0;
             font-size:22px;
