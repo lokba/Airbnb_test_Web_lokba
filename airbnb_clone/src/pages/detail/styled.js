@@ -156,3 +156,54 @@ export const RoomHosterInfo = styled.div`
     }
 `;
 
+
+export const RoomAboutInfo = styled.div`
+    padding:30px 0 10px;
+    border-bottom :1px solid #dddddd;
+    .aboutItem{
+        display:flex;
+        height:auto;
+        padding:10px 0 20px;
+        
+        .info_img{
+            margin-right:15px;
+            .house{
+                width:28px;
+                height:28px;
+            }
+            .clean{
+                width:28px;
+                height:28px;
+            }
+            .checkin{
+                width:28px;
+                height:28px;
+            }
+            .medal{
+                width:28px;
+                height:28px;
+            }
+        }
+        .info_content{
+            .list_tit{
+                font-size:16px;
+                padding-bottom:4px;
+                font-weight:600;
+
+            }
+            .list_txt{
+                font-size:14px;
+                color:#717171;
+
+                span{
+                    text-decoration:underline;
+                    cursor:pointer;
+                    font-weight:600;
+                    color:black;
+                }
+            }
+        }
+        
+    }
+`;
+
