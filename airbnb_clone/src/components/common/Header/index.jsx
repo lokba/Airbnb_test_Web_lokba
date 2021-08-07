@@ -123,7 +123,7 @@ const Header = ({ match, flex_search, local_area, travel, detail, book }) => {
             }
 
             <div className={book ? "infoArea book" : "infoArea"} >
-                <div className="info_host">호스트 되기</div>
+                <Link to="/host/homes" className="info_host">호스트 되기</Link>
                 <div className="info_lang">
                     <MdLanguage />
                 </div>
@@ -140,7 +140,7 @@ const Header = ({ match, flex_search, local_area, travel, detail, book }) => {
                                 <div className="profile_option">
                                     <div className="stress" >위시 리스트</div>
                                     <span className="bar"></span>
-                                    <div>숙소 호스팅 되기</div>
+                                    <Link to="/host/homes">숙소 호스팅 되기</Link>
                                     <div>계정 관리</div>
                                     <span className="bar"></span>
                                     <div className="help">도움말</div>

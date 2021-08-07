@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../../components/common/Header';
 import { BookChargeBox, BookInfoBox, BookPageBox, BookPageContent, BookPageHeader } from './styled';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
@@ -9,6 +9,10 @@ import Footer from '../../components/common/footer';
 
 
 const BookPage = ({ history }) => {
+
+    useEffect(() => {
+        window.scrollTo(0,0);
+    }, []);
     const room = {
         imgURL: ["/images/local/area/area1.png",
             "/images/local/area/area2.png",

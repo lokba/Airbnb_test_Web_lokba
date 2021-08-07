@@ -183,14 +183,17 @@ export const HostingBanner = styled.div`
     
     position:relative;
     margin-bottom:56px;
-    margin-top:40px;
+    margin-top:40px;    
 
-    cursor:pointer;
-
-    img{
+    .hostingImg{
         width:100%;
         height:100%;
-        border-radius:20px;
+        cursor:pointer;
+        img{
+            width:100%;
+            height:100%;
+            border-radius:20px;
+        }
     }
 
     .hosting_bnr_txt{
@@ -199,6 +202,7 @@ export const HostingBanner = styled.div`
             left:160px;
 
             width :500px;
+            cursor:pointer;
 
             line-height:1.15;
             color:white;

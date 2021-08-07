@@ -128,12 +128,14 @@ const HomePage = () => {
             </TravelBox>
 
             <HostingBanner>
-                <img src="/images/home/banner/hosting.png" alt="" />
-                <div className="hosting_bnr_txt">
+                <Link to="/host/homes" className="hostingImg">
+                    <img src="/images/home/banner/hosting.png" alt="" />
+                </Link>
+                <Link to="/host/homes" className="hosting_bnr_txt">
                     <div className="hosting_bnr_tit">호스팅 시작하기</div>
                     <div className="hosting_bnr_sub">숙소를 공유하여 부수입을 올리고 새로운 가능성을 <br />만나세요.</div>
                     <div className="hosting_bnr_btn">자세히 알아보기</div>
-                </div>
+                </Link>
             </HostingBanner>
             <Footer />
         </HomePageBox >

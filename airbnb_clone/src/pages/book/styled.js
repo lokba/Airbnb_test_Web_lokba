@@ -93,9 +93,11 @@ export const BookInfoBox = styled.div`
         }
         .detail_charge{
             margin-bottom:16px;
+            line-height:1.3;
         }
         .detail_corona{
             padding:12px 0;
+            line-height:1.3;
         }
         span,u{
             font-weight:600;
@@ -109,6 +111,7 @@ export const BookInfoBox = styled.div`
         font-size:12px;
         margin:8px 0;
         padding:24px 0;
+        line-height:1.3;
         span{
             font-weight:600;
             color:black;
