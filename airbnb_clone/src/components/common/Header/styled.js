@@ -210,8 +210,12 @@ export const HeaderBox = styled.div`
                 padding:10px 0;
                 background:white;
                 border-radius:15px;
+
+                a{
+                    display:block;
+                }
                 
-                div{
+                div,a{
                     font-size:14px;
                     padding:14px 15px;
                     cursor:pointer;
