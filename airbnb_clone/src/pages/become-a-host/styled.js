@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const BecomeHostBox = styled.div`
     width:100%;
@@ -148,6 +148,17 @@ export const HostStageBox = styled.div`
             letter-spacing :2px;
         }
     }
+
+    .stage6_img{
+        background: url('/images/become_host/stage6/photo.jpg') no-repeat;
+        background-size:100% 100%;
+
+        .stage_tit{
+            margin-top:400px;
+            color:white;
+        }
+    }
+    
 
     .host_stage_body{
         width:50%;
@@ -316,7 +327,7 @@ export const HostStageBox = styled.div`
         }
         /* -------------------------------------------------------- */
 
-        
+        /* stage 6 입니다 */
 
         /* -------------------------------------------------------- */
 
