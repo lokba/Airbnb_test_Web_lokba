@@ -130,6 +130,7 @@ const HomePage = () => {
             <HostingBanner>
                 <Link to="/host/homes" className="hostingImg">
                     <img src="/images/home/banner/hosting.png" alt="" />
+                    {/* <img src="/images/home/banner/hosting2.jpg" alt="" /> */}
                 </Link>
                 <Link to="/host/homes" className="hosting_bnr_txt">
                     <div className="hosting_bnr_tit">호스팅 시작하기</div>
