@@ -168,7 +168,6 @@ export const HostStageBox = styled.div`
 
             .s1_opt{
                 display:flex;
-                border:1px solid gray;
                 align-items:center ;
                 justify-content:space-between;
                 padding:14px 25px;
@@ -200,7 +199,6 @@ export const HostStageBox = styled.div`
             /* height:70%; */
 
             .s2_opt{
-                border:1px solid gray;
                 text-align:left;
                 padding:30px 25px;
                 width:100%;
@@ -234,7 +232,6 @@ export const HostStageBox = styled.div`
             /* height:70%; */
 
             .s3_opt{
-                border:1px solid gray;
                 text-align:left;
                 padding:40px 25px;
                 width:100%;
@@ -256,8 +253,8 @@ export const HostStageBox = styled.div`
                 border:1px solid black;
             }
         }
-        /* -------------------------------------------------------- */
 
+        /* stage4 입니다. */
         .locationBar{
             border:1px solid gray;
             width:70%;
@@ -283,6 +280,43 @@ export const HostStageBox = styled.div`
                 font-weight:700;
             }
         }
+
+        .stage5_list{
+            width:70%;
+
+            .s5_opt{
+                text-align:left;
+                padding:30px 25px;
+                width:100%;
+                border-radius:10px;
+
+                display:flex;
+                justify-content: space-between;
+                align-items:center;
+
+
+                .s5_tit{
+                    font-size:26px;
+                    font-weight:700;
+                }
+
+                .s5_ctrl{
+                    display:flex;
+                    align-items: center;
+                    svg{
+                        border:1px solid #dddddd;
+                        border-radius:50%;
+                        cursor:pointer;
+                    }
+                    div{
+                        padding:5px 15px 0;
+                    }
+                }
+            }
+        }
+        /* -------------------------------------------------------- */
+
+        
 
         /* -------------------------------------------------------- */
 

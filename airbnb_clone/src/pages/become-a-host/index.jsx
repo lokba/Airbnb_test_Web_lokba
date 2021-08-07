@@ -2,13 +2,36 @@ import React, { useEffect, useState } from 'react';
 import { BecomeHostBox, HostIntroBox, HostStageBox } from './styled';
 import { Link, withRouter } from 'react-router-dom';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import RemoveIcon from '@material-ui/icons/Remove';
+import AddIcon from '@material-ui/icons/Add';
 
 const BecomeHostPage = () => {
     const [stage1, setStage1] = useState(null);
     const [stage2, setStage2] = useState(null);
     const [stage3, setStage3] = useState(null);
-    const [stage4, setStage4] = useState(null);
+
+    const [stage5, setStage5] = useState(null);
+
     const [curStage, setCurStage] = useState(null);
+
+
+    const [guest, setGuest] = useState(1);
+    const [bed, setBed] = useState(1);
+    const [room, setRoom] = useState(1);
+    const [bath, setBath] = useState(1);
+
+    const plusGuest = () => setGuest(guest + 1);
+    const minusGuest = () => guest !== 1 && setGuest(guest - 1);
+
+    const plusBed = () => setBed(bed + 1);
+    const minusBed = () => bed !== 1 && setBed(bed - 1);
+
+    const plusRoom = () => setRoom(room + 1);
+    const minusRoom = () => room !== 1 && setRoom(room - 1);
+
+    const plusBath = () => setBath(bath + 1);
+    const minusBath = () => bath !== 1 && setBath(bath - 1);
+
 
     return (
         <BecomeHostBox>
@@ -177,6 +200,62 @@ const BecomeHostPage = () => {
                     </HostStageBox>
                 )
             }
+            {
+                curStage === 5 &&
+                (
+                    <HostStageBox>
+                        <div className="host_stage_img">
+                            <div className="stage_tit">
+                                숙소에서 맞이할 최대<br />인원수를 알려주세요.
+                                </div>
+                            <Link to="/" className="logo">
+                                <img src="/images/favicon/favicon.png" alt="" />
+                            </Link>
+                        </div>
+                        <div className="host_stage_body">
+                            <div className="stage5_list">
+                                <div className="s5_opt">
+                                    <div className="s5_tit">게스트</div>
+                                    <div className="s5_ctrl">
+                                        <RemoveIcon onClick={minusGuest} />
+                                        <div>{guest}</div>
+                                        <AddIcon onClick={plusGuest} />
+                                    </div>
+                                </div>
+                                <div className="s5_opt">
+                                    <div className="s5_tit">침대</div>
+                                    <div className="s5_ctrl">
+                                        <RemoveIcon onClick={minusBed} />
+                                        <div>{bed}</div>
+                                        <AddIcon onClick={plusBed} />
+                                    </div>
+                                </div>
+                                <div className="s5_opt">
+                                    <div className="s5_tit">침실</div>
+                                    <div className="s5_ctrl">
+                                        <RemoveIcon onClick={minusRoom} />
+                                        <div>{room}</div>
+                                        <AddIcon onClick={plusRoom} />
+                                    </div>
+                                </div>
+                                <div className="s5_opt">
+                                    <div className="s5_tit">욕실</div>
+                                    <div className="s5_ctrl">
+                                        <RemoveIcon onClick={minusBath} />
+                                        <div>{bath}</div>
+                                        <AddIcon onClick={plusBath} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="btn">
+                                <div className="beforeBtn" onClick={() => setCurStage(4)}>뒤로</div>
+                                <div className="nextBtn" onClick={() => setCurStage(6)}>다음</div>
+                            </div>
+                            <Link to="/host/homes" className="exitBtn">나가기</Link>
+                        </div>
+                    </HostStageBox>
+                )
+            }
 
 
 
@@ -184,4 +263,4 @@ const BecomeHostPage = () => {
     );
 };
 
-export default withRouter(BecomeHostPage);
+export default withRouter(BecomeHostPage); 
