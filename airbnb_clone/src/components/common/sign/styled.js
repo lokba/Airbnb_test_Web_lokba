@@ -7,7 +7,7 @@ export const SignBox = styled.div`
     bottom:0;
     right:0;
     background:rgba(0,0,0,0.5);
-    z-index:10;
+    z-index:100;
     
     display:flex;
     align-items: center;

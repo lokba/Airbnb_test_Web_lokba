@@ -7,9 +7,9 @@ import { FlexibleSearch, HomePageBox, HostingBanner, MainBnrBox, NearArea, Trave
 
 const HomePage = () => {
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+    // useEffect(() => {
+    //     window.scrollTo(0, 0);
+    // }, []);
 
     const nearAreaLists = [
         {
