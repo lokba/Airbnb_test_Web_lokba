@@ -159,14 +159,14 @@ export const HostStageBox = styled.div`
         text-align:center;
         position:relative;
 
-        .opt_list{
+        .stage1_list{
             width:70%;
         
             /* height:80%; */
             height:70%;
             overflow-y:scroll;
 
-            .opt{
+            .s1_opt{
                 display:flex;
                 border:1px solid gray;
                 align-items:center ;
@@ -181,7 +181,7 @@ export const HostStageBox = styled.div`
                     border:1px solid black;
                 }
 
-                .opt_tit{
+                .s1_tit{
                     font-size:18px;
                     font-weight:700;
                 }
@@ -195,6 +195,44 @@ export const HostStageBox = styled.div`
                 border:1px solid black;
             }
         }
+        /* -------------------------------------------------------- */
+        .stage2_list{
+            width:70%;
+            /* height:70%; */
+
+            .s2_opt{
+                border:1px solid gray;
+                text-align:left;
+                padding:30px 25px;
+                width:100%;
+                border-radius:10px;
+                border:1px solid #dddddd;
+                margin-bottom:15px;
+
+                &:hover{
+                    border:1px solid black;
+                }
+
+                .s2_tit{
+                    font-size:18px;
+                    font-weight:700;
+                    padding-bottom:10px;
+                }
+
+                .s2_sub{
+                    color:#717171;
+                    line-height:1.15;
+                }
+            }
+            .stage2_on{
+                background:#dddddd;
+                border:1px solid black;
+            }
+        }
+
+
+
+        /* -------------------------------------------------------- */
 
         .btn{
             position:absolute;
