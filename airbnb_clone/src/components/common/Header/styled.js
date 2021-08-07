@@ -140,6 +140,8 @@ export const HeaderBox = styled.div`
             justify-content: center;
             border-radius:50px;
             padding:0 10px;
+            text-decoration: none;
+            color:black;
 
             &:hover{
                 background :#f8f9fa;
