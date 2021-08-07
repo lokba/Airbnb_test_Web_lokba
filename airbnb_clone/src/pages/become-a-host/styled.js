@@ -230,6 +230,34 @@ export const HostStageBox = styled.div`
             }
         }
 
+        .stage3_list{
+            width:70%;
+            /* height:70%; */
+
+            .s3_opt{
+                border:1px solid gray;
+                text-align:left;
+                padding:40px 25px;
+                width:100%;
+                border-radius:10px;
+                border:1px solid #dddddd;
+                margin-bottom:15px;
+
+                &:hover{
+                    border:1px solid black;
+                }
+
+                .s3_tit{
+                    font-size:18px;
+                    font-weight:700;
+                }
+            }
+            .stage3_on{
+                background:#dddddd;
+                border:1px solid black;
+            }
+        }
+
 
 
         /* -------------------------------------------------------- */

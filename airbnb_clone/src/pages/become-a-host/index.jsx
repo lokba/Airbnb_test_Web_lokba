@@ -5,6 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 const BecomeHostPage = () => {
     const [stage1, setStage1] = useState(null);
     const [stage2, setStage2] = useState(null);
+    const [stage3, setStage3] = useState(null);
     const [curStage, setCurStage] = useState(null);
 
     return (
@@ -108,6 +109,39 @@ const BecomeHostPage = () => {
                             <div className="btn">
                                 <div className="beforeBtn" onClick={() => setCurStage(1)}>뒤로</div>
                                 <div className="nextBtn" onClick={() => setCurStage(3)}>다음</div>
+                            </div>
+                            <Link to="/host/homes" className="exitBtn">나가기</Link>
+                        </div>
+                    </HostStageBox>
+                )
+            }
+            {
+                curStage === 3 &&
+                (
+                    <HostStageBox>
+                        <div className="host_stage_img">
+                            <div className="stage_tit">
+                                게스트가 머무르게 될<br />숙소의 종류가<br />무엇인가요?
+                                </div>
+                            <Link to="/" className="logo">
+                                <img src="/images/favicon/favicon.png" alt="" />
+                            </Link>
+                        </div>
+                        <div className="host_stage_body">
+                            <div className="stage3_list">
+                                <div className={stage3 === 0 ? "s3_opt stage3_on" : "s3_opt"} onClick={() => setStage3(0)}>
+                                    <div className="s3_tit">공간 전체</div>
+                                </div>
+                                <div className={stage3 === 1 ? "s3_opt stage3_on" : "s3_opt"} onClick={() => setStage3(1)}>
+                                    <div className="s3_tit">개인실</div>
+                                </div>
+                                <div className={stage3 === 2 ? "s3_opt stage3_on" : "s3_opt"} onClick={() => setStage3(2)}>
+                                    <div className="s3_tit">다인실</div>
+                                </div>
+                            </div>
+                            <div className="btn">
+                                <div className="beforeBtn" onClick={() => setCurStage(2)}>뒤로</div>
+                                <div className="nextBtn" onClick={() => setCurStage(4)}>다음</div>
                             </div>
                             <Link to="/host/homes" className="exitBtn">나가기</Link>
                         </div>
