@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { BecomeHostBox, HostIntroBox, HostStageBox } from './styled';
 import { Link, withRouter } from 'react-router-dom';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 const BecomeHostPage = () => {
     const [stage1, setStage1] = useState(null);
     const [stage2, setStage2] = useState(null);
     const [stage3, setStage3] = useState(null);
+    const [stage4, setStage4] = useState(null);
     const [curStage, setCurStage] = useState(null);
 
     return (
@@ -142,6 +144,33 @@ const BecomeHostPage = () => {
                             <div className="btn">
                                 <div className="beforeBtn" onClick={() => setCurStage(2)}>뒤로</div>
                                 <div className="nextBtn" onClick={() => setCurStage(4)}>다음</div>
+                            </div>
+                            <Link to="/host/homes" className="exitBtn">나가기</Link>
+                        </div>
+                    </HostStageBox>
+                )
+            }
+            {
+                curStage === 4 &&
+                (
+                    <HostStageBox>
+                        <div className="host_stage_img">
+                            <div className="stage_tit">
+                                숙소 위치는 어디인가요?
+                                </div>
+                            <Link to="/" className="logo">
+                                <img src="/images/favicon/favicon.png" alt="" />
+                            </Link>
+                        </div>
+                        <div className="host_stage_body">
+                            <div className="locationBar">
+                                <LocationOnIcon />
+                                <input placeholder="주소를 입력하세요." />
+                            </div>
+
+                            <div className="btn">
+                                <div className="beforeBtn" onClick={() => setCurStage(3)}>뒤로</div>
+                                <div className="nextBtn" onClick={() => setCurStage(5)}>다음</div>
                             </div>
                             <Link to="/host/homes" className="exitBtn">나가기</Link>
                         </div>

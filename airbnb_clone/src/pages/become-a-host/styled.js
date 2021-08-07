@@ -195,7 +195,6 @@ export const HostStageBox = styled.div`
                 border:1px solid black;
             }
         }
-        /* -------------------------------------------------------- */
         .stage2_list{
             width:70%;
             /* height:70%; */
@@ -257,8 +256,33 @@ export const HostStageBox = styled.div`
                 border:1px solid black;
             }
         }
+        /* -------------------------------------------------------- */
 
-
+        .locationBar{
+            border:1px solid gray;
+            width:70%;
+            display:flex;
+            align-items:center;
+            position:absolute;
+            top:25%;
+            
+            padding:15px 30px;
+            border-radius:50px;
+            svg{
+                width:35px;
+                height:35px;
+                margin-right:20px;
+                
+            }
+            input{
+                flex:1;
+                padding:10px;
+                font-size:16px;
+                border:none;
+                outline:none;
+                font-weight:700;
+            }
+        }
 
         /* -------------------------------------------------------- */
 
