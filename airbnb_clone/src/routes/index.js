@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import BecomeHostPage from "../pages/become-a-host";
 import BookPage from "../pages/book";
 import RoomDetailPage from "../pages/detail";
 import FlexSearchPage from "../pages/flex_search";
@@ -21,6 +22,7 @@ const RootRoute = () => {
                 <Route path='/rooms/:roomId' component={RoomDetailPage} exact />
                 <Route path='/book/:roodId' component={BookPage} exact />
                 <Route path='/host/homes' component={HostPage} exact />
+                <Route path='/become-a-host' component={BecomeHostPage} exact />
                 {/* 경료가 유효하지 않을 때 */}
                 <Route path='*' component={NoMatchPage} />
             </Switch>
