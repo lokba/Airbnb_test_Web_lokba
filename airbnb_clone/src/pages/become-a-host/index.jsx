@@ -443,7 +443,7 @@ const BecomeHostPage = () => {
                             </div>
                             <div className="btn celebration">
                                 {/* 임시로 홈페이지로 이동. 차후에 호스팅 메인페이지로 이동하게 설정 */}
-                                <Link to="/" className="nextBtn stress">다음</Link>
+                                <Link to="/hosting" className="nextBtn stress">다음</Link>
                             </div>
                             <Link to="/host/homes" className="exitBtn s11_exitBtn">나가기</Link>
                         </div>

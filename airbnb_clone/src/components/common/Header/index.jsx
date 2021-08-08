@@ -6,7 +6,7 @@ import { IoIosMenu } from "react-icons/io";
 import { Link, withRouter } from 'react-router-dom';
 import SignModal from '../sign';
 
-const Header = ({ match, flex_search, local_area, travel, detail, book }) => {
+const Header = ({ match, flex_search, local_area, travel, detail, book, hosting }) => {
 
     const [onProfile, setOnProfile] = useState(false);
     const [signModal, setSignModal] = useState(false);
@@ -80,7 +80,7 @@ const Header = ({ match, flex_search, local_area, travel, detail, book }) => {
                 <div className="logoTxt">airbnb</div>
             </Link>
             {
-                flex_search ?
+                (flex_search || hosting) ?
                     (
                         <>
                         </>
@@ -135,7 +135,7 @@ const Header = ({ match, flex_search, local_area, travel, detail, book }) => {
                                     <div className="stress" >위시 리스트</div>
                                     <span className="bar"></span>
                                     <Link to="/host/homes">숙소 호스팅 되기</Link>
-                                    <div>계정 관리</div>
+                                    <div>프로필 관리</div>
                                     <span className="bar"></span>
                                     <div className="help">도움말</div>
                                     <div className="logout" onClick={() => { onLogout(); setOnProfile(!onProfile) }}>로그아웃</div>

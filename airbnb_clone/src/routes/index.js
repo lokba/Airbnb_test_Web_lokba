@@ -5,6 +5,7 @@ import RoomDetailPage from "../pages/detail";
 import FlexSearchPage from "../pages/flex_search";
 import HomePage from "../pages/home";
 import HostPage from "../pages/host";
+import HostingPage from "../pages/hosting";
 import LocalSearchPage from "../pages/local";
 import NoMatchPage from "../pages/noMatch";
 import TravelSearchPage from "../pages/travel";
@@ -23,6 +24,7 @@ const RootRoute = () => {
                 <Route path='/book/:roodId' component={BookPage} exact />
                 <Route path='/host/homes' component={HostPage} exact />
                 <Route path='/become-a-host' component={BecomeHostPage} exact />
+                <Route path='/hosting' component={HostingPage} exact />
                 {/* 경료가 유효하지 않을 때 */}
                 <Route path='*' component={NoMatchPage} />
             </Switch>
