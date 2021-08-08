@@ -388,8 +388,6 @@ export const HostStageBox = styled.div`
             }
         }
 
-        /* -------------------------------------------------------- */
-
         .stage9_list{  
             width:70%;
             text-align:left;
@@ -410,6 +408,37 @@ export const HostStageBox = styled.div`
                     height:100%;
                     line-height:1.2;
                 } 
+            }
+        }
+
+
+        /* -------------------------------------------------------- */
+        .stage10_list{  
+            width:70%;
+            text-align:left;
+
+            .s10_tit{
+                font-size:22px;
+                margin-bottom:24px;
+                font-weight:700;
+            }
+            .s10_sub{
+                text-align:center;
+
+                input{
+                    font-size:48px;
+                    box-sizing:border-box;
+                    padding:24px;
+                    width:60%;
+                    height:100%;
+                    line-height:1.2;
+                    font-weight:600;
+                    text-align:center;
+                } 
+                div{
+                    margin-top:20px;
+                    font-size:20px;
+                }
             }
         }
         /* -------------------------------------------------------- */

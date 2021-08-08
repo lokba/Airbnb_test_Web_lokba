@@ -398,8 +398,34 @@ const BecomeHostPage = () => {
                     </HostStageBox>
                 )
             }
-
-
+            {
+                curStage === 10 &&
+                (
+                    <HostStageBox space>
+                        <div className="host_stage_img" >
+                            <div className="stage_tit">
+                                이제 요금을 설정하실<br />차례입니다
+                                </div>
+                            <Link to="/" className="logo">
+                                <img src="/images/favicon/favicon.png" alt="" />
+                            </Link>
+                        </div>
+                        <div className="host_stage_body">
+                            <div className="stage10_list">
+                                <div className="s10_sub">
+                                    <input type="number" placeholder="₩ 00" />
+                                    <div>/박</div>
+                                </div>
+                            </div>
+                            <div className="btn">
+                                <div className="beforeBtn" onClick={() => setCurStage(8)}>뒤로</div>
+                                <div className="nextBtn" onClick={() => setCurStage(10)}>다음</div>
+                            </div>
+                            <Link to="/host/homes" className="exitBtn">나가기</Link>
+                        </div>
+                    </HostStageBox>
+                )
+            }
 
         </BecomeHostBox >
     );
