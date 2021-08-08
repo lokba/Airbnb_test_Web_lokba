@@ -1,7 +1,8 @@
 import React from 'react';
+import Footer from '../../components/common/footer';
 import Header from '../../components/common/Header';
 import HostingHeader from '../../components/common/HostingHeader';
-import { HostingPageBox, MethodSection, TodaySection } from './styled';
+import { HostingPageBox, MethodSection, ReserveSection, TodaySection } from './styled';
 
 const HostingPage = () => {
     return (
@@ -33,7 +34,12 @@ const HostingPage = () => {
                         </div>
                     </div>
                 </MethodSection>
+                <ReserveSection>
+                    <div className="tit">예약</div>
+                    <div className="sub">게스트가 숙소를 예약하면<br />여기에 표시됩니다.</div>
+                </ReserveSection>
             </div>
+            <Footer />
         </HostingPageBox>
     );
 };

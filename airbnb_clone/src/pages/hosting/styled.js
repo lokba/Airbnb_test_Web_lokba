@@ -94,5 +94,21 @@ export const MethodSection = styled.div`
 
 
 export const ReserveSection = styled.div`
+    margin:60px 0;
+    width:100%;
+    height:432px;
+    background:url('/images/hosting/reserve_bg.png') no-repeat;
+    background-size:100% 100%;
+    border-radius:10px;
+    padding-top:40px;
 
+    .tit{
+        font-size:26px;
+        font-weight:600;
+        padding-bottom:15px;
+    }
+    .sub{
+        font-size:16px;
+        color:#717171;
+    }
 `
