@@ -158,7 +158,11 @@ export const HostStageBox = styled.div`
             color:white;
         }
     } */
-    
+    .stage11_img{
+        background: url('/images/become_host/img/king.jpeg') no-repeat;
+        background-position:center;
+        background-size:cover;
+    }
 
     .host_stage_body{
         width:50%;
@@ -170,6 +174,8 @@ export const HostStageBox = styled.div`
         text-align:center;
         position:relative;
 
+
+        /* ----------------------------stage관련 css--------------------------- */
         .stage1_list{
             width:70%;
         
@@ -410,9 +416,6 @@ export const HostStageBox = styled.div`
                 } 
             }
         }
-
-
-        /* -------------------------------------------------------- */
         .stage10_list{  
             width:70%;
             text-align:left;
@@ -441,6 +444,28 @@ export const HostStageBox = styled.div`
                 }
             }
         }
+
+        .stage11_list{
+            color:white;
+            line-height:1.2;
+
+            .s11_tit{
+                text-align:center;
+                font-size:48px;
+                font-weight:600;
+                margin-bottom:32px;
+            }
+
+            .s11_sub{
+                font-size:16px;
+            
+            }
+            .writer{
+                margin-top:30px;
+                font-weight:700;
+            }
+        }
+
         /* -------------------------------------------------------- */
 
         .btn{
@@ -472,10 +497,17 @@ export const HostStageBox = styled.div`
                 color:white;
                 cursor:pointer;
             }
+
+
+            //숙소요금, 호스티완료 페이지에만 적용
+            .stress{
+                background:#ff5a60;
+            }
+        }
+        .celebration{
+            justify-content: flex-end;
         }
         
-
-
         .exitBtn{
             position:absolute;
             right:6%;
@@ -488,8 +520,15 @@ export const HostStageBox = styled.div`
             font-weight:700;
             cursor:pointer;
         }
+        .s11_exitBtn{
+            color:white;
+            background:#222222;
+        }
+    }
 
-
+    //stage11 일때 해당
+    .stage11{
+        background:black;
     }
 
 `

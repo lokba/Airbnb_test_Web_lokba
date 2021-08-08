@@ -418,10 +418,34 @@ const BecomeHostPage = () => {
                                 </div>
                             </div>
                             <div className="btn">
-                                <div className="beforeBtn" onClick={() => setCurStage(8)}>뒤로</div>
-                                <div className="nextBtn" onClick={() => setCurStage(10)}>다음</div>
+                                <div className="beforeBtn" onClick={() => setCurStage(9)}>뒤로</div>
+                                <div className="nextBtn stress" onClick={() => setCurStage(11)}>숙소 저장하기</div>
                             </div>
                             <Link to="/host/homes" className="exitBtn">나가기</Link>
+                        </div>
+                    </HostStageBox>
+                )
+            }
+            {
+                curStage === 11 &&
+                (
+                    <HostStageBox space>
+                        <div className="host_stage_img stage11_img" >
+                            <Link to="/" className="logo">
+                                <img src="/images/favicon/favicon.png" alt="" />
+                            </Link>
+                        </div>
+                        <div className="host_stage_body stage11">
+                            <div className="stage11_list">
+                                <div className="s11_tit">호스트가 된 것을 축하합니다!</div>
+                                <div className="s11_sub">호스트는 에어비앤비의 중심이라 할 수 있습니다. 이제<br />호스팅의 매력을 경험해 보세요.</div>
+                                <div className="writer">- 브라이언 드림</div>
+                            </div>
+                            <div className="btn celebration">
+                                {/* 임시로 홈페이지로 이동. 차후에 호스팅 메인페이지로 이동하게 설정 */}
+                                <Link to="/" className="nextBtn stress">다음</Link>
+                            </div>
+                            <Link to="/host/homes" className="exitBtn s11_exitBtn">나가기</Link>
                         </div>
                     </HostStageBox>
                 )
