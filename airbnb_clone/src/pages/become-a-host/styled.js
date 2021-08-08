@@ -390,6 +390,28 @@ export const HostStageBox = styled.div`
 
         /* -------------------------------------------------------- */
 
+        .stage9_list{  
+            width:70%;
+            text-align:left;
+
+            .s9_tit{
+                font-size:22px;
+                margin-bottom:24px;
+                font-weight:700;
+            }
+            .s9_sub{
+                height:164px;
+
+                textarea{
+                    font-size:18px;
+                    box-sizing:border-box;
+                    padding:24px;
+                    width:100%;
+                    height:100%;
+                    line-height:1.2;
+                } 
+            }
+        }
         /* -------------------------------------------------------- */
 
         .btn{

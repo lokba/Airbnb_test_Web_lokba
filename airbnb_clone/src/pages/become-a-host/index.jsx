@@ -362,7 +362,35 @@ const BecomeHostPage = () => {
                                 </div>
                             </div>
                             <div className="btn">
-                                <div className="beforeBtn" onClick={() => setCurStage(9)}>뒤로</div>
+                                <div className="beforeBtn" onClick={() => setCurStage(7)}>뒤로</div>
+                                <div className="nextBtn" onClick={() => setCurStage(9)}>다음</div>
+                            </div>
+                            <Link to="/host/homes" className="exitBtn">나가기</Link>
+                        </div>
+                    </HostStageBox>
+                )
+            }
+            {
+                curStage === 9 &&
+                (
+                    <HostStageBox space>
+                        <div className="host_stage_img" >
+                            <div className="stage_tit">
+                                숙소에 대해 설명해 주세요.
+                                </div>
+                            <Link to="/" className="logo">
+                                <img src="/images/favicon/favicon.png" alt="" />
+                            </Link>
+                        </div>
+                        <div className="host_stage_body">
+                            <div className="stage9_list">
+                                <div className="s9_tit">숙소 이름 정하기</div>
+                                <div className="s9_sub">
+                                    <textarea placeholder="편안함을 자랑하는 이곳에서 즐거운 시간을 보내실 수 있을 것입니다." />
+                                </div>
+                            </div>
+                            <div className="btn">
+                                <div className="beforeBtn" onClick={() => setCurStage(8)}>뒤로</div>
                                 <div className="nextBtn" onClick={() => setCurStage(10)}>다음</div>
                             </div>
                             <Link to="/host/homes" className="exitBtn">나가기</Link>
