@@ -6,7 +6,7 @@ import { IoIosMenu } from "react-icons/io";
 import { Link, withRouter } from 'react-router-dom';
 import SignModal from '../sign';
 
-const Header = ({ match, flex_search, local_area, travel, detail, book }) => {
+const Header = ({ match, flex_search, local_area, travel, detail, book, hosting }) => {
 
     const [onProfile, setOnProfile] = useState(false);
     const [signModal, setSignModal] = useState(false);
@@ -14,13 +14,22 @@ const Header = ({ match, flex_search, local_area, travel, detail, book }) => {
     const [error, setError] = useState(false);
 
     const [checkLogin, setCheckLogin] = useState(false);
+    const [checkHost, setCheckHost] = useState(false);
 
     useEffect(() => {
         localStorage.getItem("ACCESS_TOKEN") ?
             setCheckLogin(true)
             :
             setCheckLogin(false);
+
+
+        localStorage.getItem("HOST_ACCESS_TOKEN") ?
+            setCheckHost(true)
+            :
+            setCheckHost(false);
+
     }, [checkLogin]);
+
 
     const onLogout = () => {
         localStorage.removeItem("ACCESS_TOKEN");
@@ -80,7 +89,7 @@ const Header = ({ match, flex_search, local_area, travel, detail, book }) => {
                 <div className="logoTxt">airbnb</div>
             </Link>
             {
-                flex_search ?
+                (flex_search || hosting) ?
                     (
                         <>
                         </>
@@ -117,7 +126,12 @@ const Header = ({ match, flex_search, local_area, travel, detail, book }) => {
             }
 
             <div className={book ? "infoArea book" : "infoArea"} >
-                <Link to="/host/homes" className="info_host">호스트 되기</Link>
+                {
+                    (checkLogin && checkHost) ?
+                        (<Link to="/hosting" className="info_host">호스트 모드로 전환</Link>)
+                        :
+                        (<Link to="/host/homes" className="info_host">호스트 되기</Link>)
+                }
                 <div className="info_lang">
                     <MdLanguage />
                 </div>
@@ -134,8 +148,18 @@ const Header = ({ match, flex_search, local_area, travel, detail, book }) => {
                                 <div className="profile_option">
                                     <div className="stress" >위시 리스트</div>
                                     <span className="bar"></span>
-                                    <Link to="/host/homes">숙소 호스팅 되기</Link>
-                                    <div>계정 관리</div>
+                                    {
+                                        checkHost ?
+                                            (
+                                                // 추후에 마이 숙소 페이지 구현시 연결
+                                                <Link>숙소 관리</Link>
+                                            )
+                                            :
+                                            (
+                                                <Link to="/host/homes">숙소 호스팅 되기</Link>
+                                            )
+                                    }
+                                    <div>프로필 관리</div>
                                     <span className="bar"></span>
                                     <div className="help">도움말</div>
                                     <div className="logout" onClick={() => { onLogout(); setOnProfile(!onProfile) }}>로그아웃</div>
