@@ -10,8 +10,7 @@ const BecomeHostPage = () => {
     const [stage2, setStage2] = useState(null);
     const [stage3, setStage3] = useState(null);
 
-    const [stage5, setStage5] = useState(null);
-    const [stage6, setStage] = useState(null);
+    const [stage6, setStage6] = useState(null);
 
     const [curStage, setCurStage] = useState(null);
 
@@ -331,11 +330,40 @@ const BecomeHostPage = () => {
                             </Link>
                         </div>
                         <div className="host_stage_body">
-                            <div className="stage6_list">
+                            <div className="stage7_list">
+
                             </div>
                             <div className="btn">
                                 <div className="beforeBtn" onClick={() => setCurStage(6)}>뒤로</div>
                                 <div className="nextBtn" onClick={() => setCurStage(8)}>다음</div>
+                            </div>
+                            <Link to="/host/homes" className="exitBtn">나가기</Link>
+                        </div>
+                    </HostStageBox>
+                )
+            }
+            {
+                curStage === 8 &&
+                (
+                    <HostStageBox space>
+                        <div className="host_stage_img" >
+                            <div className="stage_tit">
+                                숙소 이름을 만들어주세요.
+                                </div>
+                            <Link to="/" className="logo">
+                                <img src="/images/favicon/favicon.png" alt="" />
+                            </Link>
+                        </div>
+                        <div className="host_stage_body">
+                            <div className="stage8_list">
+                                <div className="s8_tit">숙소 이름 정하기</div>
+                                <div className="s8_sub">
+                                    <textarea placeholder="Bongcheong-dong, Gwanak-gu의 아늑한 게스트 스위트" />
+                                </div>
+                            </div>
+                            <div className="btn">
+                                <div className="beforeBtn" onClick={() => setCurStage(9)}>뒤로</div>
+                                <div className="nextBtn" onClick={() => setCurStage(10)}>다음</div>
                             </div>
                             <Link to="/host/homes" className="exitBtn">나가기</Link>
                         </div>

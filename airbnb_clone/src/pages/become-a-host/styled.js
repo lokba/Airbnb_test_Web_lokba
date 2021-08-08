@@ -148,7 +148,7 @@ export const HostStageBox = styled.div`
             letter-spacing :2px;
         }
     }
-
+/* 
     .stage7_img{
         background: url('/images/become_host/stage6/house.jpg') no-repeat;
         background-size:100% 100%;
@@ -157,7 +157,7 @@ export const HostStageBox = styled.div`
             margin-top:400px;
             color:white;
         }
-    }
+    } */
     
 
     .host_stage_body{
@@ -325,9 +325,6 @@ export const HostStageBox = styled.div`
                 }
             }
         }
-        /* -------------------------------------------------------- */
-
-        /* stage 6 입니다 */
         .stage6_list{
             width:70%;
             height:70%;
@@ -362,6 +359,36 @@ export const HostStageBox = styled.div`
             }
             
         }
+        
+        /* 숙소 사진 올리는 곳 */
+        .stage7_list{
+
+        }
+
+        .stage8_list{  
+            width:70%;
+            text-align:left;
+
+            .s8_tit{
+                font-size:22px;
+                margin-bottom:24px;
+                font-weight:700;
+            }
+            .s8_sub{
+                height:164px;
+
+                textarea{
+                    font-size:28px;
+                    box-sizing:border-box;
+                    padding:24px;
+                    width:100%;
+                    height:100%;
+                    line-height:1.2;
+                } 
+            }
+        }
+
+        /* -------------------------------------------------------- */
 
         /* -------------------------------------------------------- */
 
