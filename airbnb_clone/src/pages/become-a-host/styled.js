@@ -149,8 +149,8 @@ export const HostStageBox = styled.div`
         }
     }
 
-    .stage6_img{
-        background: url('/images/become_host/stage6/photo.jpg') no-repeat;
+    .stage7_img{
+        background: url('/images/become_host/stage6/house.jpg') no-repeat;
         background-size:100% 100%;
 
         .stage_tit{
@@ -328,6 +328,40 @@ export const HostStageBox = styled.div`
         /* -------------------------------------------------------- */
 
         /* stage 6 입니다 */
+        .stage6_list{
+            width:70%;
+            height:70%;
+            overflow-y:scroll;
+        
+            .s6_opt{
+                text-align:left;
+                margin-bottom:40px;
+                
+                .s6_tit{
+                    font-size:22px;
+                    font-weight:700;
+                    margin-bottom:20px;
+                }
+
+                .s6_sub{
+                    text-align:center;
+                    display: flex;
+                    flex-wrap:wrap;
+                    div{
+                        border:1px solid #dddddd;
+                        padding:15px;
+                        width:150px;
+                        margin-bottom:10px;
+                        margin-right:10px;
+
+                        &:hover{
+                            border:1px solid black;
+                        }
+                    }
+                }
+            }
+            
+        }
 
         /* -------------------------------------------------------- */
 

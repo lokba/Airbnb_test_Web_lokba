@@ -11,6 +11,7 @@ const BecomeHostPage = () => {
     const [stage3, setStage3] = useState(null);
 
     const [stage5, setStage5] = useState(null);
+    const [stage6, setStage] = useState(null);
 
     const [curStage, setCurStage] = useState(null);
 
@@ -259,8 +260,69 @@ const BecomeHostPage = () => {
             {
                 curStage === 6 &&
                 (
+                    <HostStageBox>
+                        <div className="host_stage_img">
+                            <div className="stage_tit">
+                                숙소 편의시설 정보를<br />추가해 주세요.
+                                </div>
+                            <Link to="/" className="logo">
+                                <img src="/images/favicon/favicon.png" alt="" />
+                            </Link>
+                        </div>
+                        <div className="host_stage_body">
+                            <div className="stage6_list">
+                                <div className="s6_opt">
+                                    <div className="s6_tit">특별히 내세울 만한 편의시설이 있나요?</div>
+                                    <div className="s6_sub">
+                                        <div>수영장</div>
+                                        <div>자쿠지</div>
+                                        <div>파티오</div>
+                                        <div>바비큐 그릴</div>
+                                        <div>화덕</div>
+                                        <div>당구대</div>
+                                        <div>실내 벽난로</div>
+                                        <div>야외 식사 공간</div>
+                                        <div>운동 기구</div>
+                                    </div>
+                                </div>
+                                <div className="s6_opt">
+                                    <div className="s6_tit">다음 인기 편의시설이 있나요?</div>
+                                    <div className="s6_sub">
+                                        <div>무선 인터넷</div>
+                                        <div>TV</div>
+                                        <div>주방</div>
+                                        <div>세탁기</div>
+                                        <div>건물 내 무료 주차</div>
+                                        <div>건물 내 유료 주차</div>
+                                        <div>에어컨</div>
+                                        <div>업무 전용 공간</div>
+                                        <div>야외 샤워 시설</div>
+                                    </div>
+                                </div>
+                                <div className="s6_opt">
+                                    <div className="s6_tit">다음 안전 물품이 있나요?</div>
+                                    <div className="s6_sub">
+                                        <div>화재경보기</div>
+                                        <div>구급 상자</div>
+                                        <div>일산화탄소 경보기</div>
+                                        <div>소화기</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="btn">
+                                <div className="beforeBtn" onClick={() => setCurStage(5)}>뒤로</div>
+                                <div className="nextBtn" onClick={() => setCurStage(7)}>다음</div>
+                            </div>
+                            <Link to="/host/homes" className="exitBtn">나가기</Link>
+                        </div>
+                    </HostStageBox>
+                )
+            }
+            {
+                curStage === 7 &&
+                (
                     <HostStageBox space>
-                        <div className="host_stage_img stage6_img" >
+                        <div className="host_stage_img stage7_img" >
                             <div className="stage_tit">
                                 이제 숙소 사진을 올릴<br />차례입니다.
                                 </div>
@@ -272,8 +334,8 @@ const BecomeHostPage = () => {
                             <div className="stage6_list">
                             </div>
                             <div className="btn">
-                                <div className="beforeBtn" onClick={() => setCurStage(5)}>뒤로</div>
-                                <div className="nextBtn" onClick={() => setCurStage(7)}>다음</div>
+                                <div className="beforeBtn" onClick={() => setCurStage(6)}>뒤로</div>
+                                <div className="nextBtn" onClick={() => setCurStage(8)}>다음</div>
                             </div>
                             <Link to="/host/homes" className="exitBtn">나가기</Link>
                         </div>
