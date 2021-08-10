@@ -5,6 +5,7 @@ import { MdLanguage } from "react-icons/md";
 import { IoIosMenu } from "react-icons/io";
 import { Link, withRouter } from 'react-router-dom';
 import SignModal from '../sign';
+import SignUpModal from '../signUpModal';
 
 const Header = ({ match, flex_search, local_area, travel, detail, book, hosting }) => {
 
@@ -15,6 +16,8 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting 
 
     const [checkLogin, setCheckLogin] = useState(false);
     const [checkHost, setCheckHost] = useState(false);
+
+    const [clearSignUp, setClearSignUp] = useState(false);
 
     useEffect(() => {
         localStorage.getItem("ACCESS_TOKEN") ?
@@ -187,8 +190,12 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting 
                         setSignStage={setSignStage}
                         error={error}
                         clickStageTwoBtn={clickStageTwoBtn}
+                        setClearSignUp={setClearSignUp}
                     />
                 )
+            }
+            {
+                clearSignUp && <SignUpModal setClearSignUp={setClearSignUp} />
             }
         </HeaderBox >
     );

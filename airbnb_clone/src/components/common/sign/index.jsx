@@ -4,6 +4,7 @@ import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import InputModel from '../InputBox';
 import { ErrorMessage, SignBox, SubmitButton } from './styled';
 import axios from 'axios';
+import SignUpModal from '../signUpModal';
 
 const SignModal = ({
     signStage,
@@ -11,6 +12,7 @@ const SignModal = ({
     setSignStage,
     error,
     clickStageTwoBtn,
+    setClearSignUp,
 }) => {
     const [signForm, setSignForm] = useState({
         email: "",
@@ -31,12 +33,14 @@ const SignModal = ({
 
     const onClickSignUpBtn = () => {
         const signUp = async () => {
-            const response = await axios.post('https://dev.rodin.club/users', signForm);
-            console.log("response.data", response.data);
+            // const response = await axios.post('https://dev.rodin.club/users', signForm);
+            setClearSignUp(true);
         }
 
         signUp();
     }
+
+
 
 
     return (
