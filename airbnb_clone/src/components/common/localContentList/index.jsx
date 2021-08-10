@@ -86,8 +86,9 @@ const LocalContentList = ({ areas, rooms }) => {
                         roomInfo,
                         status,
                         roomUploadUser_Idx,
+                        idx,
                     }) => (
-                        <Link to={`/rooms/${roomUploadUser_Idx}`} className="localItemBox">
+                        <Link to={`/rooms/${idx}`} className="localItemBox">
                             <div className="localItem">
                                 <div className="localItem_img">
                                     <img src={roomImageUrl} alt="" />
