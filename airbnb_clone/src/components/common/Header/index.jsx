@@ -5,6 +5,10 @@ import { MdLanguage } from "react-icons/md";
 import { IoIosMenu } from "react-icons/io";
 import { Link, withRouter } from 'react-router-dom';
 import SignModal from '../sign';
+import SignUpModal from '../signUpModal';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { getUserId } from '../../../store/userInfo';
 
 const Header = ({ match, flex_search, local_area, travel, detail, book, hosting }) => {
 
@@ -15,6 +19,100 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting 
 
     const [checkLogin, setCheckLogin] = useState(false);
     const [checkHost, setCheckHost] = useState(false);
+
+    const [clearSignUp, setClearSignUp] = useState(false);
+
+    const [checkUser, setCheckUser] = useState(false);
+
+    const [signForm, setSignForm] = useState({
+        email: "",
+        name: "",
+        BDay: "",
+        password: "",
+    });
+
+    const dispatch = useDispatch();
+
+
+    const initSignForm = () => {
+        setSignForm({
+            email: "",
+            name: "",
+            BDay: "",
+            password: "",
+        });
+    }
+
+    //회원 가입 api 
+    const onClickSignUpBtn = () => {
+        const signUp = async () => {
+            await axios.post('https://dev.rodin.club/users', signForm);
+            setClearSignUp(true);
+        }
+        signUp();
+        initSignForm();
+    }
+
+    const onChange = (e) => {
+        if (e.target.name === "BDay") {
+            let value = e.target.value.split("-").join("");
+            setSignForm({ ...signForm, [e.target.name]: value })
+        }
+        else {
+            setSignForm({ ...signForm, [e.target.name]: e.target.value })
+        }
+    };
+
+
+    // 이메일 존재 확인 api
+    const clickStageTwoBtn = () => {
+        const email = document.querySelector(".email");
+        setCheckUser(false);
+
+        if (email.value.length === 0) {
+            setError("*이메일이 필요합니다.");
+        }
+        else {
+            const checkEmail = async () => {
+                const response = await axios.get("https://dev.rodin.club/users");
+
+                let userInfo = response.data.result.filter(v =>
+                    (v.userEmail === email.value));
+
+                userInfo.length !== 0 ? setSignStage(3) : setSignStage(4);
+            }
+            checkEmail();
+            setError(false);
+        }
+    }
+
+    //로그인 api
+    const onClickSignIn = () => {
+        const email = signForm.email;
+        const password = signForm.password;
+
+        const signIn = async () => {
+            try {
+                const response = await axios.post('https://dev.rodin.club/users/login', { email, password });
+
+                //성공적으로 되었을 때
+                if (response.data.code === 1000) {
+                    localStorage.setItem('ACCESS_TOKEN', response.data.result.jwt);
+                    dispatch(getUserId(response.data.result.userIdx));
+                    setSignModal(false);
+                    setCheckLogin(true);
+                    initSignForm();
+                    setSignStage(1);
+                }
+            }
+            catch (e) {
+                console.log(e);
+            }
+
+        }
+        signIn();
+    }
+
 
     useEffect(() => {
         localStorage.getItem("ACCESS_TOKEN") ?
@@ -36,27 +134,19 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting 
         setCheckLogin(false);
     };
 
-    const clickStageTwoBtn = () => {
-        const email = document.querySelector(".email");
 
-        if (email.value.length === 0) {
-            setError("*이메일이 필요합니다.");
-        }
-        else {
-            setSignStage(4);
-            setError(false);
-        }
-    }
 
     const onCloseModal = () => {
         setSignModal(false);
         setSignStage(1);
         setError(false);
+        initSignForm();
     }
+
+
 
     useEffect(() => {
         const header = document.querySelector('.headerBox');
-
         if (header) {
             if (match.url === '/') {
                 window.addEventListener('scroll', () => {
@@ -186,9 +276,18 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting 
                         onCloseModal={onCloseModal}
                         setSignStage={setSignStage}
                         error={error}
+                        setClearSignUp={setClearSignUp}
+                        checkUser={checkUser}
                         clickStageTwoBtn={clickStageTwoBtn}
+                        onChange={onChange}
+                        onClickSignUpBtn={onClickSignUpBtn}
+                        signForm={signForm}
+                        onClickSignIn={onClickSignIn}
                     />
                 )
+            }
+            {
+                clearSignUp && <SignUpModal setClearSignUp={setClearSignUp} />
             }
         </HeaderBox >
     );
