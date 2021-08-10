@@ -7,6 +7,7 @@ const STORE_CAPACITY = 'reserveInfo/STORE_CAPACITY';
 
 export const storeCheckInDate = createAction(STORE_CHECKIN_DATE);
 export const storeCheckOutDate = createAction(STORE_CHECKOUT_DATE);
+export const storeCapacity = createAction(STORE_CAPACITY);
 
 const initialState = {
     checkin: null,

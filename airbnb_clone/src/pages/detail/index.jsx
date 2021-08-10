@@ -12,10 +12,13 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
+import { useDispatch } from 'react-redux';
+import { storeCapacity, storeCheckInDate, storeCheckOutDate } from '../../store/reserveInfo';
 
 const RoomDetailPage = ({ history, match }) => {
     const [roomIdx, setRoomIdx] = useState(null);
     const [roomDetailInfo, setRoomDetailInfo] = useState(null);
+    const dispatch = useDispatch();
 
     const [capacity, setCapacity] = useState({
         adult: 1,
@@ -37,6 +40,18 @@ const RoomDetailPage = ({ history, match }) => {
     const onClickPlus = (e) => {
         const value = capacity[e.target.name];
         setCapacity({ ...capacity, [e.target.name]: value + 1 })
+    }
+
+    const onMoveBookPage = () => {
+        const headCount = document.querySelector(".capacityValue").innerHTML;
+        const checkin = document.querySelector(".checkin_date").value.split("-").join("");
+        const checkout = document.querySelector(".checkout_date").value.split("-").join("");
+
+        dispatch(storeCheckInDate(checkin));
+        dispatch(storeCheckOutDate(checkout));
+        dispatch(storeCapacity(headCount));
+
+        history.push(`/book/${roomIdx}`)
     }
 
 
@@ -264,18 +279,18 @@ const RoomDetailPage = ({ history, match }) => {
                                             <div className="checkInOut">
                                                 <div className="checkIn">
                                                     <div className="opt_tit">체크인</div>
-                                                    <input className="opt_txt" name="checkin" type="date" />
+                                                    <input className="opt_txt checkin_date" name="checkin" type="date" />
                                                     {/* <div className="opt_txt">날짜 추가</div> */}
                                                 </div>
                                                 <div className="checkOut">
                                                     <div className="opt_tit" >체크아웃</div>
-                                                    <input className="opt_txt" name="checkout" type="date" />
+                                                    <input className="opt_txt checkout_date" name="checkout" type="date" />
                                                     {/* <div className="opt_txt">날짜 추가</div> */}
                                                 </div>
                                             </div>
                                             <div className="guest">
                                                 <div className="opt_tit">인원</div>
-                                                <div className="opt_txt">{capacity["baby"] > 0 ? (`게스트 ${capacity["adult"] + capacity["children"]}명 유아 ${capacity["baby"]}명`) : (`게스트 ${capacity["adult"] + capacity["children"]}명`)}
+                                                <div className="opt_txt capacityValue">{capacity["baby"] > 0 ? (`게스트 ${capacity["adult"] + capacity["children"]}명 유아 ${capacity["baby"]}명`) : (`게스트 ${capacity["adult"] + capacity["children"]}명`)}
                                                 </div>
                                                 {
                                                     capacityModal ?
@@ -312,7 +327,7 @@ const RoomDetailPage = ({ history, match }) => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="reserveBtn" onClick={() => history.push(`/book/${roomIdx}`)}>예약 가능 여부 보기</div>
+                                        <div className="reserveBtn" onClick={onMoveBookPage}>예약 가능 여부 보기</div>
                                     </ReservationBox>
                                 </div>
                             </RoomDetailContent>
