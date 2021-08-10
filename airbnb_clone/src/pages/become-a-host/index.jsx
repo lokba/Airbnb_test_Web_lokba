@@ -16,28 +16,36 @@ const BecomeHostPage = () => {
     const [stage1, setStage1] = useState(null);
     const [stage2, setStage2] = useState(null);
     const [stage3, setStage3] = useState(null);
+    const [stage4, setStage4] = useState("");
+
+    const onChangeLocation = (e) => {
+        setStage4(e.target.value);
+    }
 
     const [stage6, setStage6] = useState(null);
 
     const [curStage, setCurStage] = useState(null);
 
 
-    const [guest, setGuest] = useState(1);
-    const [bed, setBed] = useState(1);
-    const [room, setRoom] = useState(1);
-    const [bath, setBath] = useState(1);
+    const [roomCapacity, setRoomCapacity] = useState(1);
+    const [roomBed, setRoomBed] = useState(1);
+    const [roomBedroom, setRoomBedroom] = useState(1);
+    const [roomBathroom, setRoomBathroom] = useState(1);
 
-    const plusGuest = () => setGuest(guest + 1);
-    const minusGuest = () => guest !== 1 && setGuest(guest - 1);
+    const plusCapacity = () => setRoomCapacity(roomCapacity + 1);
+    const minusCapacity = () => roomCapacity !== 1 && setRoomCapacity(roomCapacity - 1);
 
-    const plusBed = () => setBed(bed + 1);
-    const minusBed = () => bed !== 1 && setBed(bed - 1);
+    const plusBed = () => setRoomBed(roomBed + 1);
+    const minusBed = () => roomBed !== 1 && setRoomBed(roomBed - 1);
 
-    const plusRoom = () => setRoom(room + 1);
-    const minusRoom = () => room !== 1 && setRoom(room - 1);
+    const plusBedroom = () => setRoomBedroom(roomBedroom + 1);
+    const minusBedroom = () => roomBedroom !== 1 && setRoomBedroom(roomBedroom - 1);
 
-    const plusBath = () => setBath(bath + 1);
-    const minusBath = () => bath !== 1 && setBath(bath - 1);
+    const plusBathroom = () => setRoomBathroom(roomBathroom + 1);
+    const minusBathroom = () => roomBathroom !== 1 && setRoomBathroom(roomBathroom - 1);
+
+
+    console.log(stage1, stage2, stage3, stage4, roomCapacity, roomBed, roomBedroom, roomBathroom);
 
     const [roomInfo, setRoomInfo] = useState({
         roomLocation: null,
@@ -245,8 +253,20 @@ const BecomeHostPage = () => {
                 sub: "전문 관리업체가 운영하는 아파트로, 호텔 같은 편의시설을 갖추고 있습니다.",
             },
         ],
-
     }
+
+    const roomConvenience = {
+        "special": [
+            "수영장", "자쿠지", "파티오", "바비큐 그릴", "화덕", "당구대", "실내 벽난로", "야외 식사 공간", "운동 기구"
+        ],
+        "popular": [
+            "무선 인터넷", "TV", "주방", "세탁기", "건물 내 무료 주차", "건물 내 유료 주차", "에어컨", "업무 전용 공간", "야외 샤워 시설"
+        ],
+        "safe": [
+            "화재경보기", "구급 상자", "일산화탄소 경보기", "소화기"
+        ],
+    }
+
 
     return (
         <BecomeHostBox>
@@ -283,27 +303,27 @@ const BecomeHostPage = () => {
                         </div>
                         <div className="host_stage_body">
                             <div className="stage1_list">
-                                <div className={stage1 === 0 ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1(0)}>
+                                <div className={stage1 === "아파트" ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1("아파트")}>
                                     <div className="s1_tit">아파트</div>
                                     <img src="/images/become_host/stage1/room1.png" alt="" />
                                 </div>
-                                <div className={stage1 === 1 ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1(1)}>
+                                <div className={stage1 === "주택" ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1("주택")}>
                                     <div className="s1_tit">주택</div>
                                     <img src="/images/become_host/stage1/room2.png" alt="" />
                                 </div>
-                                <div className={stage1 === 2 ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1(2)}>
+                                <div className={stage1 === "별채" ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1("별채")}>
                                     <div className="s1_tit">별채</div>
                                     <img src="/images/become_host/stage1/room3.png" alt="" />
                                 </div>
-                                <div className={stage1 === 3 ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1(3)}>
+                                <div className={stage1 === "독특한 숙소" ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1("독특한 숙소")}>
                                     <div className="s1_tit">독특한 숙소</div>
                                     <img src="/images/become_host/stage1/room4.png" alt="" />
                                 </div>
-                                <div className={stage1 === 4 ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1(4)}>
+                                <div className={stage1 === "B&B" ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1("B&B")}>
                                     <div className="s1_tit">B&B</div>
                                     <img src="/images/become_host/stage1/room5.png" alt="" />
                                 </div>
-                                <div className={stage1 === 5 ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1(5)}>
+                                <div className={stage1 === "부티크 호텔" ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1("부티크 호텔")}>
                                     <div className="s1_tit">부티크 호텔</div>
                                     <img src="/images/become_host/stage1/room6.png" alt="" />
                                 </div>
@@ -331,20 +351,14 @@ const BecomeHostPage = () => {
                         </div>
                         <div className="host_stage_body">
                             <div className="stage2_list">
-                                <div className={stage2 === 0 ? "s2_opt stage2_on" : "s2_opt"} onClick={() => setStage2(0)}>
-                                    <div className="s2_tit">게스트용 별채</div>
-                                    <div className="s2_sub">본채와 필지를 공유하지만 따로 떨어져있는 건물을 의미합니다.</div>
-                                </div>
-                                <div className={stage2 === 1 ? "s2_opt stage2_on" : "s2_opt"} onClick={() => setStage2(1)}>
-                                    <div className="s2_tit">게스트 스위트</div>
-                                    <div className="s2_sub">더 큰 구조물의 안에 있거나 나란히 붙어 있는 별도의 공간으로 전용<br />출입구를 갖추고 있습니다.</div>
-
-                                </div>
-                                <div className={stage2 === 2 ? "s2_opt stage2_on" : "s2_opt"} onClick={() => setStage2(2)}>
-                                    <div className="s2_tit">농장 체험 숙소</div>
-                                    <div className="s2_sub">농촌에 있는 숙소로, 게스트가 동물과 교감하거나 등산, 수공예 등의<br />활동을 즐길 수 있는 곳입니다.</div>
-
-                                </div>
+                                {
+                                    roomDesc[stage1].map((v, idx) => (
+                                        <div key={idx} className={stage2 === v.tit ? "s2_opt stage2_on" : "s2_opt"} onClick={() => setStage2(v.tit)}>
+                                            <div className="s2_tit">{v.tit}</div>
+                                            <div className="s2_sub">{v.sub}</div>
+                                        </div>
+                                    ))
+                                }
                             </div>
                             <div className="btn">
                                 <div className="beforeBtn" onClick={() => setCurStage(1)}>뒤로</div>
@@ -369,13 +383,13 @@ const BecomeHostPage = () => {
                         </div>
                         <div className="host_stage_body">
                             <div className="stage3_list">
-                                <div className={stage3 === 0 ? "s3_opt stage3_on" : "s3_opt"} onClick={() => setStage3(0)}>
+                                <div className={stage3 === "공간 전체" ? "s3_opt stage3_on" : "s3_opt"} onClick={() => setStage3("공간 전체")}>
                                     <div className="s3_tit">공간 전체</div>
                                 </div>
-                                <div className={stage3 === 1 ? "s3_opt stage3_on" : "s3_opt"} onClick={() => setStage3(1)}>
+                                <div className={stage3 === "개인실" ? "s3_opt stage3_on" : "s3_opt"} onClick={() => setStage3("개인실")}>
                                     <div className="s3_tit">개인실</div>
                                 </div>
-                                <div className={stage3 === 2 ? "s3_opt stage3_on" : "s3_opt"} onClick={() => setStage3(2)}>
+                                <div className={stage3 === "다인실" ? "s3_opt stage3_on" : "s3_opt"} onClick={() => setStage3("다인실")}>
                                     <div className="s3_tit">다인실</div>
                                 </div>
                             </div>
@@ -403,7 +417,7 @@ const BecomeHostPage = () => {
                         <div className="host_stage_body">
                             <div className="locationBar">
                                 <LocationOnIcon />
-                                <input placeholder="주소를 입력하세요." />
+                                <input placeholder="주소를 입력하세요." name="location" value={stage4} onChange={onChangeLocation} />
                             </div>
 
                             <div className="btn">
@@ -432,33 +446,33 @@ const BecomeHostPage = () => {
                                 <div className="s5_opt">
                                     <div className="s5_tit">게스트</div>
                                     <div className="s5_ctrl">
-                                        <RemoveIcon onClick={minusGuest} />
-                                        <div>{guest}</div>
-                                        <AddIcon onClick={plusGuest} />
+                                        <RemoveIcon onClick={minusCapacity} />
+                                        <div>{roomCapacity}</div>
+                                        <AddIcon onClick={plusCapacity} />
                                     </div>
                                 </div>
                                 <div className="s5_opt">
                                     <div className="s5_tit">침대</div>
                                     <div className="s5_ctrl">
                                         <RemoveIcon onClick={minusBed} />
-                                        <div>{bed}</div>
+                                        <div>{roomBed}</div>
                                         <AddIcon onClick={plusBed} />
                                     </div>
                                 </div>
                                 <div className="s5_opt">
                                     <div className="s5_tit">침실</div>
                                     <div className="s5_ctrl">
-                                        <RemoveIcon onClick={minusRoom} />
-                                        <div>{room}</div>
-                                        <AddIcon onClick={plusRoom} />
+                                        <RemoveIcon onClick={minusBedroom} />
+                                        <div>{roomBedroom}</div>
+                                        <AddIcon onClick={plusBedroom} />
                                     </div>
                                 </div>
                                 <div className="s5_opt">
                                     <div className="s5_tit">욕실</div>
                                     <div className="s5_ctrl">
-                                        <RemoveIcon onClick={minusBath} />
-                                        <div>{bath}</div>
-                                        <AddIcon onClick={plusBath} />
+                                        <RemoveIcon onClick={minusBathroom} />
+                                        <div>{roomBathroom}</div>
+                                        <AddIcon onClick={plusBathroom} />
                                     </div>
                                 </div>
                             </div>
@@ -488,38 +502,31 @@ const BecomeHostPage = () => {
                                 <div className="s6_opt">
                                     <div className="s6_tit">특별히 내세울 만한 편의시설이 있나요?</div>
                                     <div className="s6_sub">
-                                        <div>수영장</div>
-                                        <div>자쿠지</div>
-                                        <div>파티오</div>
-                                        <div>바비큐 그릴</div>
-                                        <div>화덕</div>
-                                        <div>당구대</div>
-                                        <div>실내 벽난로</div>
-                                        <div>야외 식사 공간</div>
-                                        <div>운동 기구</div>
+                                        {
+                                            roomConvenience["special"].map(v => (
+                                                <div>{v}</div>
+                                            ))
+                                        }
                                     </div>
                                 </div>
                                 <div className="s6_opt">
                                     <div className="s6_tit">다음 인기 편의시설이 있나요?</div>
                                     <div className="s6_sub">
-                                        <div>무선 인터넷</div>
-                                        <div>TV</div>
-                                        <div>주방</div>
-                                        <div>세탁기</div>
-                                        <div>건물 내 무료 주차</div>
-                                        <div>건물 내 유료 주차</div>
-                                        <div>에어컨</div>
-                                        <div>업무 전용 공간</div>
-                                        <div>야외 샤워 시설</div>
+                                        {
+                                            roomConvenience["popular"].map(v => (
+                                                <div>{v}</div>
+                                            ))
+                                        }
                                     </div>
                                 </div>
                                 <div className="s6_opt">
                                     <div className="s6_tit">다음 안전 물품이 있나요?</div>
                                     <div className="s6_sub">
-                                        <div>화재경보기</div>
-                                        <div>구급 상자</div>
-                                        <div>일산화탄소 경보기</div>
-                                        <div>소화기</div>
+                                        {
+                                            roomConvenience["safe"].map(v => (
+                                                <div>{v}</div>
+                                            ))
+                                        }
                                     </div>
                                 </div>
                             </div>

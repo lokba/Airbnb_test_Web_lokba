@@ -213,7 +213,8 @@ export const HostStageBox = styled.div`
         }
         .stage2_list{
             width:70%;
-            /* height:70%; */
+            height:70%;
+            overflow-y :scroll;
 
             .s2_opt{
                 text-align:left;
