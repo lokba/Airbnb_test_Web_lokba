@@ -120,6 +120,7 @@ export const RoomDetailImgBox = styled.div`
                 height:98%;
                 cursor:pointer;
             }
+
         }
 
         .subImg_under{
@@ -313,6 +314,7 @@ export const ReservationBox = styled.div`
     box-sizing:border-box;
     border-radius:20px;
     width:370px;
+    width:420px;
     height:355px;
     padding:24px;
     position:absolute;
@@ -366,6 +368,8 @@ export const ReservationBox = styled.div`
                 .opt_txt{
                     font-size:14px;
                     color:#717171;
+                    border:none;
+                    width:100%;
                 }
             }
             .checkIn{
@@ -394,6 +398,66 @@ export const ReservationBox = styled.div`
                 width:40px;
                 height:40px;
             }
+
+            .capacityBlock{
+                position:absolute;
+                top:56px;
+                border-radius:10px;
+                left:0;
+                width:100%;
+                z-index:100;
+                background:white;
+                padding:5px 15px 15px;
+                font-size:16px;
+                box-sizing:border-box;
+                border:1px solid #dddddd;
+
+                .capacity_item{
+                    width:100%;
+                    display:flex;
+                    justify-content: space-between;
+                    align-items:center;
+                    height:50px;
+                    padding-top:10px;
+                    .capacity_tit{
+                        font-weight:600;
+
+                        span{
+                            color:#717171;
+                            font-size:12px;
+                            padding-left:3px;
+                        }
+                    }
+                    .capacity_ctrl{
+                        display:flex;
+                        align-items:center;
+
+                        div{
+                            display:flex;
+                            justify-content: center;
+                            width:20px;
+                            padding:0 7px;
+                        }
+                        button {
+                            border-radius:50%;
+                            border:1px solid gray;
+                            background:white;
+                            width:30px;
+                            height:30px;
+                            font-size:20px;
+                            display:flex;
+                            align-items:center;
+                            justify-content: center;
+                            cursor:pointer;
+                        }
+                        
+                    }
+                }
+            }
+            .modalOff{
+                display:none;
+            }
+            
         }
     }
     .reserveBtn{

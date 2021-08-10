@@ -7,12 +7,38 @@ import PersonIcon from '@material-ui/icons/Person';
 import ShareIcon from '@material-ui/icons/Share';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
 
 const RoomDetailPage = ({ history, match }) => {
     const [roomIdx, setRoomIdx] = useState(null);
     const [roomDetailInfo, setRoomDetailInfo] = useState(null);
+
+    const [capacity, setCapacity] = useState({
+        adult: 1,
+        children: 0,
+        baby: 0,
+    })
+
+    const [capacityModal, setCapacityModal] = useState(false);
+
+    const onClickMinus = (e) => {
+        const value = capacity[e.target.name];
+
+        e.target.name === "adult" ?
+            (value > 1 && setCapacity({ ...capacity, [e.target.name]: value - 1 }))
+            :
+            (value > 0 && setCapacity({ ...capacity, [e.target.name]: value - 1 }))
+    }
+
+    const onClickPlus = (e) => {
+        const value = capacity[e.target.name];
+        setCapacity({ ...capacity, [e.target.name]: value + 1 })
+    }
+
 
     useEffect(() => {
         setRoomIdx(match.params.roomId);
@@ -80,9 +106,9 @@ const RoomDetailPage = ({ history, match }) => {
         ]
     };
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [])
+    // useEffect(() => {
+    //     window.scrollTo(0, 0);
+    // }, [])
 
     // const reserveBox = document.querySelector(".reservation");
 
@@ -238,20 +264,56 @@ const RoomDetailPage = ({ history, match }) => {
                                             <div className="checkInOut">
                                                 <div className="checkIn">
                                                     <div className="opt_tit">체크인</div>
-                                                    <div className="opt_txt">날짜 추가</div>
+                                                    <input className="opt_txt" name="checkin" type="date" />
+                                                    {/* <div className="opt_txt">날짜 추가</div> */}
                                                 </div>
                                                 <div className="checkOut">
                                                     <div className="opt_tit" >체크아웃</div>
-                                                    <div className="opt_txt">날짜 추가</div>
+                                                    <input className="opt_txt" name="checkout" type="date" />
+                                                    {/* <div className="opt_txt">날짜 추가</div> */}
                                                 </div>
                                             </div>
                                             <div className="guest">
                                                 <div className="opt_tit">인원</div>
-                                                <div className="opt_txt">게스트 1명</div>
-                                                <KeyboardArrowDownIcon />
+                                                <div className="opt_txt">{capacity["baby"] > 0 ? (`게스트 ${capacity["adult"] + capacity["children"]}명 유아 ${capacity["baby"]}명`) : (`게스트 ${capacity["adult"] + capacity["children"]}명`)}
+                                                </div>
+                                                {
+                                                    capacityModal ?
+                                                        (<KeyboardArrowUpIcon onClick={() => setCapacityModal(!capacityModal)} />)
+                                                        :
+                                                        (<KeyboardArrowDownIcon onClick={() => setCapacityModal(!capacityModal)} />)
+                                                }
+
+                                                <div className={capacityModal ? "capacityBlock" : "capacityBlock modalOff"}>
+                                                    <div className="capacity_item">
+                                                        <div className="capacity_tit">성인</div>
+                                                        <div className="capacity_ctrl">
+                                                            <button name="adult" onClick={(e) => onClickMinus(e)}>-</button>
+                                                            <div>{capacity["adult"]}</div>
+                                                            <button name="adult" onClick={(e) => onClickPlus(e)}>+</button>
+                                                        </div>
+                                                    </div>
+                                                    <div className="capacity_item">
+                                                        <div className="capacity_tit">어린이<span>(만 2~12세)</span></div>
+                                                        <div className="capacity_ctrl">
+                                                            <button name="children" onClick={(e) => onClickMinus(e)}>-</button>
+                                                            <div>{capacity["children"]}</div>
+                                                            <button name="children" onClick={(e) => onClickPlus(e)}>+</button>
+                                                        </div>
+                                                    </div>
+                                                    <div className="capacity_item">
+                                                        <div className="capacity_tit">유아<span>(만 2세 미만)</span></div>
+                                                        <div className="capacity_ctrl">
+                                                            <button name="baby" onClick={(e) => onClickMinus(e)}>-</button>
+                                                            <div>{capacity["baby"]}</div>
+                                                            <button name="baby" onClick={(e) => onClickPlus(e)}>+</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="reserveBtn" onClick={() => history.push(`/book/${room.roomId}`)}>예약 가능 여부 보기</div>
+                                        <div className="reserveBtn" onClick={() => history.push(`/ book / ${room.roomId}`)}>예약 가능 여부 보기</div>
                                     </ReservationBox>
                                 </div>
                             </RoomDetailContent>
@@ -296,6 +358,204 @@ const RoomDetailPage = ({ history, match }) => {
                     </RoomDetailBox >
 
                 )
+            }
+            {
+                !roomDetailInfo &&
+                <RoomDetailBox>
+                    <Header detail />
+                    <div className="RoomDetailBody">
+                        <RoomDetailHeader>
+                            <div className="roomHeaderTit">{room.moto}</div>
+                            <div className="roomHeaderBody">
+                                <div className="roomHeaderInfo">
+                                    <div>
+                                        <StarRateIcon className="stress" />
+                                        <div className="grade">{room.star} <span className="comments">(후기 {room.comments}개)</span></div>
+                                    </div>
+                                    <div>∙</div>
+                                    <div>
+                                        <PersonIcon className="stress" />
+                                        <div>{room.hoster.grade}</div>
+                                    </div>
+                                    <div>∙</div>
+                                    <div className="locate">{room.location}</div>
+                                </div>
+
+
+                                <div className="accessBtn">
+                                    <div className="share btn">
+                                        <ShareIcon />
+                                        <div>공유하기</div>
+                                    </div>
+                                    <div className="store btn">
+                                        <FavoriteBorderIcon />
+                                        <div>저장</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </RoomDetailHeader>
+                        <RoomDetailImgBox>
+                            <div className="mainImg">
+                                <img src={room.imgURL[0]} alt="" />
+                            </div>
+                            <div className="subImg">
+                                <div className="subImg_upper">
+                                    <img src={room.imgURL[1]} alt="" />
+                                    <img src={room.imgURL[2]} alt="" />
+                                </div>
+                                <div className="subImg_under">
+                                    <img src={room.imgURL[3]} alt="" />
+                                    <img src={room.imgURL[4]} alt="" />
+                                </div>
+                            </div>
+                        </RoomDetailImgBox>
+                        <RoomDetailContent>
+                            <div className="content">
+                                <RoomHosterInfo>
+                                    <div className="hosterInfo">{room.hoster.name}님이 호스팅하는 공동 주택 전체</div>
+                                    <div className="roomInfo">{room.info[0]}</div>
+                                </RoomHosterInfo>
+                                <RoomAboutInfo>
+                                    <div className="aboutItem">
+                                        <div className="info_img">
+                                            <img className="house" src="/images/detail/icons/home.png" alt="" />
+                                        </div>
+                                        <div className="info_content">
+                                            <div className="list_tit">집 전체</div>
+                                            <div className="list_txt">아파트 전체를 단독으로 사용하시게 됩니다.</div>
+                                        </div>
+                                    </div>
+                                    <div className="aboutItem">
+                                        <div className="info_img">
+                                            <img className="clean" src="/images/detail/icons/clean.png" alt="" />
+                                        </div>
+                                        <div className="info_content">
+                                            <div className="list_tit">청결 강화</div>
+                                            <div className="list_txt">에어비앤비의 강화된 5단계 청소 절차를 준수하겠다고 동의한 호스트입니다. <span>더 보기</span></div>
+                                        </div>
+                                    </div>
+                                    <div className="aboutItem">
+                                        <div className="info_img">
+                                            <img className="checkin" src="/images/detail/icons/checkin.png" alt="" />
+                                        </div>
+                                        <div className="info_content">
+                                            <div className="list_tit">셀프 체크인</div>
+                                            <div className="list_txt">키패드를 이용해 체크인하세요.</div>
+                                        </div>
+                                    </div>
+                                    <div className="aboutItem">
+                                        <div className="info_img">
+                                            <img className="medal" src="/images/detail/icons/medal.png" alt="" />
+                                        </div>
+                                        <div className="info_content">
+                                            <div className="list_tit">{room.hoster.name}님은 슈퍼호스트입니다.</div>
+                                            <div className="list_txt">슈퍼호스트는 풍부한 경험과 높은 평점을 자랑하며 게스트가 숙소에서 편안히 머무를 수 있도록 최선을 다하는 호스트입니다.</div>
+                                        </div>
+                                    </div>
+                                </RoomAboutInfo>
+                                <RoomDetailInfo>
+                                    <div className="location">강남역 1번 출구 바로 옆 편리하고 깔끔한 숙소입니다.</div>
+                                    <div className="detailInfo">
+                                        <div>- 전철까지 도보 30초</div>
+                                        <div>- 침구로 매번 깨끗이 교체</div>
+                                        <div>- 코너창층으로 좋은 전망</div>
+                                        <div>- 세탁기 + 건조기</div>
+                                        <div>- 지하창고에 짐 보관 무료</div>
+                                        <div>- 주차는 1시간에 1000원으로 꼭 미리 문의 주셔야합니다</div>
+                                        <div>- 정말 좋은 헬스장 도보 3분 (하루 만원)</div>
+                                    </div>
+                                </RoomDetailInfo>
+                                <RoomPlace>
+                                    <div className="tit">숙박 장소</div>
+                                    <div className="content">
+                                        <img src="/images/detail/icons/bed.png" alt="" />
+                                        <div className="content_tit">1번 침실</div>
+                                        <div className="content_sub">퀸사이즈 침대 1개, 요와 이불 1개</div>
+                                    </div>
+                                </RoomPlace>
+                                <RoomFacility>
+                                    <div className="tit">숙박 편의시설</div>
+                                    <div className="content">
+                                        <li>주방</li>
+                                        <li>무선 인터넷</li>
+                                        <li>TV + 일반 케이블 TV</li>
+                                        <li>엘리베이터</li>
+                                        <li>세탁기</li>
+                                        <div className="seeAllBtn">편의시설 35개 모두 보기</div>
+                                    </div>
+                                </RoomFacility>
+                                <RoomCheckIn>
+                                    <div className="tit">체크인 날짜를 선택해주세요.</div>
+                                    <div className="sub">여행 날짜를 입력하여 정확한 요금을 확인하세요.</div>
+                                </RoomCheckIn>
+                            </div>
+                            <div className="reservation">
+                                <ReservationBox>
+                                    <div className="tit">요금을 확인하려면 날짜를<br />입력하세요.</div>
+                                    <div className="sub">
+                                        <StarRateIcon />
+                                        <div>{room.star}<span>(후기 {room.comments}개)</span></div>
+                                    </div>
+                                    <div className="reserveBox">
+                                        <div className="checkInOut">
+                                            <div className="checkIn">
+                                                <div className="opt_tit">체크인</div>
+                                                <div className="opt_txt">날짜 추가</div>
+                                            </div>
+                                            <div className="checkOut">
+                                                <div className="opt_tit" >체크아웃</div>
+                                                <div className="opt_txt">날짜 추가</div>
+                                            </div>
+                                        </div>
+                                        <div className="guest">
+                                            <div className="opt_tit">인원</div>
+                                            <div className="opt_txt">게스트 1명</div>
+                                            <KeyboardArrowDownIcon />
+                                        </div>
+                                    </div>
+                                    <div className="reserveBtn" onClick={() => history.push(`/book/${room.roomId}`)}>예약 가능 여부 보기</div>
+                                </ReservationBox>
+                            </div>
+                        </RoomDetailContent>
+
+                        <CommentBox>
+                            <div className="grade">
+                                <StarRateIcon />
+                                <div>{room.star}</div>
+                                <div>∙</div>
+                                <div>후기 {room.comments}개</div>
+                            </div>
+
+                            <div className="commentList">
+                                {
+                                    room.commentList.map(v => (
+                                        <div className="commentItem">
+                                            <div className="header">
+                                                <div className="profile">
+                                                    <img src="/images/icons/profile.png" alt="" />
+                                                </div>
+                                                <div className="writer">
+                                                    <div className="name">{v.writer}</div>
+                                                    <div className="date">{v.date}</div>
+                                                </div>
+                                            </div>
+                                            <div className="txt">
+                                                <div>{v.comment}</div>
+                                            </div>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                            <div className="seeAllBtn">후기 {room.comments}개 모두 보기</div>
+                        </CommentBox>
+                        <HostingMap>
+                            <div className="tit">호스팅 지역</div>
+                            <div className="location">강남구, 서울, 한국</div>
+                        </HostingMap>
+
+                    </div >
+                    <Footer detail="detail" />
+                </RoomDetailBox >
             }
         </>
     );

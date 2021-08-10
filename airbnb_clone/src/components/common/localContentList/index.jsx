@@ -37,38 +37,6 @@ const LocalContentList = ({ areas, rooms }) => {
     };
 
     return (
-        // <LocalContentListBox>
-        //     {
-        //         areas.map(area => (
-        //             <Link to={`/rooms/${area.roomId}`} className="localItemBox">
-        //                 <div className="localItem">
-        //                     <div className="localItem_img">
-        //                         <img src={area.imgURL[0]} alt="" />
-        //                     </div>
-        //                     <div className="localItem_content">
-        //                         <div className="localItem_head">
-        //                             <div className="content_sector">{area.sector}</div>
-        //                             <div className="content_moto">{getTextLength(area.moto) > 45 ? getText(area.moto) + "..." : area.moto}</div>
-        //                             <div className="line"></div>
-        //                             <div className="content_info">{area.info[0]}</div>
-        //                             <div className="content_info">{area.info[1]}</div>
-        //                         </div>
-        //                         <div className="localItem_foot">
-        //                             <StarRateIcon />
-        //                             <div className="star">{area.star}</div>
-        //                             <div className="comment">(후기 {area.comments}개)</div>
-        //                         </div>
-        //                         <div className="heart">
-        //                             {
-        //                                 area.heart ? (<FavoriteIcon className="heartOn" />) : (<FavoriteBorderIcon />)
-        //                             }
-        //                         </div>
-        //                     </div>
-        //                 </div>
-        //             </Link>
-        //         ))
-        //     }
-        // </LocalContentListBox>
         <LocalContentListBox>
             {
                 rooms ?
