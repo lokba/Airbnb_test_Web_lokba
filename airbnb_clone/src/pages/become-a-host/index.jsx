@@ -4,33 +4,321 @@ import { Link, withRouter } from 'react-router-dom';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 const BecomeHostPage = () => {
+    const { userIdx } = useSelector(({ userInfo }) => ({
+        userIdx: userInfo.userIdx,
+    }));
+
     const [stage1, setStage1] = useState(null);
     const [stage2, setStage2] = useState(null);
     const [stage3, setStage3] = useState(null);
+    const [stage4, setStage4] = useState("");
 
-    const [stage6, setStage6] = useState(null);
+    const onChangeLocation = (e) => {
+        setStage4(e.target.value);
+    }
+
+    const [stage6, setStage6] = useState([]);
+
+    const onToggleRoomConv = (str) => {
+        if (!stage6.includes(str)) {
+            setStage6(stage6.concat(str))
+        }
+        else {
+            setStage6(stage6.filter(v => v !== str));
+        }
+    }
 
     const [curStage, setCurStage] = useState(null);
 
+    const [roomName, setRoomName] = useState("");
+    const [roomDetailInfo, setRoomDetailInfo] = useState("");
 
-    const [guest, setGuest] = useState(1);
-    const [bed, setBed] = useState(1);
-    const [room, setRoom] = useState(1);
-    const [bath, setBath] = useState(1);
+    const onChangeRoomName = (e) => {
+        setRoomName(e.target.value);
+    }
+    const onChangeRoomDetailInfo = (e) => {
+        setRoomDetailInfo(e.target.value)
+    }
 
-    const plusGuest = () => setGuest(guest + 1);
-    const minusGuest = () => guest !== 1 && setGuest(guest - 1);
+    const [roomPrice, setRoomPrice] = useState(0);
 
-    const plusBed = () => setBed(bed + 1);
-    const minusBed = () => bed !== 1 && setBed(bed - 1);
+    const onChangePrice = (e) => {
+        setRoomPrice(e.target.value);
 
-    const plusRoom = () => setRoom(room + 1);
-    const minusRoom = () => room !== 1 && setRoom(room - 1);
+        setRoomInfo({ ...roomInfo, roomPrice: e.target.value });
+    }
 
-    const plusBath = () => setBath(bath + 1);
-    const minusBath = () => bath !== 1 && setBath(bath - 1);
+    const [roomCapacity, setRoomCapacity] = useState(1);
+    const [roomBed, setRoomBed] = useState(1);
+    const [roomBedroom, setRoomBedroom] = useState(1);
+    const [roomBathroom, setRoomBathroom] = useState(1);
+
+    const plusCapacity = () => setRoomCapacity(roomCapacity + 1);
+    const minusCapacity = () => roomCapacity !== 1 && setRoomCapacity(roomCapacity - 1);
+
+    const plusBed = () => setRoomBed(roomBed + 1);
+    const minusBed = () => roomBed !== 1 && setRoomBed(roomBed - 1);
+
+    const plusBedroom = () => setRoomBedroom(roomBedroom + 1);
+    const minusBedroom = () => roomBedroom !== 1 && setRoomBedroom(roomBedroom - 1);
+
+    const plusBathroom = () => setRoomBathroom(roomBathroom + 1);
+    const minusBathroom = () => roomBathroom !== 1 && setRoomBathroom(roomBathroom - 1);
+
+    const [roomInfo, setRoomInfo] = useState({
+        roomLocation: null,
+        roomCapacity: null,
+        roomBed: null,
+        roomBedroom: null,
+        roomBathroom: null,
+        roomType: null,
+        roomPrice: null,
+        roomDesc: null,
+        roomKind: null,
+        roomConvenient: null,
+        roomImageUrl: "test1",
+        roomName: null,
+        roomInfo: null,
+        roomUploadUser: userIdx
+    });
+
+    const onStoreRoomInfo = () => {
+        setRoomInfo({
+            ...roomInfo,
+            roomType: stage1,
+            roomDesc: stage2,
+            roomKind: stage3,
+            roomLocation: stage4,
+            roomCapacity,
+            roomBed,
+            roomBedroom,
+            roomBathroom,
+            roomConvenient: stage6.join(', '),
+            roomName,
+            roomInfo: roomDetailInfo,
+        })
+    }
+
+    const onClickRegisterRoom = () => {
+        localStorage.setItem('HOST_ACCESS_TOKEN', 'abcdefg');
+
+        const headers = {
+            "x-access-token": localStorage.getItem("ACCESS_TOKEN")
+        }
+
+        const registerRoom = async () => {
+            const response = await axios.post('https://dev.rodin.club/rooms', roomInfo, { headers });
+
+            response.data.isSuccess && setCurStage(11);
+        }
+        registerRoom();
+    }
+    const roomDesc = {
+        "아파트": [
+            {
+                tit: "공동 주택",
+                sub: "다세대 건물 또는 단지 내의 임대 공간입니다",
+            },
+            {
+                tit: "공동주택(콘도)",
+                sub: "거주자 소유의 다세대 건물 또는 단지 내의 공간을 의미합니다.",
+            },
+            {
+                tit: "로프트",
+                sub: "개방적인 구조의 아파트나 콘도로 내부가 낮은 벽으로 마감되었을 수 있습니다",
+            },
+            {
+                tit: "레지던스",
+                sub: "전문 관리업체가 운영하는 아파트로, 호텔 같은 편의시설을 갖추고 있습니다.",
+            },
+            {
+                tit: "카사 파르티쿨라르",
+                sub: "B&B 와 비슷한 쿠바 숙소로, 호스트가 거주하는 집 안 개인실을 의미합니다",
+            },
+        ],
+        "주택": [
+            {
+                tit: "주거용 공간",
+                sub: "단독 또는 연립주택입니다.",
+            },
+            {
+                tit: "통나무집",
+                sub: "목재 등의 천연 재료로 자연 속에 지은 집입니다.",
+            },
+            {
+                tit: "저택",
+                sub: "널찍한 실내외 공간, 정원, 수영장 등을 갖춘 고급 주택입니다.",
+            },
+            {
+                tit: "타운하우스",
+                sub: "연립주택으로 공용 벽과 야외 공간이 있을 수 있습니다.",
+            },
+            {
+                tit: "전원주택",
+                sub: "시골이나 호숫가, 해변가에 지어진 아담한 주택입니다.",
+            },
+            {
+                tit: "방갈로",
+                sub: "넓은 현관과 박공 지붕을 갖춘 단층 주택입니다.",
+            },
+            {
+                tit: "복토 주택",
+                sub: "땅속에 짓거나 흙 등의 재료로 만든 집을 말합니다.",
+            },
+            {
+                tit: "하우스보트",
+                sub: "주거용을 사용할 수 있는 배를 비롯한 수상 가옥을 말합니다.",
+            },
+            {
+                tit: "오두막",
+                sub: "짚을 엮어 만든 지붕처럼 나무나 진흙을 재료로 만든 집을 말합니다.",
+            },
+            {
+                tit: "농장 체험 숙소",
+                sub: "농촌에 있는 숙소로, 게스트가 동물과 교감하거나 등산, 수공예 등의 활동을 즐길 수 있는 곳입니다.",
+            },
+            {
+                tit: "돔하우스",
+                sub: "지붕이 돔 형태로 되어 있거나 전체가 완전히 구 형태로 이루어진 집입니다.",
+            },
+            {
+                tit: "키클라데스 주택",
+                sub: "그리스 키클라데스 섬에서 볼 수 있는 새하얀 가옥으로, 평평한 지붕을 갖추고 있습니다.",
+            },
+            {
+                tit: "샬레",
+                sub: "스키 또는 여름 휴가용으로 인기 있으며 박공 지붕을 갖춘 목조 주택을 의미합니다.",
+            },
+            {
+                tit: "담무소",
+                sub: "판텔레리아 섬에 있는 돌로 만든 주택으로, 돔 지붕을 갖추고 있습니다. ",
+            },
+            {
+                tit: "등대",
+                sub: "배를 안내하기 위해 밝은 빛을 비추는 수변 탑을 의미합니다.",
+            },
+            {
+                tit: "마차",
+                sub: "양치기가 양을 몰면서 주거용으로 사용한 작은 화차를 의미합니다.",
+            },
+            {
+                tit: "초소형 주택",
+                sub: "37제곱미터(400제곱피트) 이하의 단독 주택을 말합니다.",
+            },
+            {
+                tit: "트룰로",
+                sub: "이탈리아에서 유래된 둥근 형태의 석조 주택으로, 원뿔 모양의 지붕을 하고 있습니다.",
+            },
+            {
+                tit: "카사 파르티쿨라르",
+                sub: "B&B와 비슷한 쿠바 숙소로, 호스트가 거주하는 집 안 개인실을 의미합니다.",
+            },
+            {
+                tit: "펜션",
+                sub: "한국 시골에 자리한 숙소로 바비큐 시설과 공용 공간을 갖추고 있습니다.",
+            },
+        ],
+        "별채": [
+            {
+                tit: "게스트용 별채",
+                sub: "본채와 필지를 공유하지만 따로 떨어져있는 건물을 의미합니다.",
+            },
+            {
+                tit: "게스트 스위트",
+                sub: "더 큰 구조물의 안에 있거나 나란히 붙어 있는 별도의 공간으로 전용",
+            },
+            {
+                tit: "농장 체험 숙소",
+                sub: "농촌에 있는 숙소로, 게스트가 동물과 교감하거나 등산, 수공예 등의",
+            },
+        ],
+        "독특한 숙소": [
+            {
+                tit: "헛간",
+                sub: "곡물, 가축, 농기구를 저장하는 곳에서 주거용으로 개조된 공간을 의미합니다.",
+            },
+            {
+                tit: "보트",
+                sub: "숙박 기간 동안 정박 중인 배, 보트, 요트로, 하우스보트와는 다릅니다.",
+            },
+            {
+                tit: "버스",
+                sub: "내부를 독창저긍로 개조한 다인승 차량입니다.",
+            },
+            {
+                tit: "캠핑카",
+                sub: "집과 차량의 중간 형태를 띤 주거용 차량이나 캠핑 트레일러를 말합니다.",
+            },
+            {
+                tit: "트리하우스",
+                sub: "나무 몸통이나 가지에 지어진 숙소입니다.",
+            },
+            {
+                tit: "섬",
+                sub: "사방이 물로 둘러싸인 땅을 말합니다.",
+            },
+            {
+                tit: "펜션",
+                sub: "한국 시골에 자리한 숙소로 바비큐 시설과 공용 공간을 갖추고 있습니다.",
+            },
+        ],
+        "B&B": [
+            {
+                tit: "B&B",
+                sub: "호스트가 상주하며 아침 식사를 제공하는 숙박업체입니다.",
+            },
+            {
+                tit: "산장",
+                sub: "숲이나 산 등 자연 가까이 자리한 숙박업체입니다.",
+            },
+            {
+                tit: "농장 체험 숙소",
+                sub: "농촌에 있는 숙소로, 게스트가 동물과 교감하거나 등산, 수공예 등의 활동을 즐길 수 있는 곳입니다.",
+            },
+            {
+                tit: "료칸",
+                sub: "독특한 일본 문활르 경험할 수 있는 작은 여관을 말합니다.",
+            },
+        ],
+        "부티크 호텔": [
+            {
+                tit: "호텔",
+                sub: "개인실, 스위트룸 또는 독특한 공간을 제공하는 숙박업체입니다.",
+            },
+            {
+                tit: "호스텔",
+                sub: "다인실이나 개인실을 제공하는 숙박업체입니다.",
+            },
+            {
+                tit: "리조트",
+                sub: "호텔보다 더 많은 편의시설과 서비스를 제공하는 숙박업체입니다.",
+            },
+            {
+                tit: "아파트 호텔",
+                sub: "호텔 같은 편의시설과 객실을 갖춘 공간으로, 아파트와 비슷합니다.",
+            },
+            {
+                tit: "레지던스",
+                sub: "전문 관리업체가 운영하는 아파트로, 호텔 같은 편의시설을 갖추고 있습니다.",
+            },
+        ],
+    }
+
+    const roomConvenience = {
+        "special": [
+            "수영장", "자쿠지", "파티오", "바비큐 그릴", "화덕", "당구대", "실내 벽난로", "야외 식사 공간", "운동 기구"
+        ],
+        "popular": [
+            "무선 인터넷", "TV", "주방", "세탁기", "건물 내 무료 주차", "건물 내 유료 주차", "에어컨", "업무 전용 공간", "야외 샤워 시설"
+        ],
+        "safe": [
+            "화재경보기", "구급 상자", "일산화탄소 경보기", "소화기"
+        ],
+    }
 
 
     return (
@@ -68,27 +356,27 @@ const BecomeHostPage = () => {
                         </div>
                         <div className="host_stage_body">
                             <div className="stage1_list">
-                                <div className={stage1 === 0 ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1(0)}>
+                                <div className={stage1 === "아파트" ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1("아파트")}>
                                     <div className="s1_tit">아파트</div>
                                     <img src="/images/become_host/stage1/room1.png" alt="" />
                                 </div>
-                                <div className={stage1 === 1 ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1(1)}>
+                                <div className={stage1 === "주택" ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1("주택")}>
                                     <div className="s1_tit">주택</div>
                                     <img src="/images/become_host/stage1/room2.png" alt="" />
                                 </div>
-                                <div className={stage1 === 2 ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1(2)}>
+                                <div className={stage1 === "별채" ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1("별채")}>
                                     <div className="s1_tit">별채</div>
                                     <img src="/images/become_host/stage1/room3.png" alt="" />
                                 </div>
-                                <div className={stage1 === 3 ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1(3)}>
+                                <div className={stage1 === "독특한 숙소" ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1("독특한 숙소")}>
                                     <div className="s1_tit">독특한 숙소</div>
                                     <img src="/images/become_host/stage1/room4.png" alt="" />
                                 </div>
-                                <div className={stage1 === 4 ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1(4)}>
+                                <div className={stage1 === "B&B" ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1("B&B")}>
                                     <div className="s1_tit">B&B</div>
                                     <img src="/images/become_host/stage1/room5.png" alt="" />
                                 </div>
-                                <div className={stage1 === 5 ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1(5)}>
+                                <div className={stage1 === "부티크 호텔" ? "s1_opt stage1_on" : "s1_opt"} onClick={() => setStage1("부티크 호텔")}>
                                     <div className="s1_tit">부티크 호텔</div>
                                     <img src="/images/become_host/stage1/room6.png" alt="" />
                                 </div>
@@ -116,20 +404,14 @@ const BecomeHostPage = () => {
                         </div>
                         <div className="host_stage_body">
                             <div className="stage2_list">
-                                <div className={stage2 === 0 ? "s2_opt stage2_on" : "s2_opt"} onClick={() => setStage2(0)}>
-                                    <div className="s2_tit">게스트용 별채</div>
-                                    <div className="s2_sub">본채와 필지를 공유하지만 따로 떨어져있는 건물을 의미합니다.</div>
-                                </div>
-                                <div className={stage2 === 1 ? "s2_opt stage2_on" : "s2_opt"} onClick={() => setStage2(1)}>
-                                    <div className="s2_tit">게스트 스위트</div>
-                                    <div className="s2_sub">더 큰 구조물의 안에 있거나 나란히 붙어 있는 별도의 공간으로 전용<br />출입구를 갖추고 있습니다.</div>
-
-                                </div>
-                                <div className={stage2 === 2 ? "s2_opt stage2_on" : "s2_opt"} onClick={() => setStage2(2)}>
-                                    <div className="s2_tit">농장 체험 숙소</div>
-                                    <div className="s2_sub">농촌에 있는 숙소로, 게스트가 동물과 교감하거나 등산, 수공예 등의<br />활동을 즐길 수 있는 곳입니다.</div>
-
-                                </div>
+                                {
+                                    roomDesc[stage1].map((v, idx) => (
+                                        <div key={idx} className={stage2 === v.tit ? "s2_opt stage2_on" : "s2_opt"} onClick={() => setStage2(v.tit)}>
+                                            <div className="s2_tit">{v.tit}</div>
+                                            <div className="s2_sub">{v.sub}</div>
+                                        </div>
+                                    ))
+                                }
                             </div>
                             <div className="btn">
                                 <div className="beforeBtn" onClick={() => setCurStage(1)}>뒤로</div>
@@ -154,13 +436,13 @@ const BecomeHostPage = () => {
                         </div>
                         <div className="host_stage_body">
                             <div className="stage3_list">
-                                <div className={stage3 === 0 ? "s3_opt stage3_on" : "s3_opt"} onClick={() => setStage3(0)}>
+                                <div className={stage3 === "공간 전체" ? "s3_opt stage3_on" : "s3_opt"} onClick={() => setStage3("공간 전체")}>
                                     <div className="s3_tit">공간 전체</div>
                                 </div>
-                                <div className={stage3 === 1 ? "s3_opt stage3_on" : "s3_opt"} onClick={() => setStage3(1)}>
+                                <div className={stage3 === "개인실" ? "s3_opt stage3_on" : "s3_opt"} onClick={() => setStage3("개인실")}>
                                     <div className="s3_tit">개인실</div>
                                 </div>
-                                <div className={stage3 === 2 ? "s3_opt stage3_on" : "s3_opt"} onClick={() => setStage3(2)}>
+                                <div className={stage3 === "다인실" ? "s3_opt stage3_on" : "s3_opt"} onClick={() => setStage3("다인실")}>
                                     <div className="s3_tit">다인실</div>
                                 </div>
                             </div>
@@ -188,7 +470,7 @@ const BecomeHostPage = () => {
                         <div className="host_stage_body">
                             <div className="locationBar">
                                 <LocationOnIcon />
-                                <input placeholder="주소를 입력하세요." />
+                                <input placeholder="주소를 입력하세요." name="location" value={stage4} onChange={onChangeLocation} />
                             </div>
 
                             <div className="btn">
@@ -217,33 +499,33 @@ const BecomeHostPage = () => {
                                 <div className="s5_opt">
                                     <div className="s5_tit">게스트</div>
                                     <div className="s5_ctrl">
-                                        <RemoveIcon onClick={minusGuest} />
-                                        <div>{guest}</div>
-                                        <AddIcon onClick={plusGuest} />
+                                        <RemoveIcon onClick={minusCapacity} />
+                                        <div>{roomCapacity}</div>
+                                        <AddIcon onClick={plusCapacity} />
                                     </div>
                                 </div>
                                 <div className="s5_opt">
                                     <div className="s5_tit">침대</div>
                                     <div className="s5_ctrl">
                                         <RemoveIcon onClick={minusBed} />
-                                        <div>{bed}</div>
+                                        <div>{roomBed}</div>
                                         <AddIcon onClick={plusBed} />
                                     </div>
                                 </div>
                                 <div className="s5_opt">
                                     <div className="s5_tit">침실</div>
                                     <div className="s5_ctrl">
-                                        <RemoveIcon onClick={minusRoom} />
-                                        <div>{room}</div>
-                                        <AddIcon onClick={plusRoom} />
+                                        <RemoveIcon onClick={minusBedroom} />
+                                        <div>{roomBedroom}</div>
+                                        <AddIcon onClick={plusBedroom} />
                                     </div>
                                 </div>
                                 <div className="s5_opt">
                                     <div className="s5_tit">욕실</div>
                                     <div className="s5_ctrl">
-                                        <RemoveIcon onClick={minusBath} />
-                                        <div>{bath}</div>
-                                        <AddIcon onClick={plusBath} />
+                                        <RemoveIcon onClick={minusBathroom} />
+                                        <div>{roomBathroom}</div>
+                                        <AddIcon onClick={plusBathroom} />
                                     </div>
                                 </div>
                             </div>
@@ -273,38 +555,31 @@ const BecomeHostPage = () => {
                                 <div className="s6_opt">
                                     <div className="s6_tit">특별히 내세울 만한 편의시설이 있나요?</div>
                                     <div className="s6_sub">
-                                        <div>수영장</div>
-                                        <div>자쿠지</div>
-                                        <div>파티오</div>
-                                        <div>바비큐 그릴</div>
-                                        <div>화덕</div>
-                                        <div>당구대</div>
-                                        <div>실내 벽난로</div>
-                                        <div>야외 식사 공간</div>
-                                        <div>운동 기구</div>
+                                        {
+                                            roomConvenience["special"].map((v, idx) => (
+                                                <div key={idx} className={stage6.includes(v) ? "stage6_on" : ""} onClick={() => onToggleRoomConv(v)}>{v}</div>
+                                            ))
+                                        }
                                     </div>
                                 </div>
                                 <div className="s6_opt">
                                     <div className="s6_tit">다음 인기 편의시설이 있나요?</div>
                                     <div className="s6_sub">
-                                        <div>무선 인터넷</div>
-                                        <div>TV</div>
-                                        <div>주방</div>
-                                        <div>세탁기</div>
-                                        <div>건물 내 무료 주차</div>
-                                        <div>건물 내 유료 주차</div>
-                                        <div>에어컨</div>
-                                        <div>업무 전용 공간</div>
-                                        <div>야외 샤워 시설</div>
+                                        {
+                                            roomConvenience["popular"].map((v, idx) => (
+                                                <div key={idx} className={stage6.includes(v) ? "stage6_on" : ""} onClick={() => onToggleRoomConv(v)}>{v}</div>
+                                            ))
+                                        }
                                     </div>
                                 </div>
                                 <div className="s6_opt">
                                     <div className="s6_tit">다음 안전 물품이 있나요?</div>
                                     <div className="s6_sub">
-                                        <div>화재경보기</div>
-                                        <div>구급 상자</div>
-                                        <div>일산화탄소 경보기</div>
-                                        <div>소화기</div>
+                                        {
+                                            roomConvenience["safe"].map((v, idx) => (
+                                                <div key={idx} className={stage6.includes(v) ? "stage6_on" : ""} onClick={() => onToggleRoomConv(v)}>{v}</div>
+                                            ))
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -358,7 +633,7 @@ const BecomeHostPage = () => {
                             <div className="stage8_list">
                                 <div className="s8_tit">숙소 이름 정하기</div>
                                 <div className="s8_sub">
-                                    <textarea placeholder="Bongcheong-dong, Gwanak-gu의 아늑한 게스트 스위트" />
+                                    <textarea placeholder="Bongcheong-dong, Gwanak-gu의 아늑한 게스트 스위트" value={roomName} onChange={onChangeRoomName} />
                                 </div>
                             </div>
                             <div className="btn">
@@ -384,14 +659,14 @@ const BecomeHostPage = () => {
                         </div>
                         <div className="host_stage_body">
                             <div className="stage9_list">
-                                <div className="s9_tit">숙소 이름 정하기</div>
+                                <div className="s9_tit">숙소 설명 작성하기</div>
                                 <div className="s9_sub">
-                                    <textarea placeholder="편안함을 자랑하는 이곳에서 즐거운 시간을 보내실 수 있을 것입니다." />
+                                    <textarea value={roomDetailInfo} onChange={onChangeRoomDetailInfo} placeholder="편안함을 자랑하는 이곳에서 즐거운 시간을 보내실 수 있을 것입니다." />
                                 </div>
                             </div>
                             <div className="btn">
                                 <div className="beforeBtn" onClick={() => setCurStage(8)}>뒤로</div>
-                                <div className="nextBtn" onClick={() => setCurStage(10)}>다음</div>
+                                <div className="nextBtn" onClick={() => { setCurStage(10); onStoreRoomInfo(); }}>다음</div>
                             </div>
                             <Link to="/host/homes" className="exitBtn">나가기</Link>
                         </div>
@@ -413,7 +688,7 @@ const BecomeHostPage = () => {
                         <div className="host_stage_body">
                             <div className="stage10_list">
                                 <div className="s10_sub">
-                                    <input type="number" placeholder="₩ 00" />
+                                    <input value={roomPrice} onChange={onChangePrice} type="number" placeholder="₩ 00" />
                                     <div>/박</div>
                                 </div>
                             </div>
@@ -421,7 +696,7 @@ const BecomeHostPage = () => {
                                 <div className="beforeBtn" onClick={() => setCurStage(9)}>뒤로</div>
 
                                 {/* 임시로 숙소 저장하기 클릭시 localSTorage에 키 값 저장하기 */}
-                                <div className="nextBtn stress" onClick={() => { setCurStage(11); localStorage.setItem('HOST_ACCESS_TOKEN', 'abcdefg'); }}>숙소 저장하기</div>
+                                <div className="nextBtn stress" onClick={onClickRegisterRoom}>숙소 저장하기</div>
                             </div>
                             <Link to="/host/homes" className="exitBtn">나가기</Link>
                         </div>

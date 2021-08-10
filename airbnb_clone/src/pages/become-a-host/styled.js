@@ -213,7 +213,8 @@ export const HostStageBox = styled.div`
         }
         .stage2_list{
             width:70%;
-            /* height:70%; */
+            height:70%;
+            overflow-y :scroll;
 
             .s2_opt{
                 text-align:left;
@@ -361,6 +362,11 @@ export const HostStageBox = styled.div`
                             border:1px solid black;
                         }
                     }
+                    .stage6_on{  
+                        background:#dddddd;
+                        border:1px solid black;
+                    }
+                    
                 }
             }
             
