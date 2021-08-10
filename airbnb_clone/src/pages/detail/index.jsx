@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from '../../components/common/footer';
 import Header from '../../components/common/Header';
 import { RoomDetailBox, RoomDetailHeader, RoomDetailImgBox, RoomDetailContent, RoomHosterInfo, RoomAboutInfo, RoomDetailInfo, RoomPlace, RoomFacility, RoomCheckIn, ReservationBox, CommentBox, HostingMap } from './styled';
@@ -8,8 +8,26 @@ import ShareIcon from '@material-ui/icons/Share';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 
-const RoomDetailPage = ({ history }) => {
+const RoomDetailPage = ({ history, match }) => {
+    const [roomIdx, setRoomIdx] = useState(null);
+    const [roomDetailInfo, setRoomDetailInfo] = useState(null);
+
+    useEffect(() => {
+        setRoomIdx(match.params.roomId);
+    }, [match.params.roomId]);
+
+    useEffect(() => {
+        const onLoadRoom = async () => {
+            const response = await axios.get(`https://dev.rodin.club/rooms/${roomIdx}`);
+            console.log(response.data);
+            setRoomDetailInfo(response.data.result);
+        }
+
+        roomIdx && onLoadRoom();
+    }, [roomIdx]);
+
     const room = {
         imgURL: ["/images/local/area/area1.png",
             "/images/local/area/area2.png",
@@ -78,22 +96,23 @@ const RoomDetailPage = ({ history }) => {
             <Header detail />
             <div className="RoomDetailBody">
                 <RoomDetailHeader>
-                    <div className="roomHeaderTit">{room.moto}</div>
+                    <div className="roomHeaderTit">{roomDetailInfo.roomName}</div>
                     <div className="roomHeaderBody">
                         <div className="roomHeaderInfo">
                             <div>
                                 <StarRateIcon className="stress" />
-                                <div className="grade">{room.star} <span className="comments">(후기 {room.comments}개)</span></div>
+                                {/* <div className="grade">{room.star} <span className="comments">(후기 {room.comments}개)</span></div> */}
+                                <div className="grade">0.00 <span className="comments">(후기 0개)</span></div>
                             </div>
                             <div>∙</div>
                             <div>
                                 <PersonIcon className="stress" />
-                                <div>{room.hoster.grade}</div>
+                                {/* <div>{room.hoster.grade}</div> */}
+                                <div>일반호스트</div>
                             </div>
                             <div>∙</div>
-                            <div className="locate">{room.location}</div>
+                            <div className="locate">{roomDetailInfo.roomLocation}</div>
                         </div>
-
 
                         <div className="accessBtn">
                             <div className="share btn">
@@ -109,23 +128,25 @@ const RoomDetailPage = ({ history }) => {
                 </RoomDetailHeader>
                 <RoomDetailImgBox>
                     <div className="mainImg">
-                        <img src={room.imgURL[0]} alt="" />
+                        {/* <img src={room.imgURL[0]} alt="" /> */}
+                        <img src={roomDetailInfo.roomImageUrl} alt="" />
                     </div>
                     <div className="subImg">
                         <div className="subImg_upper">
-                            <img src={room.imgURL[1]} alt="" />
-                            <img src={room.imgURL[2]} alt="" />
+                            {/* <img src={room.imgURL[0]} alt="" /> */}
+                            <img src={roomDetailInfo.roomImageUrl} alt="" />
+                            <img src={roomDetailInfo.roomImageUrl} alt="" />
                         </div>
                         <div className="subImg_under">
-                            <img src={room.imgURL[3]} alt="" />
-                            <img src={room.imgURL[4]} alt="" />
+                            <img src={roomDetailInfo.roomImageUrl} alt="" />
+                            <img src={roomDetailInfo.roomImageUrl} alt="" />
                         </div>
                     </div>
                 </RoomDetailImgBox>
                 <RoomDetailContent>
                     <div className="content">
                         <RoomHosterInfo>
-                            <div className="hosterInfo">{room.hoster.name}님이 호스팅하는 공동 주택 전체</div>
+                            <div className="hosterInfo">{room.hoster.name}님이 호스팅하는 {roomDetailInfo.roomKind} 전체</div>
                             <div className="roomInfo">{room.info[0]}</div>
                         </RoomHosterInfo>
                         <RoomAboutInfo>
