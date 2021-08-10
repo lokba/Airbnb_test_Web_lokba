@@ -8,6 +8,7 @@ import HostPage from "../pages/host";
 import HostingPage from "../pages/hosting";
 import LocalSearchPage from "../pages/local";
 import NoMatchPage from "../pages/noMatch";
+import ProfilePage from "../pages/profile";
 import TravelSearchPage from "../pages/travel";
 
 
@@ -25,6 +26,7 @@ const RootRoute = () => {
                 <Route path='/host/homes' component={HostPage} exact />
                 <Route path='/become-a-host' component={BecomeHostPage} exact />
                 <Route path='/hosting' component={HostingPage} exact />
+                <Route path='/profile' component={ProfilePage} exact />
                 {/* 경료가 유효하지 않을 때 */}
                 <Route path='*' component={NoMatchPage} />
             </Switch>
