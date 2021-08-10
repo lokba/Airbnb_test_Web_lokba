@@ -117,7 +117,7 @@ const SignModal = ({
                                 <div className="notice">아래의 <em>동의 및 계속하기 버튼</em>을 선택하면, 에어비앤비의 <span>서비스 약관, 결제 서비스 약관, 개인정보 처리방침, 차별 금지 정책</span>에 동의하는 것입니다.</div>
                             </div>
                             {/* 우선은 일단 모달창 닫는걸로 구현 */}
-                            <SubmitButton onClick={() => { onClickSignUpBtn(); onCloseModal(); localStorage.setItem("ACCESS_TOKEN", "TEST_ACCESS_TOKEN"); }}>동의 및 계속하기</SubmitButton>
+                            <SubmitButton onClick={() => { onClickSignUpBtn(); onCloseModal(); }}>동의 및 계속하기</SubmitButton>
                         </div>
                     </div>
                 )

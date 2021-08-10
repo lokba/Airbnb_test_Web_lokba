@@ -46,6 +46,10 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting 
             setError("*이메일이 필요합니다.");
         }
         else {
+
+            const checkEail = async () => {
+
+            }
             setSignStage(4);
             setError(false);
         }
@@ -57,9 +61,10 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting 
         setError(false);
     }
 
+
+
     useEffect(() => {
         const header = document.querySelector('.headerBox');
-
         if (header) {
             if (match.url === '/') {
                 window.addEventListener('scroll', () => {
