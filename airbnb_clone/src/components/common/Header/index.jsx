@@ -10,7 +10,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { getUserId } from '../../../store/userInfo';
 
-const Header = ({ match, flex_search, local_area, travel, detail, book, hosting }) => {
+const Header = ({ match, flex_search, local_area, travel, detail, book, hosting, hostPage }) => {
 
     const [onProfile, setOnProfile] = useState(false);
     const [signModal, setSignModal] = useState(false);
@@ -152,7 +152,6 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting 
                 window.addEventListener('scroll', () => {
                     if (window.pageYOffset >= 0 && window.pageYOffset < 58) {
                         const top = 58 - `${window.pageYOffset}`;
-
                         header.style.top = `${top}px`;
                     }
                     else {

@@ -28,8 +28,7 @@ const BookPage = ({ history, match }) => {
 
     useEffect(() => {
         setDay(Number(checkout.split("-").join("")) - Number(checkin.split("-").join("")));
-    }, [])
-
+    }, [checkin, checkout])
 
 
     useEffect(() => {
@@ -48,10 +47,9 @@ const BookPage = ({ history, match }) => {
         return insertDot(str.slice(0, str.length - 3)) + ',' + str.slice(str.length - 3);
     }
 
-
-    // useEffect(() => {
-    //     window.scrollTo(0,0);
-    // }, []);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const room = {
         imgURL: ["/images/local/area/area1.png",
