@@ -106,9 +106,9 @@ const RoomDetailPage = ({ history, match }) => {
         ]
     };
 
-    // useEffect(() => {
-    //     window.scrollTo(0, 0);
-    // }, [])
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     // const reserveBox = document.querySelector(".reservation");
 
@@ -309,11 +309,10 @@ const RoomDetailPage = ({ history, match }) => {
                                                             <button name="baby" onClick={(e) => onClickPlus(e)}>+</button>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="reserveBtn" onClick={() => history.push(`/ book / ${room.roomId}`)}>예약 가능 여부 보기</div>
+                                        <div className="reserveBtn" onClick={() => history.push(`/book/${roomIdx}`)}>예약 가능 여부 보기</div>
                                     </ReservationBox>
                                 </div>
                             </RoomDetailContent>
@@ -484,10 +483,6 @@ const RoomDetailPage = ({ history, match }) => {
                                         <div className="seeAllBtn">편의시설 35개 모두 보기</div>
                                     </div>
                                 </RoomFacility>
-                                <RoomCheckIn>
-                                    <div className="tit">체크인 날짜를 선택해주세요.</div>
-                                    <div className="sub">여행 날짜를 입력하여 정확한 요금을 확인하세요.</div>
-                                </RoomCheckIn>
                             </div>
                             <div className="reservation">
                                 <ReservationBox>

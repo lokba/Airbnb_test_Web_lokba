@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Footer from '../../components/common/footer';
 import Header from '../../components/common/Header';
 import HostingHeader from '../../components/common/HostingHeader';
 import { HostingPageBox, MethodSection, ReserveSection, TodaySection } from './styled';
 
 const HostingPage = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     return (
         <HostingPageBox>
             <HostingHeader />
