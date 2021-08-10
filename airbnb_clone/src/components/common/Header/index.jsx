@@ -7,6 +7,8 @@ import { Link, withRouter } from 'react-router-dom';
 import SignModal from '../sign';
 import SignUpModal from '../signUpModal';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { getUserId } from '../../../store/userInfo';
 
 const Header = ({ match, flex_search, local_area, travel, detail, book, hosting }) => {
 
@@ -28,6 +30,9 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting 
         BDay: "",
         password: "",
     });
+
+    const dispatch = useDispatch();
+
 
     const initSignForm = () => {
         setSignForm({
@@ -93,6 +98,7 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting 
                 //성공적으로 되었을 때
                 if (response.data.code === 1000) {
                     localStorage.setItem('ACCESS_TOKEN', response.data.result.jwt);
+                    dispatch(getUserId(response.data.result.userIdx));
                     setSignModal(false);
                     setCheckLogin(true);
                     initSignForm();
