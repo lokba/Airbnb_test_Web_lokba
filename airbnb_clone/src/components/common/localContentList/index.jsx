@@ -107,8 +107,8 @@ const LocalContentList = ({ areas, rooms }) => {
                                         <StarRateIcon />
                                         {/* <div className="star">{area.star}</div> */}
                                         {/* <div className="comment">(후기 {area.comments}개)</div> */}
-                                        <div className="star">0.00</div>
-                                        <div className="comment">(후기 0개)</div>
+                                        <div className="star">5.00</div>
+                                        <div className="comment">(후기 6개)</div>
                                     </div>
                                     <div className="heart">
                                         {/* {
