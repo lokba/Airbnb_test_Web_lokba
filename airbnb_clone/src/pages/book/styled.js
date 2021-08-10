@@ -25,7 +25,7 @@ export const BookPageHeader = styled.div`
         justify-content:center;
         margin-right:15px;
         border-radius:50%;
-
+        color:black;
         svg{
             width:30px;
             height:30px;
