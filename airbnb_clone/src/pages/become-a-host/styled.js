@@ -362,6 +362,11 @@ export const HostStageBox = styled.div`
                             border:1px solid black;
                         }
                     }
+                    .stage6_on{  
+                        background:#dddddd;
+                        border:1px solid black;
+                    }
+                    
                 }
             }
             

@@ -4,11 +4,10 @@ import { Link, withRouter } from 'react-router-dom';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 const BecomeHostPage = () => {
-
-    const dispatch = useDispatch();
     const { userIdx } = useSelector(({ userInfo }) => ({
         userIdx: userInfo.userIdx,
     }));
@@ -22,10 +21,36 @@ const BecomeHostPage = () => {
         setStage4(e.target.value);
     }
 
-    const [stage6, setStage6] = useState(null);
+    const [stage6, setStage6] = useState([]);
+
+    const onToggleRoomConv = (str) => {
+        if (!stage6.includes(str)) {
+            setStage6(stage6.concat(str))
+        }
+        else {
+            setStage6(stage6.filter(v => v !== str));
+        }
+    }
 
     const [curStage, setCurStage] = useState(null);
 
+    const [roomName, setRoomName] = useState("");
+    const [roomDetailInfo, setRoomDetailInfo] = useState("");
+
+    const onChangeRoomName = (e) => {
+        setRoomName(e.target.value);
+    }
+    const onChangeRoomDetailInfo = (e) => {
+        setRoomDetailInfo(e.target.value)
+    }
+
+    const [roomPrice, setRoomPrice] = useState(0);
+
+    const onChangePrice = (e) => {
+        setRoomPrice(e.target.value);
+
+        setRoomInfo({ ...roomInfo, roomPrice: e.target.value });
+    }
 
     const [roomCapacity, setRoomCapacity] = useState(1);
     const [roomBed, setRoomBed] = useState(1);
@@ -44,9 +69,6 @@ const BecomeHostPage = () => {
     const plusBathroom = () => setRoomBathroom(roomBathroom + 1);
     const minusBathroom = () => roomBathroom !== 1 && setRoomBathroom(roomBathroom - 1);
 
-
-    console.log(stage1, stage2, stage3, stage4, roomCapacity, roomBed, roomBedroom, roomBathroom);
-
     const [roomInfo, setRoomInfo] = useState({
         roomLocation: null,
         roomCapacity: null,
@@ -58,12 +80,43 @@ const BecomeHostPage = () => {
         roomDesc: null,
         roomKind: null,
         roomConvenient: null,
-        roomImageUrl: null,
+        roomImageUrl: "test1",
         roomName: null,
         roomInfo: null,
-        roomUploadUser_Idx: userIdx
+        roomUploadUser: userIdx
     });
 
+    const onStoreRoomInfo = () => {
+        setRoomInfo({
+            ...roomInfo,
+            roomType: stage1,
+            roomDesc: stage2,
+            roomKind: stage3,
+            roomLocation: stage4,
+            roomCapacity,
+            roomBed,
+            roomBedroom,
+            roomBathroom,
+            roomConvenient: stage6.join(', '),
+            roomName,
+            roomInfo: roomDetailInfo,
+        })
+    }
+
+    const onClickRegisterRoom = () => {
+        localStorage.setItem('HOST_ACCESS_TOKEN', 'abcdefg');
+
+        const headers = {
+            "x-access-token": localStorage.getItem("ACCESS_TOKEN")
+        }
+
+        const registerRoom = async () => {
+            const response = await axios.post('https://dev.rodin.club/rooms', roomInfo, { headers });
+
+            response.data.isSuccess && setCurStage(11);
+        }
+        registerRoom();
+    }
     const roomDesc = {
         "아파트": [
             {
@@ -503,8 +556,8 @@ const BecomeHostPage = () => {
                                     <div className="s6_tit">특별히 내세울 만한 편의시설이 있나요?</div>
                                     <div className="s6_sub">
                                         {
-                                            roomConvenience["special"].map(v => (
-                                                <div>{v}</div>
+                                            roomConvenience["special"].map((v, idx) => (
+                                                <div key={idx} className={stage6.includes(v) ? "stage6_on" : ""} onClick={() => onToggleRoomConv(v)}>{v}</div>
                                             ))
                                         }
                                     </div>
@@ -513,8 +566,8 @@ const BecomeHostPage = () => {
                                     <div className="s6_tit">다음 인기 편의시설이 있나요?</div>
                                     <div className="s6_sub">
                                         {
-                                            roomConvenience["popular"].map(v => (
-                                                <div>{v}</div>
+                                            roomConvenience["popular"].map((v, idx) => (
+                                                <div key={idx} className={stage6.includes(v) ? "stage6_on" : ""} onClick={() => onToggleRoomConv(v)}>{v}</div>
                                             ))
                                         }
                                     </div>
@@ -523,8 +576,8 @@ const BecomeHostPage = () => {
                                     <div className="s6_tit">다음 안전 물품이 있나요?</div>
                                     <div className="s6_sub">
                                         {
-                                            roomConvenience["safe"].map(v => (
-                                                <div>{v}</div>
+                                            roomConvenience["safe"].map((v, idx) => (
+                                                <div key={idx} className={stage6.includes(v) ? "stage6_on" : ""} onClick={() => onToggleRoomConv(v)}>{v}</div>
                                             ))
                                         }
                                     </div>
@@ -580,7 +633,7 @@ const BecomeHostPage = () => {
                             <div className="stage8_list">
                                 <div className="s8_tit">숙소 이름 정하기</div>
                                 <div className="s8_sub">
-                                    <textarea placeholder="Bongcheong-dong, Gwanak-gu의 아늑한 게스트 스위트" />
+                                    <textarea placeholder="Bongcheong-dong, Gwanak-gu의 아늑한 게스트 스위트" value={roomName} onChange={onChangeRoomName} />
                                 </div>
                             </div>
                             <div className="btn">
@@ -606,14 +659,14 @@ const BecomeHostPage = () => {
                         </div>
                         <div className="host_stage_body">
                             <div className="stage9_list">
-                                <div className="s9_tit">숙소 이름 정하기</div>
+                                <div className="s9_tit">숙소 설명 작성하기</div>
                                 <div className="s9_sub">
-                                    <textarea placeholder="편안함을 자랑하는 이곳에서 즐거운 시간을 보내실 수 있을 것입니다." />
+                                    <textarea value={roomDetailInfo} onChange={onChangeRoomDetailInfo} placeholder="편안함을 자랑하는 이곳에서 즐거운 시간을 보내실 수 있을 것입니다." />
                                 </div>
                             </div>
                             <div className="btn">
                                 <div className="beforeBtn" onClick={() => setCurStage(8)}>뒤로</div>
-                                <div className="nextBtn" onClick={() => setCurStage(10)}>다음</div>
+                                <div className="nextBtn" onClick={() => { setCurStage(10); onStoreRoomInfo(); }}>다음</div>
                             </div>
                             <Link to="/host/homes" className="exitBtn">나가기</Link>
                         </div>
@@ -635,7 +688,7 @@ const BecomeHostPage = () => {
                         <div className="host_stage_body">
                             <div className="stage10_list">
                                 <div className="s10_sub">
-                                    <input type="number" placeholder="₩ 00" />
+                                    <input value={roomPrice} onChange={onChangePrice} type="number" placeholder="₩ 00" />
                                     <div>/박</div>
                                 </div>
                             </div>
@@ -643,7 +696,7 @@ const BecomeHostPage = () => {
                                 <div className="beforeBtn" onClick={() => setCurStage(9)}>뒤로</div>
 
                                 {/* 임시로 숙소 저장하기 클릭시 localSTorage에 키 값 저장하기 */}
-                                <div className="nextBtn stress" onClick={() => { setCurStage(11); localStorage.setItem('HOST_ACCESS_TOKEN', 'abcdefg'); }}>숙소 저장하기</div>
+                                <div className="nextBtn stress" onClick={onClickRegisterRoom}>숙소 저장하기</div>
                             </div>
                             <Link to="/host/homes" className="exitBtn">나가기</Link>
                         </div>
