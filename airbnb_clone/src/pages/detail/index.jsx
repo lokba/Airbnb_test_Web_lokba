@@ -44,15 +44,15 @@ const RoomDetailPage = ({ history, match }) => {
 
     const onMoveBookPage = () => {
         const headCount = document.querySelector(".capacityValue").innerHTML;
-        const checkin = document.querySelector(".checkin_date").value.split("-").join("");
-        const checkout = document.querySelector(".checkout_date").value.split("-").join("");
+        const checkin = document.querySelector(".checkin_date").value;
+        const checkout = document.querySelector(".checkout_date").value;
 
         dispatch(storeCheckInDate(checkin));
         dispatch(storeCheckOutDate(checkout));
         dispatch(storeCapacity(headCount));
 
         history.push(`/book/${roomIdx}`)
-    }
+    };
 
 
     useEffect(() => {

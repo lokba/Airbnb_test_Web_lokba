@@ -21,7 +21,7 @@ const RootRoute = () => {
                 <Route path='/search/local' component={LocalSearchPage} exact />
                 <Route path='/search/travel' component={TravelSearchPage} exact />
                 <Route path='/rooms/:roomId' component={RoomDetailPage} exact />
-                <Route path='/book/:roodId' component={BookPage} exact />
+                <Route path='/book/:roomId' component={BookPage} exact />
                 <Route path='/host/homes' component={HostPage} exact />
                 <Route path='/become-a-host' component={BecomeHostPage} exact />
                 <Route path='/hosting' component={HostingPage} exact />
