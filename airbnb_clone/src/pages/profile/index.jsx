@@ -1,13 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/common/Header';
 import { CommentBox, MyCommentBox, ProfileBox, ProfileInfoBox, ProfilePageBlock } from './styled';
 import VerifiedUserOutlinedIcon from '@material-ui/icons/VerifiedUserOutlined';
 import HomeIcon from '@material-ui/icons/Home';
 import LocalMallIcon from '@material-ui/icons/LocalMall';
 import StarIcon from '@material-ui/icons/Star';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+
 
 const ProfilePage = () => {
     const [openModifyBox, setOpenModifyBox] = useState(false);
+    const [user, setUser] = useState(null);
+    const { userId } = useSelector(({ userInfo }) => ({
+        userId: userInfo.userIdx
+    }))
+
+    useEffect(() => {
+        const headers = {
+            "x-access-token": localStorage.getItem('ACCESS_TOKEN')
+        }
+        const loadUser = async () => {
+            const response = await axios.get(`https://dev.rodin.club/users/${userId}`, { headers });
+            setUser(response.data.result);
+        }
+        loadUser();
+    }, [userId])
+    console.log("user", user);
 
     return (
         <ProfilePageBlock>
@@ -27,8 +46,8 @@ const ProfilePage = () => {
                 </ProfileBox>
                 <ProfileInfoBox>
                     <header>
-                        <div className="title">안녕하세요. 저는 상록입니다.</div>
-                        <div className="register">회원 가입 : 2021</div>
+                        <div className="title">안녕하세요. 저는 {user.userName}입니다.</div>
+                        <div className="register">회원 가입 : {user.createdAt.slice(0, 10)}</div>
                         <u className={openModifyBox && "open"} onClick={() => setOpenModifyBox(true)}>프로필 수정하기</u>
                     </header>
                     <body>
