@@ -13,6 +13,7 @@ const SignModal = ({
     error,
     clickStageTwoBtn,
     setClearSignUp,
+    checkUser,
 }) => {
     const [signForm, setSignForm] = useState({
         email: "",
@@ -39,9 +40,6 @@ const SignModal = ({
 
         signUp();
     }
-
-
-
 
     return (
         <SignBox>

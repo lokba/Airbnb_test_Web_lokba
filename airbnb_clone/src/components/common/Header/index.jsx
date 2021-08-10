@@ -6,6 +6,7 @@ import { IoIosMenu } from "react-icons/io";
 import { Link, withRouter } from 'react-router-dom';
 import SignModal from '../sign';
 import SignUpModal from '../signUpModal';
+import axios from 'axios';
 
 const Header = ({ match, flex_search, local_area, travel, detail, book, hosting }) => {
 
@@ -18,6 +19,8 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting 
     const [checkHost, setCheckHost] = useState(false);
 
     const [clearSignUp, setClearSignUp] = useState(false);
+
+    const [checkUser, setCheckUser] = useState(false);
 
     useEffect(() => {
         localStorage.getItem("ACCESS_TOKEN") ?
@@ -41,16 +44,22 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting 
 
     const clickStageTwoBtn = () => {
         const email = document.querySelector(".email");
+        setCheckUser(false);
 
         if (email.value.length === 0) {
             setError("*이메일이 필요합니다.");
         }
         else {
+            const checkEmail = async () => {
+                const response = await axios.get("https://dev.rodin.club/users");
 
-            const checkEail = async () => {
+                let userInfo = response.data.result.filter(v =>
+                    (v.userEmail === email.value));
 
+                userInfo.length !== 0 ? setSignStage(3) : setSignStage(4);
             }
-            setSignStage(4);
+            checkEmail();
+
             setError(false);
         }
     }
@@ -196,6 +205,7 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting 
                         error={error}
                         clickStageTwoBtn={clickStageTwoBtn}
                         setClearSignUp={setClearSignUp}
+                        checkUser={checkUser}
                     />
                 )
             }
