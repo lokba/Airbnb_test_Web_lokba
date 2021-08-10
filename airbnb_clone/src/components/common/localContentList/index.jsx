@@ -5,6 +5,8 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import StarRateIcon from '@material-ui/icons/StarRate';
 import { Link } from 'react-router-dom';
 
+
+//test
 const LocalContentList = ({ areas, rooms }) => {
     console.log(rooms);
     //한글, 영어 문자열의 바이트 계산하는 함수
