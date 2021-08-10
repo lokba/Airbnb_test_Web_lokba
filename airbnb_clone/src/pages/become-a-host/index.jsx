@@ -4,8 +4,15 @@ import { Link, withRouter } from 'react-router-dom';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
+import { useDispatch, useSelector } from 'react-redux';
 
 const BecomeHostPage = () => {
+
+    const dispatch = useDispatch();
+    const { userIdx } = useSelector(({ userInfo }) => ({
+        userIdx: userInfo.userIdx,
+    }));
+
     const [stage1, setStage1] = useState(null);
     const [stage2, setStage2] = useState(null);
     const [stage3, setStage3] = useState(null);
@@ -32,6 +39,22 @@ const BecomeHostPage = () => {
     const plusBath = () => setBath(bath + 1);
     const minusBath = () => bath !== 1 && setBath(bath - 1);
 
+    const [roomInfo, setRoomInfo] = useState({
+        roomLocation: null,
+        roomCapacity: null,
+        roomBed: null,
+        roomBedroom: null,
+        roomBathroom: null,
+        roomType: null,
+        roomPrice: null,
+        roomDesc: null,
+        roomKind: null,
+        roomConvenient: null,
+        roomImageUrl: null,
+        roomName: null,
+        roomInfo: null,
+        roomUploadUser_Idx: userIdx
+    })
 
     return (
         <BecomeHostBox>
