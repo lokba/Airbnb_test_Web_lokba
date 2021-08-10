@@ -10,7 +10,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { getUserId } from '../../../store/userInfo';
 
-const Header = ({ match, flex_search, local_area, travel, detail, book, hosting, hostPage }) => {
+const Header = ({ match, flex_search, local_area, travel, detail, book, hosting, profile }) => {
 
     const [onProfile, setOnProfile] = useState(false);
     const [signModal, setSignModal] = useState(false);
@@ -178,7 +178,7 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting,
                 <div className="logoTxt">airbnb</div>
             </Link>
             {
-                (flex_search || hosting) ?
+                (flex_search || hosting || profile) ?
                     (
                         <>
                         </>
@@ -248,7 +248,7 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting,
                                                 <Link to="/host/homes">숙소 호스팅 되기</Link>
                                             )
                                     }
-                                    <div>프로필 관리</div>
+                                    <Link to="/profile">프로필 관리</Link>
                                     <span className="bar"></span>
                                     <div className="help">도움말</div>
                                     <div className="logout" onClick={() => { onLogout(); setOnProfile(!onProfile) }}>로그아웃</div>
