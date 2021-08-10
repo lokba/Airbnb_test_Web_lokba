@@ -29,6 +29,14 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting 
         password: "",
     });
 
+    const initSignForm = () => {
+        setSignForm({
+            email: "",
+            name: "",
+            BDay: "",
+            password: "",
+        });
+    }
 
     //회원 가입 api 
     const onClickSignUpBtn = () => {
@@ -37,6 +45,7 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting 
             setClearSignUp(true);
         }
         signUp();
+        initSignForm();
     }
 
     const onChange = (e) => {
@@ -85,6 +94,9 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting 
                 if (response.data.code === 1000) {
                     localStorage.setItem('ACCESS_TOKEN', response.data.result.jwt);
                     setSignModal(false);
+                    setCheckLogin(true);
+                    initSignForm();
+                    setSignStage(1);
                 }
             }
             catch (e) {
@@ -122,6 +134,7 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting 
         setSignModal(false);
         setSignStage(1);
         setError(false);
+        initSignForm();
     }
 
 
