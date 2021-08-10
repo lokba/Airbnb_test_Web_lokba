@@ -5,10 +5,12 @@ import { TravelBox, TravelContent, TravelContentHeader } from './styled';
 import Footer from '../../components/common/footer';
 import Pagination from '../../components/common/pagination ';
 import LocalContentList from '../../components/common/localContentList';
+import axios from 'axios';
 
 
 const TravelSearchPage = ({ location }) => {
     const [area, setArea] = useState(null);
+    const [rooms, setRooms] = useState(null);
 
     useEffect(() => {
         function searchParam(key) {
@@ -20,6 +22,15 @@ const TravelSearchPage = ({ location }) => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+    }, []);
+
+    useEffect(() => {
+        const loadAllRooms = async () => {
+            const response = await axios.get('https://dev.rodin.club/rooms');
+
+            console.log(response.data);
+        };
+        loadAllRooms();
     }, []);
 
     const areas = [
