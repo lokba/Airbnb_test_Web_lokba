@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CloseIcon from '@material-ui/icons/Close';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import InputModel from '../InputBox';
 import { ErrorMessage, SignBox, SubmitButton } from './styled';
-import axios from 'axios';
-import SignUpModal from '../signUpModal';
 
 const SignModal = ({
     signStage,
@@ -12,35 +10,11 @@ const SignModal = ({
     setSignStage,
     error,
     clickStageTwoBtn,
-    setClearSignUp,
-    checkUser,
+    onChange,
+    onClickSignUpBtn,
+    signForm,
+    onClickSignIn,
 }) => {
-    const [signForm, setSignForm] = useState({
-        email: "",
-        name: "",
-        BDay: "",
-        password: "",
-    });
-
-    const onChange = (e) => {
-        if (e.target.name === "BDay") {
-            let value = e.target.value.split("-").join("");
-            setSignForm({ ...signForm, [e.target.name]: value })
-        }
-        else {
-            setSignForm({ ...signForm, [e.target.name]: e.target.value })
-        }
-    };
-
-    const onClickSignUpBtn = () => {
-        const signUp = async () => {
-            // const response = await axios.post('https://dev.rodin.club/users', signForm);
-            setClearSignUp(true);
-        }
-
-        signUp();
-    }
-
     return (
         <SignBox>
             {
@@ -90,7 +64,7 @@ const SignModal = ({
                                 <InputModel name="password" txt="비밀번호" onChange={onChange} signForm={signForm} />
                                 {error && <ErrorMessage>{error}</ErrorMessage>}
                             </div>
-                            <SubmitButton>로그인</SubmitButton>
+                            <SubmitButton onClick={onClickSignIn}>로그인</SubmitButton>
                         </div>
                     </div>
                 )
