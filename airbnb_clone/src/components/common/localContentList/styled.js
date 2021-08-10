@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const LocalContentListBox = styled.div`
+    width:100%;
     .localItemBox{
         height:250px;
         display:flex;
@@ -48,6 +49,7 @@ export const LocalContentListBox = styled.div`
                     .content_info{
                         margin-bottom:5px;
                         color:#717171;
+                        width:410px;
                     }
                 }
                 .localItem_foot{
