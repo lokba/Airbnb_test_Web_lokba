@@ -5,8 +5,8 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import StarRateIcon from '@material-ui/icons/StarRate';
 import { Link } from 'react-router-dom';
 
-const LocalContentList = ({ areas }) => {
-
+const LocalContentList = ({ areas, rooms }) => {
+    console.log(rooms);
     //한글, 영어 문자열의 바이트 계산하는 함수
     let getTextLength = function (str) {
         let len = 0;
@@ -34,38 +34,122 @@ const LocalContentList = ({ areas }) => {
         }
     };
 
-
     return (
+        // <LocalContentListBox>
+        //     {
+        //         areas.map(area => (
+        //             <Link to={`/rooms/${area.roomId}`} className="localItemBox">
+        //                 <div className="localItem">
+        //                     <div className="localItem_img">
+        //                         <img src={area.imgURL[0]} alt="" />
+        //                     </div>
+        //                     <div className="localItem_content">
+        //                         <div className="localItem_head">
+        //                             <div className="content_sector">{area.sector}</div>
+        //                             <div className="content_moto">{getTextLength(area.moto) > 45 ? getText(area.moto) + "..." : area.moto}</div>
+        //                             <div className="line"></div>
+        //                             <div className="content_info">{area.info[0]}</div>
+        //                             <div className="content_info">{area.info[1]}</div>
+        //                         </div>
+        //                         <div className="localItem_foot">
+        //                             <StarRateIcon />
+        //                             <div className="star">{area.star}</div>
+        //                             <div className="comment">(후기 {area.comments}개)</div>
+        //                         </div>
+        //                         <div className="heart">
+        //                             {
+        //                                 area.heart ? (<FavoriteIcon className="heartOn" />) : (<FavoriteBorderIcon />)
+        //                             }
+        //                         </div>
+        //                     </div>
+        //                 </div>
+        //             </Link>
+        //         ))
+        //     }
+        // </LocalContentListBox>
         <LocalContentListBox>
             {
-                areas.map(area => (
-                    <Link to={`/rooms/${area.roomId}`} className="localItemBox">
-                        <div className="localItem">
-                            <div className="localItem_img">
-                                <img src={area.imgURL[0]} alt="" />
+                rooms ?
+                    rooms.map(({
+                        roomLocation,
+                        roomCapacity,
+                        roomBed,
+                        roomBedroom,
+                        roomBathroom,
+                        roomType,
+                        roomPrice,
+                        roomDesc,
+                        roomKind,
+                        roomConvenient,
+                        roomImageUrl,
+                        roomName,
+                        roomInfo,
+                        status,
+                        roomUploadUser_Idx,
+                        idx,
+                    }) => (
+                        <Link to={`/rooms/${idx}`} className="localItemBox">
+                            <div className="localItem">
+                                <div className="localItem_img">
+                                    <img src={roomImageUrl} alt="" />
+                                </div>
+                                <div className="localItem_content">
+                                    <div className="localItem_head">
+                                        <div className="content_sector">{roomLocation}의 {roomDesc}</div>
+                                        <div className="content_moto">{getTextLength(roomName) > 45 ? getText(roomName) + "..." : roomName}</div>
+                                        <div className="line"></div>
+                                        <div className="content_info">최대 인원 {roomCapacity}명 • 침실 {roomBedroom}개 • 침대 {roomBed}개 • 욕실 {roomBathroom}개</div>
+                                        <div className="content_info">{roomConvenient}</div>
+                                    </div>
+                                    <div className="localItem_foot">
+                                        <StarRateIcon />
+                                        {/* <div className="star">{area.star}</div> */}
+                                        {/* <div className="comment">(후기 {area.comments}개)</div> */}
+                                        <div className="star">0.00</div>
+                                        <div className="comment">(후기 0개)</div>
+                                    </div>
+                                    <div className="heart">
+                                        {/* {
+                                            area.heart ? (<FavoriteIcon className="heartOn" />) : (<FavoriteBorderIcon />)
+                                        } */}
+                                        <FavoriteBorderIcon />
+                                    </div>
+                                </div>
                             </div>
-                            <div className="localItem_content">
-                                <div className="localItem_head">
-                                    <div className="content_sector">{area.sector}</div>
-                                    <div className="content_moto">{getTextLength(area.moto) > 45 ? getText(area.moto) + "..." : area.moto}</div>
-                                    <div className="line"></div>
-                                    <div className="content_info">{area.info[0]}</div>
-                                    <div className="content_info">{area.info[1]}</div>
+                        </Link>
+                    ))
+                    :
+                    (
+                        areas.map(area => (
+                            <Link to={`/rooms/${area.roomId}`} className="localItemBox">
+                                <div className="localItem">
+                                    <div className="localItem_img">
+                                        <img src={area.imgURL[0]} alt="" />
+                                    </div>
+                                    <div className="localItem_content">
+                                        <div className="localItem_head">
+                                            <div className="content_sector">{area.sector}</div>
+                                            <div className="content_moto">{getTextLength(area.moto) > 45 ? getText(area.moto) + "..." : area.moto}</div>
+                                            <div className="line"></div>
+                                            <div className="content_info">{area.info[0]}</div>
+                                            <div className="content_info">{area.info[1]}</div>
+                                        </div>
+                                        <div className="localItem_foot">
+                                            <StarRateIcon />
+                                            <div className="star">{area.star}</div>
+                                            <div className="comment">(후기 {area.comments}개)</div>
+                                        </div>
+                                        <div className="heart">
+                                            {
+                                                area.heart ? (<FavoriteIcon className="heartOn" />) : (<FavoriteBorderIcon />)
+                                            }
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="localItem_foot">
-                                    <StarRateIcon />
-                                    <div className="star">{area.star}</div>
-                                    <div className="comment">(후기 {area.comments}개)</div>
-                                </div>
-                                <div className="heart">
-                                    {
-                                        area.heart ? (<FavoriteIcon className="heartOn" />) : (<FavoriteBorderIcon />)
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </Link>
-                ))
+                            </Link>)
+
+
+                        ))
             }
         </LocalContentListBox>
     );
