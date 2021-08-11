@@ -32,8 +32,8 @@ const HostingHeader = ({ history }) => {
                     {
                         onProfile &&
                         <div className="profile_option">
-                            <div className="stress" >프로필 관리</div>
-                            <Link to="/hosting/listings">숙소</Link>
+                            <Link to="/profile" className="stress" >프로필 관리</Link>
+                            <Link to="/hosting/listings">나의 숙소</Link>
                             <span className="bar"></span>
                             <div>한국어 (KR)</div>
                             <div>₩ KRW</div>

@@ -27,6 +27,42 @@ export const HostingListBox = styled.div`
             cursor:pointer;
         }
     }
+    nav{
+        display:flex;
+        align-items:center;
+        justify-content: space-between;
+        padding:20px 0;
+        border-bottom:1px solid #dddddd;
+        font-weight:600;
+
+        >div{
+            text-align:center;
+        }
+
+        .imgSector{
+            width:280px;
+        }
+        .statusSector{           
+            width:80px;
+        }
+        .bedroomSector{
+            width:50px;
+        }
+        .bedSector{
+            width:50px;
+        }
+        .bathroomSector{
+            width:50px;
+        }
+
+        .locationSector{
+            width:180px;
+        }
+        .updateSector{
+            width:200px;
+        }
+        
+    }
 
     body{
         display:flex;
@@ -39,11 +75,14 @@ export const HostingListBox = styled.div`
             padding:20px 0;
             border-bottom:1px solid #dddddd;
 
+            >div{
+                text-align:center;
+            }
             .imgSector{
                 display:flex;
                 align-items: center;
                 width:280px;
-                /* border:1px solid blue; */
+
                 img{
                     width:40px;
                     height:40px;
@@ -51,29 +90,22 @@ export const HostingListBox = styled.div`
                 }
             }
             .statusSector{
-                /* border:1px solid blue; */
                 width:80px;
             }
             .bedroomSector{
-                /* border:1px solid blue; */
                 width:50px;
             }
             .bedSector{
-                /* border:1px solid blue; */
                 width:50px;
             }
             .bathroomSector{
-                /* border:1px solid blue; */
                 width:50px;
             }
             .locationSector{
-                
                 width:180px;
             }
             .updateSector{
                 width:200px;
-                display:flex;
-                justify-content: flex-end;
             }
         }
     }
