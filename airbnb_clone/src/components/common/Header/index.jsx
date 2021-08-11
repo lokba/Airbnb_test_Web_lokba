@@ -241,7 +241,7 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting,
                                         checkHost ?
                                             (
                                                 // 추후에 마이 숙소 페이지 구현시 연결
-                                                <Link>숙소 관리</Link>
+                                                <Link to="/hosting">숙소 관리</Link>
                                             )
                                             :
                                             (
