@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import HostingHeader from '../../components/common/HostingHeader';
-import { HostingListBlock } from './styled';
+import { HostingListBlock, HostingListBox } from './styled';
+import AddIcon from '@material-ui/icons/Add';
 import axios from 'axios';
 
 
@@ -14,20 +15,70 @@ const HostingListPage = () => {
     useEffect(() => {
         const loadMyRooms = async () => {
             const response = await axios.get(`https://dev.rodin.club/rooms/users/${userIdx}`);
-
             setMyRoom(response.data.result);
         }
         loadMyRooms();
+    }, [userIdx]);
 
-    }, [userIdx])
+    useEffect(() => {
+        console.log(myRoom);
+    }, [myRoom])
+
 
 
     return (
-        <HostingListBlock>
-            <HostingHeader />
-            fefe
-        </HostingListBlock>
-    );
+        <>
+            {
+                myRoom && (
+                    <HostingListBlock>
+                        <HostingHeader />
+                        <HostingListBox>
+                            <header>
+                                <div className="tit">숙소 {myRoom.length}개</div>
+                                <button>
+                                    <AddIcon />
+                                    <div>숙소 새로 등록하기</div>
+                                </button>
+                            </header>
+                            <body>
+
+                                {
+                                    myRoom.map(({
+                                        roomImageUrl,
+                                        roomName,
+                                        status,
+                                        roomBedroom,
+                                        roomBed,
+                                        roomBathroom,
+                                        roomLocation,
+                                        updatedAt,
+                                    }) => (
+                                        <div className="roomItem">
+                                            <div className="imgSector">
+                                                <img src={roomImageUrl} alt="" />
+                                                <div>{roomName}</div>
+                                            </div>
+                                            <div className="statusSector">
+                                                {
+                                                    status === "N" ? "등록 중" : "등록 상태"
+                                                }
+                                            </div>
+                                            <div className="bedroomSector">침실({roomBedroom})</div>
+                                            <div className="bedSector">침대({roomBed})</div>
+                                            <div className="bathroomSector">욕실({roomBathroom})</div>
+                                            <div className="locationSector">{roomLocation}</div>
+                                            <div className="updateSector">최종 수정일: {updatedAt.slice(0, 10)}</div>
+                                        </div>
+
+                                    ))
+                                }
+                            </body>
+                        </HostingListBox>
+                    </HostingListBlock>
+                )
+            }
+        </>
+    )
 };
 
 export default HostingListPage;
