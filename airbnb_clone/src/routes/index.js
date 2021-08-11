@@ -6,6 +6,7 @@ import FlexSearchPage from "../pages/flex_search";
 import HomePage from "../pages/home";
 import HostPage from "../pages/host";
 import HostingPage from "../pages/hosting";
+import HostingListPage from "../pages/host_list";
 import LocalSearchPage from "../pages/local";
 import NoMatchPage from "../pages/noMatch";
 import ProfilePage from "../pages/profile";
@@ -27,6 +28,7 @@ const RootRoute = () => {
                 <Route path='/become-a-host' component={BecomeHostPage} exact />
                 <Route path='/hosting' component={HostingPage} exact />
                 <Route path='/profile' component={ProfilePage} exact />
+                <Route path='/hosting/listings' component={HostingListPage} exact />
                 {/* 경료가 유효하지 않을 때 */}
                 <Route path='*' component={NoMatchPage} />
             </Switch>

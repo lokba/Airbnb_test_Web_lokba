@@ -15,14 +15,14 @@ const ProfilePage = () => {
     const { userId, userData } = useSelector(({ userInfo }) => ({
         userId: userInfo.userIdx,
         userData: userInfo.userData,
-    }))
+    }));
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         const headers = {
             "x-access-token": localStorage.getItem('ACCESS_TOKEN')
-        }
+        };
         const loadUser = async () => {
             const response = await axios.get(`https://dev.rodin.club/users/${userId}`, { headers });
             dispatch(getUserInfo(response.data.result));
@@ -127,7 +127,6 @@ const ProfilePage = () => {
                                                             <div>{userData.userOffice}</div>
                                                         </div>
                                                     }
-
                                                 </>
                                             )
                                     }
