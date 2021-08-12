@@ -20,15 +20,17 @@ const ProfilePage = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const headers = {
-            "x-access-token": localStorage.getItem('ACCESS_TOKEN')
-        };
-        const loadUser = async () => {
-            const response = await axios.get(`https://dev.rodin.club/users/${userId}`, { headers });
-            dispatch(getUserInfo(response.data.result));
+        if (!userData) {
+            const headers = {
+                "x-access-token": localStorage.getItem('ACCESS_TOKEN')
+            };
+            const loadUser = async () => {
+                const response = await axios.get(`https://dev.rodin.club/users/${userId}`, { headers });
+                dispatch(getUserInfo(response.data.result));
+            }
+            loadUser();
         }
-        loadUser();
-    }, [userId, dispatch, openModifyBox]);
+    }, [userId, dispatch, openModifyBox, userData]);
 
 
     const [myInfo, setMyInfo] = useState({

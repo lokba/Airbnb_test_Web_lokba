@@ -11,8 +11,6 @@ import { getUserId } from './store/userInfo';
 
 const store = createStore(RootReducer, composeWithDevTools());
 
-//추후에 구현
-
 function loadUser() {
   try {
     const jwt = localStorage.getItem("ACCESS_TOKEN");

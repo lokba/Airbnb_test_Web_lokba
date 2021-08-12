@@ -7,8 +7,8 @@ import { Link, withRouter } from 'react-router-dom';
 import SignModal from '../sign';
 import SignUpModal from '../signUpModal';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { getUserId } from '../../../store/userInfo';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserId, getUserInfo } from '../../../store/userInfo';
 
 const Header = ({ match, flex_search, local_area, travel, detail, book, hosting, profile }) => {
 
@@ -30,6 +30,11 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting,
         BDay: "",
         password: "",
     });
+
+    const { userId, userData } = useSelector(({ userInfo }) => ({
+        userId: userInfo.userIdx,
+        userData: userInfo.userData,
+    }));
 
     const dispatch = useDispatch();
 
@@ -112,6 +117,24 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting,
         }
         signIn();
     }
+
+    useEffect(() => {
+        if (!userData) {
+            console.log("fefe");
+        }
+        if (!userData && checkLogin) {
+            const headers = {
+                "x-access-token": localStorage.getItem('ACCESS_TOKEN')
+            };
+            const loadUser = async () => {
+                const response = await axios.get(`https://dev.rodin.club/users/${userId}`, { headers });
+                dispatch(getUserInfo(response.data.result));
+            }
+            loadUser();
+        }
+
+    }, [userId, dispatch, userData, checkLogin]);
+
 
 
     useEffect(() => {
@@ -260,7 +283,7 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting,
                                     <div className="stress" onClick={() => { setSignModal(true); setOnProfile(!onProfile) }}>로그인</div>
                                     <div className="register" onClick={() => { setSignModal(true); setOnProfile(!onProfile) }}>회원가입</div>
                                     <span className="bar"></span>
-                                    <div className="host">숙소 호스트 되기</div>
+                                    <Link to="/host/homes" className="host">숙소 호스트 되기</Link>
                                     <div className="help">도움말</div>
                                 </div>
                             )
