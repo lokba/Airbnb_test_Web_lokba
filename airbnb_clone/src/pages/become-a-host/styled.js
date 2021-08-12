@@ -372,9 +372,8 @@ export const HostStageBox = styled.div`
             
         }
         
-        /* 숙소 사진 올리는 곳 */
         .stage7_list{
-
+            margin-bottom:90px;
         }
 
         .stage8_list{  

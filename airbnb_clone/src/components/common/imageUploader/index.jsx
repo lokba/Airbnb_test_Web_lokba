@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import storage from '../../../firebase';
+import { FileUploadBlock } from './styled';
 
-const FirebaseFileUpload = () => {
+const FirebaseFileUpload = ({ handleImageUrl }) => {
     const [image, setImage] = useState(null);
     const [url, setUrl] = useState("");
 
@@ -26,15 +27,16 @@ const FirebaseFileUpload = () => {
                     .getDownloadURL()
                     .then(url => {
                         setUrl(url);
+                        handleImageUrl(url);
                     })
             }
         )
     }
     return (
-        <div>
+        <>
             <input type="file" onChange={handleChange} />
-            <button onClick={handleUpload}>Upload</button>
-        </div>
+            <button onClick={handleUpload}>업로드</button>
+        </>
     );
 };
 

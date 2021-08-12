@@ -30,10 +30,6 @@ const RootRoute = () => {
                 <Route path='/hosting' component={HostingPage} exact />
                 <Route path='/profile' component={ProfilePage} exact />
                 <Route path='/hosting/listings' component={HostingListPage} exact />
-
-
-
-                <Route path="/upload" component={FirebaseFileUpload} exact />
                 {/* 경료가 유효하지 않을 때 */}
                 <Route path='*' component={NoMatchPage} />
             </Switch>
