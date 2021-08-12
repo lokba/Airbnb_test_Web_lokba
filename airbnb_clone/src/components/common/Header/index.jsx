@@ -8,7 +8,7 @@ import SignModal from '../sign';
 import SignUpModal from '../signUpModal';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserId, getUserInfo } from '../../../store/userInfo';
+import { getUserId, getUserInfo, initUserInfo } from '../../../store/userInfo';
 
 const Header = ({ match, flex_search, local_area, travel, detail, book, hosting, profile }) => {
 
@@ -147,6 +147,7 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting,
 
     const onLogout = () => {
         localStorage.removeItem("ACCESS_TOKEN");
+        dispatch(initUserInfo());
         setCheckLogin(false);
     };
 

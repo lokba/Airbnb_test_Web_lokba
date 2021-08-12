@@ -28,7 +28,7 @@ const ProfilePage = () => {
             dispatch(getUserInfo(response.data.result));
         }
         loadUser();
-    }, [userId, dispatch, openModifyBox, userData]);
+    }, [userId, dispatch, openModifyBox]);
 
 
     const [myInfo, setMyInfo] = useState({
