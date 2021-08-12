@@ -144,12 +144,11 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting,
             setCheckLogin(false);
 
 
-        localStorage.getItem("HOST_ACCESS_TOKEN") ?
-            setCheckHost(true)
-            :
-            setCheckHost(false);
+        if (userData) {
+            userData.userHost === "FALSE" ? setCheckHost(false) : setCheckHost(true);
+        }
 
-    }, [checkLogin]);
+    }, [checkLogin, userData, checkHost]);
 
 
     const onLogout = () => {
