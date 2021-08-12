@@ -215,6 +215,8 @@ export const HeaderBox = styled.div`
 
                 a{
                     display:block;
+                    text-decoration: none;
+                    color:black;
                 }
                 
                 div,a{
@@ -236,6 +238,8 @@ export const HeaderBox = styled.div`
                 .stress{
                     font-weight:700;
                 }
+
+
             }
             
         }

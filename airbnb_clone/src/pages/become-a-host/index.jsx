@@ -26,8 +26,8 @@ const BecomeHostPage = () => {
     }
 
     const [stage6, setStage6] = useState([]);
-    const [imageUrl, setImageUrl] = useState(null);
 
+    const [imageUrl, setImageUrl] = useState(null);
     const handleImageUrl = (url) => setImageUrl(url);
 
 
@@ -110,7 +110,7 @@ const BecomeHostPage = () => {
             roomInfo: roomDetailInfo,
             roomImageUrl: imageUrl,
         })
-    }
+    };
 
     const onClickRegisterRoom = () => {
         localStorage.setItem('HOST_ACCESS_TOKEN', 'abcdefg');
