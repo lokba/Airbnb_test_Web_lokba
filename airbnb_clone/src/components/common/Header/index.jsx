@@ -119,9 +119,6 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting,
     }
 
     useEffect(() => {
-        if (!userData) {
-            console.log("fefe");
-        }
         if (!userData && checkLogin) {
             const headers = {
                 "x-access-token": localStorage.getItem('ACCESS_TOKEN')
@@ -135,14 +132,11 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting,
 
     }, [userId, dispatch, userData, checkLogin]);
 
-
-
     useEffect(() => {
         localStorage.getItem("ACCESS_TOKEN") ?
             setCheckLogin(true)
             :
             setCheckLogin(false);
-
 
         if (userData) {
             userData.userHost === "FALSE" ? setCheckHost(false) : setCheckHost(true);

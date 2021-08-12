@@ -4,13 +4,16 @@ import { Link, withRouter } from 'react-router-dom';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import { getUserInfo } from '../../store/userInfo';
 
 const BecomeHostPage = () => {
     const { userIdx } = useSelector(({ userInfo }) => ({
         userIdx: userInfo.userIdx,
     }));
+
+    const dispatch = useDispatch();
 
     const [stage1, setStage1] = useState(null);
     const [stage2, setStage2] = useState(null);
@@ -117,6 +120,20 @@ const BecomeHostPage = () => {
         }
         registerRoom();
     }
+
+    const onClickBecomeHoster = () => {
+        const headers = {
+            "x-access-token": localStorage.getItem("ACCESS_TOKEN")
+        }
+        const registerHost = async () => {
+            await axios.patch("https://dev.rodin.club/users/infos/hosts", { userIdx }, { headers });
+            const response = await axios.get(`https://dev.rodin.club/users/${userIdx}`, { headers });
+            dispatch(getUserInfo(response.data.result));
+        }
+        registerHost();
+        setCurStage(1);
+    }
+
     const roomDesc = {
         "아파트": [
             {
@@ -336,7 +353,7 @@ const BecomeHostPage = () => {
                         <div className="tit">간단한 10단계로 호스팅<br />시작하기</div>
                         <div className="content">에어비앤비 호스트가 되어보세요. 에어비앤비에서 모든<br /> 과정을 도와드립니다.</div>
                         <div className="btn">
-                            <div className="startBtn" onClick={() => { setCurStage(1) }}>시작하기</div>
+                            <div className="startBtn" onClick={onClickBecomeHoster}>시작하기</div>
                         </div>
                         <Link to="/host/homes" className="exitBtn">나가기</Link>
                     </div>
