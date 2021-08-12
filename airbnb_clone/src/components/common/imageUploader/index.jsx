@@ -28,6 +28,7 @@ const FirebaseFileUpload = ({ handleImageUrl }) => {
                     .then(url => {
                         setUrl(url);
                         handleImageUrl(url);
+                        alert("업로드가 완료되었습니다!");
                     })
             }
         )

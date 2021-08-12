@@ -78,6 +78,8 @@ const BecomeHostPage = () => {
     const plusBathroom = () => setRoomBathroom(roomBathroom + 1);
     const minusBathroom = () => roomBathroom !== 1 && setRoomBathroom(roomBathroom - 1);
 
+    const [gps, setGps] = useState(null);
+
     const [roomInfo, setRoomInfo] = useState({
         roomLocation: null,
         roomCapacity: null,
@@ -92,7 +94,9 @@ const BecomeHostPage = () => {
         roomImageUrl: null,
         roomName: null,
         roomInfo: null,
-        roomUploadUser: userIdx
+        roomUploadUser: userIdx,
+        roomLati: null,
+        roomLongi: null,
     });
 
     const onStoreRoomInfo = () => {
@@ -110,6 +114,8 @@ const BecomeHostPage = () => {
             roomName,
             roomInfo: roomDetailInfo,
             roomImageUrl: imageUrl,
+            roomLati: String(gps.lat),
+            roomLongi: String(gps.lng),
         })
     };
 
@@ -141,19 +147,15 @@ const BecomeHostPage = () => {
         setCurStage(1);
     }
 
-    const [gps, setGps] = useState(null);
-
     const handleButton = async (props) => {
         const currentAddr = document.querySelector(".location").value;
 
         if (currentAddr) {
             const { lat, lng } = await GoogleMap(currentAddr);
-            await GoogleMap(currentAddr);
             setGps({ lat, lng });
+            alert("주소 등록이 완료되었습니다.")
         }
     }
-
-    console.log(gps);
 
     const roomDesc = {
         "아파트": [
