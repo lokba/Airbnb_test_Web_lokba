@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { getUserInfo } from '../../store/userInfo';
 import FirebaseFileUpload from '../../components/common/imageUploader';
+import GoogleMap from '../../components/geocode';
 
 const BecomeHostPage = () => {
     const { userIdx } = useSelector(({ userInfo }) => ({
@@ -139,6 +140,20 @@ const BecomeHostPage = () => {
         registerHost();
         setCurStage(1);
     }
+
+    const [gps, setGps] = useState(null);
+
+    const handleButton = async (props) => {
+        const currentAddr = document.querySelector(".location").value;
+
+        if (currentAddr) {
+            const { lat, lng } = await GoogleMap(currentAddr);
+            await GoogleMap(currentAddr);
+            setGps({ lat, lng });
+        }
+    }
+
+    console.log(gps);
 
     const roomDesc = {
         "아파트": [
@@ -493,7 +508,8 @@ const BecomeHostPage = () => {
                         <div className="host_stage_body">
                             <div className="locationBar">
                                 <LocationOnIcon />
-                                <input placeholder="주소를 입력하세요." name="location" value={stage4} onChange={onChangeLocation} />
+                                <input placeholder="주소를 입력하세요." name="location" value={stage4} onChange={onChangeLocation} className="location" />
+                                <button onClick={handleButton}>등록</button>
                             </div>
 
                             <div className="btn">
