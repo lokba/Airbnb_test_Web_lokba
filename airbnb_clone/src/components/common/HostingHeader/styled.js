@@ -78,6 +78,8 @@ export const HeaderBox = styled.div`
 
                 a{
                     display:block;
+                    text-decoration: none;
+                    color:black;
                 }
                 
                 div,a{

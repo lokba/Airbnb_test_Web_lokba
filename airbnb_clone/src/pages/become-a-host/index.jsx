@@ -7,6 +7,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { getUserInfo } from '../../store/userInfo';
+import FirebaseFileUpload from '../../components/common/imageUploader';
 
 const BecomeHostPage = () => {
     const { userIdx } = useSelector(({ userInfo }) => ({
@@ -25,6 +26,10 @@ const BecomeHostPage = () => {
     }
 
     const [stage6, setStage6] = useState([]);
+
+    const [imageUrl, setImageUrl] = useState(null);
+    const handleImageUrl = (url) => setImageUrl(url);
+
 
     const onToggleRoomConv = (str) => {
         if (!stage6.includes(str)) {
@@ -83,7 +88,7 @@ const BecomeHostPage = () => {
         roomDesc: null,
         roomKind: null,
         roomConvenient: null,
-        roomImageUrl: "test1",
+        roomImageUrl: null,
         roomName: null,
         roomInfo: null,
         roomUploadUser: userIdx
@@ -103,8 +108,9 @@ const BecomeHostPage = () => {
             roomConvenient: stage6.join(', '),
             roomName,
             roomInfo: roomDetailInfo,
+            roomImageUrl: imageUrl,
         })
-    }
+    };
 
     const onClickRegisterRoom = () => {
         localStorage.setItem('HOST_ACCESS_TOKEN', 'abcdefg');
@@ -623,8 +629,9 @@ const BecomeHostPage = () => {
                         </div>
                         <div className="host_stage_body">
                             <div className="stage7_list">
-
+                                <FirebaseFileUpload handleImageUrl={handleImageUrl} />
                             </div>
+
                             <div className="btn">
                                 <div className="beforeBtn" onClick={() => setCurStage(6)}>뒤로</div>
                                 <div className="nextBtn" onClick={() => setCurStage(8)}>다음</div>

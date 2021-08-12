@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import FirebaseFileUpload from "../components/common/imageUploader";
 import BecomeHostPage from "../pages/become-a-host";
 import BookPage from "../pages/book";
 import RoomDetailPage from "../pages/detail";
