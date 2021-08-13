@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import storage from '../../../firebase';
-import { FileUploadBlock } from './styled';
 
 const FirebaseFileUpload = ({ handleImageUrl }) => {
     const [image, setImage] = useState(null);
@@ -28,6 +27,7 @@ const FirebaseFileUpload = ({ handleImageUrl }) => {
                     .then(url => {
                         setUrl(url);
                         handleImageUrl(url);
+                        alert("업로드가 완료되었습니다!");
                     })
             }
         )

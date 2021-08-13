@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { getUserInfo } from '../../store/userInfo';
 import FirebaseFileUpload from '../../components/common/imageUploader';
+import GoogleMap from '../../components/geocode';
 
 const BecomeHostPage = () => {
     const { userIdx } = useSelector(({ userInfo }) => ({
@@ -77,6 +78,8 @@ const BecomeHostPage = () => {
     const plusBathroom = () => setRoomBathroom(roomBathroom + 1);
     const minusBathroom = () => roomBathroom !== 1 && setRoomBathroom(roomBathroom - 1);
 
+    const [gps, setGps] = useState(null);
+
     const [roomInfo, setRoomInfo] = useState({
         roomLocation: null,
         roomCapacity: null,
@@ -91,7 +94,9 @@ const BecomeHostPage = () => {
         roomImageUrl: null,
         roomName: null,
         roomInfo: null,
-        roomUploadUser: userIdx
+        roomUploadUser: userIdx,
+        roomLati: null,
+        roomLongi: null,
     });
 
     const onStoreRoomInfo = () => {
@@ -109,6 +114,8 @@ const BecomeHostPage = () => {
             roomName,
             roomInfo: roomDetailInfo,
             roomImageUrl: imageUrl,
+            roomLati: String(gps.lat),
+            roomLongi: String(gps.lng),
         })
     };
 
@@ -138,6 +145,16 @@ const BecomeHostPage = () => {
         }
         registerHost();
         setCurStage(1);
+    }
+
+    const handleButton = async (props) => {
+        const currentAddr = document.querySelector(".location").value;
+
+        if (currentAddr) {
+            const { lat, lng } = await GoogleMap(currentAddr);
+            setGps({ lat, lng });
+            alert("주소 등록이 완료되었습니다.")
+        }
     }
 
     const roomDesc = {
@@ -493,7 +510,8 @@ const BecomeHostPage = () => {
                         <div className="host_stage_body">
                             <div className="locationBar">
                                 <LocationOnIcon />
-                                <input placeholder="주소를 입력하세요." name="location" value={stage4} onChange={onChangeLocation} />
+                                <input placeholder="주소를 입력하세요." name="location" value={stage4} onChange={onChangeLocation} className="location" />
+                                <button onClick={handleButton}>등록</button>
                             </div>
 
                             <div className="btn">

@@ -1,17 +1,20 @@
 import styled from "styled-components";
 
 export const TravelBox = styled.div`
+    margin-top:80px;
 
+    .body{
+        display:flex;
+    }
 `;
 
 
 export const TravelContent = styled.div`
-    width:55%;
+    width:52%;
     padding:50px 24px 0;
 `;
 
 export const TravelContentHeader = styled.div`
-    margin-top:80px;
     font-size:14px;
     
     .headerSub{
@@ -66,3 +69,8 @@ export const TravelContentHeader = styled.div`
 `;
 
 
+
+export const MapContent = styled.div`
+    width:48%;
+    padding-top:10px;
+`;
