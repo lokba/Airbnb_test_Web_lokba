@@ -14,6 +14,8 @@ import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import { useDispatch } from 'react-redux';
 import { storeCapacity, storeCheckInDate, storeCheckOutDate } from '../../store/reserveInfo';
+import MapAPI from '../../components/common/map'
+import SimpleMap from '../../components/common/map';
 
 const RoomDetailPage = ({ history, match }) => {
     const [roomIdx, setRoomIdx] = useState(null);
@@ -62,12 +64,25 @@ const RoomDetailPage = ({ history, match }) => {
     useEffect(() => {
         const onLoadRoom = async () => {
             const response = await axios.get(`https://dev.rodin.club/rooms/${roomIdx}`);
-            console.log(response.data);
+
             setRoomDetailInfo(response.data.result);
         }
 
         roomIdx && onLoadRoom();
     }, [roomIdx]);
+
+    const [curRoomDetail, setRoomDetail] = useState(null);
+
+    useEffect(() => {
+        const onLoadAllRooms = async () => {
+            const response = await axios.get("https://dev.rodin.club/rooms");
+            // const { roomLati, roomLongi } = (response.data.result.filter(v => v.idx === Number(roomIdx))[0]);
+            const obj = response.data.result.filter(v => v.idx === Number(roomIdx))[0];
+            setRoomDetail(obj);
+        }
+        onLoadAllRooms();
+    }, [roomIdx])
+
 
     const room = {
         imgURL: ["/images/local/area/area1.png",
@@ -124,12 +139,6 @@ const RoomDetailPage = ({ history, match }) => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
-
-    // const reserveBox = document.querySelector(".reservation");
-
-    // window.addEventListener("scroll", () => {
-
-    // });
 
 
     return (
@@ -365,6 +374,7 @@ const RoomDetailPage = ({ history, match }) => {
                             <HostingMap>
                                 <div className="tit">호스팅 지역</div>
                                 <div className="location">{roomDetailInfo.roomLocation}</div>
+                                {curRoomDetail && <SimpleMap detail={curRoomDetail} />}
                             </HostingMap>
 
                         </div >
@@ -556,13 +566,12 @@ const RoomDetailPage = ({ history, match }) => {
                                     ))
                                 }
                             </div>
-                            <div className="seeAllBtn">후기 {room.comments}개 모두 보기</div>
+                            <div className="seeAllBtn">후기fqwef {room.comments}개 모두 보기</div>
                         </CommentBox>
                         <HostingMap>
                             <div className="tit">호스팅 지역</div>
                             <div className="location">강남구, 서울, 한국</div>
                         </HostingMap>
-
                     </div >
                     <Footer detail="detail" />
                 </RoomDetailBox >
