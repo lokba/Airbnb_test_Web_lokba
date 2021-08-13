@@ -237,7 +237,6 @@ const TravelSearchPage = ({ location }) => {
         },
     ];
 
-    console.log(rooms);
     return (
         <TravelBox>
             <Header travel />

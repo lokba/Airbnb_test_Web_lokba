@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import storage from '../../../firebase';
-import { FileUploadBlock } from './styled';
 
 const FirebaseFileUpload = ({ handleImageUrl }) => {
     const [image, setImage] = useState(null);
