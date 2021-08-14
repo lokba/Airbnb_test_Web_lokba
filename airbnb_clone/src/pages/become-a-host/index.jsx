@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { BecomeHostBox, HostIntroBox, HostStageBox } from './styled';
 import { Link, withRouter } from 'react-router-dom';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
@@ -33,12 +33,7 @@ const BecomeHostPage = () => {
 
 
     const onToggleRoomConv = (str) => {
-        if (!stage6.includes(str)) {
-            setStage6(stage6.concat(str))
-        }
-        else {
-            setStage6(stage6.filter(v => v !== str));
-        }
+        !stage6.includes(str) ? setStage6(stage6.concat(str)) : setStage6(stage6.filter(v => v !== str));
     }
 
     const [curStage, setCurStage] = useState(null);
@@ -46,18 +41,15 @@ const BecomeHostPage = () => {
     const [roomName, setRoomName] = useState("");
     const [roomDetailInfo, setRoomDetailInfo] = useState("");
 
-    const onChangeRoomName = (e) => {
-        setRoomName(e.target.value);
-    }
-    const onChangeRoomDetailInfo = (e) => {
-        setRoomDetailInfo(e.target.value)
-    }
+    const onChangeRoomName = (e) => setRoomName(e.target.value);
+
+    const onChangeRoomDetailInfo = (e) => setRoomDetailInfo(e.target.value)
+
 
     const [roomPrice, setRoomPrice] = useState(0);
 
     const onChangePrice = (e) => {
         setRoomPrice(e.target.value);
-
         setRoomInfo({ ...roomInfo, roomPrice: e.target.value });
     }
 
@@ -125,7 +117,6 @@ const BecomeHostPage = () => {
         const headers = {
             "x-access-token": localStorage.getItem("ACCESS_TOKEN")
         }
-
         const registerRoom = async () => {
             const response = await axios.post('https://dev.rodin.club/rooms', roomInfo, { headers });
 
@@ -347,7 +338,6 @@ const BecomeHostPage = () => {
             },
         ],
     }
-
     const roomConvenience = {
         "special": [
             "수영장", "자쿠지", "파티오", "바비큐 그릴", "화덕", "당구대", "실내 벽난로", "야외 식사 공간", "운동 기구"
@@ -359,8 +349,6 @@ const BecomeHostPage = () => {
             "화재경보기", "구급 상자", "일산화탄소 경보기", "소화기"
         ],
     }
-
-
     return (
         <BecomeHostBox>
             {
@@ -513,7 +501,6 @@ const BecomeHostPage = () => {
                                 <input placeholder="주소를 입력하세요." name="location" value={stage4} onChange={onChangeLocation} className="location" />
                                 <button onClick={handleButton}>등록</button>
                             </div>
-
                             <div className="btn">
                                 <div className="beforeBtn" onClick={() => setCurStage(3)}>뒤로</div>
                                 <div className="nextBtn" onClick={() => setCurStage(5)}>다음</div>
@@ -649,7 +636,6 @@ const BecomeHostPage = () => {
                             <div className="stage7_list">
                                 <FirebaseFileUpload handleImageUrl={handleImageUrl} />
                             </div>
-
                             <div className="btn">
                                 <div className="beforeBtn" onClick={() => setCurStage(6)}>뒤로</div>
                                 <div className="nextBtn" onClick={() => setCurStage(8)}>다음</div>
@@ -769,9 +755,7 @@ const BecomeHostPage = () => {
                     </HostStageBox>
                 )
             }
-
         </BecomeHostBox >
     );
 };
-
 export default withRouter(BecomeHostPage); 

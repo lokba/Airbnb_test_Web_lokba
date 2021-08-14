@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import FirebaseFileUpload from "../components/common/imageUploader";
 import BecomeHostPage from "../pages/become-a-host";
 import BookPage from "../pages/book";
 import RoomDetailPage from "../pages/detail";
@@ -13,9 +12,7 @@ import NoMatchPage from "../pages/noMatch";
 import ProfilePage from "../pages/profile";
 import TravelSearchPage from "../pages/travel";
 
-
 const RootRoute = () => {
-
     return (
         <BrowserRouter>
             <Switch>

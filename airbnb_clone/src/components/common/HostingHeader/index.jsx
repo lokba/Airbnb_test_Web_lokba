@@ -10,14 +10,12 @@ const HostingHeader = ({ history }) => {
         history.push('/');
     };
 
-
     //비 리그인 상태에서 hosting 페이지 접근시, 메인 페이지로 전환.
     useEffect(() => {
         if (!localStorage.getItem("ACCESS_TOKEN")) {
             history.push('/');
         }
     }, [history]);
-
 
     return (
         <HeaderBox>

@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserId, getUserInfo, initUserInfo } from '../../../store/userInfo';
 
 const Header = ({ match, flex_search, local_area, travel, detail, book, hosting, profile }) => {
-
     const [onProfile, setOnProfile] = useState(false);
     const [signModal, setSignModal] = useState(false);
     const [signStage, setSignStage] = useState(1);
@@ -37,7 +36,6 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting,
     }));
 
     const dispatch = useDispatch();
-
 
     const initSignForm = () => {
         setSignForm({
@@ -68,7 +66,6 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting,
         }
     };
 
-
     // 이메일 존재 확인 api
     const clickStageTwoBtn = () => {
         const email = document.querySelector(".email");
@@ -79,7 +76,7 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting,
         }
         else {
             const checkEmail = async () => {
-                const response = await axios.get("https://dev.rodin.club/users");
+                const response = await axios.get("https:/dev.rodin.club/users");
 
                 let userInfo = response.data.result.filter(v =>
                     (v.userEmail === email.value));
@@ -113,7 +110,6 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting,
             catch (e) {
                 console.log(e);
             }
-
         }
         signIn();
     }
@@ -144,14 +140,11 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting,
 
     }, [checkLogin, userData, checkHost]);
 
-
     const onLogout = () => {
         localStorage.removeItem("ACCESS_TOKEN");
         dispatch(initUserInfo());
         setCheckLogin(false);
     };
-
-
 
     const onCloseModal = () => {
         setSignModal(false);
@@ -159,8 +152,6 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting,
         setError(false);
         initSignForm();
     }
-
-
 
     useEffect(() => {
         const header = document.querySelector('.headerBox');
@@ -230,7 +221,6 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting,
                         )
 
             }
-
             <div className={book ? "infoArea book" : "infoArea"} >
                 {
                     (checkLogin && checkHost) ?
@@ -246,7 +236,6 @@ const Header = ({ match, flex_search, local_area, travel, detail, book, hosting,
                         <IoIosMenu />
                         <img src="/images/icons/profile.png" alt="" />
                     </div>
-
                     {
                         onProfile &&
                         (checkLogin ?

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Corona from '../../components/common/corona';
@@ -86,7 +85,6 @@ const HomePage = () => {
                     <div className="main_bnr_btn">지금 둘러보기</div>
                 </div>
             </MainBnrBox>
-
             <NearArea>
                 <div className="nearArea_tit">가까운 여행지 둘러보기</div>
                 <div className="nearArea_list">
@@ -103,7 +101,6 @@ const HomePage = () => {
                     }
                 </div>
             </NearArea>
-
             <FlexibleSearch>
                 <Link to="/search/flex">
                     <img src="/images/home/banner/search.png" alt="" />
@@ -113,7 +110,6 @@ const HomePage = () => {
                     </div>
                 </Link>
             </FlexibleSearch>
-
             <TravelBox>
                 <div className="travel_tit">어디에서나, 여행은 살아보는 거야!</div>
                 <div className="travel_list">
@@ -127,11 +123,9 @@ const HomePage = () => {
                     }
                 </div>
             </TravelBox>
-
             <HostingBanner>
                 <Link to="/host/homes" className="hostingImg">
                     <img src="/images/home/banner/hosting.png" alt="" />
-                    {/* <img src="/images/home/banner/hosting2.jpg" alt="" /> */}
                 </Link>
                 <Link to="/host/homes" className="hosting_bnr_txt">
                     <div className="hosting_bnr_tit">호스팅 시작하기</div>
