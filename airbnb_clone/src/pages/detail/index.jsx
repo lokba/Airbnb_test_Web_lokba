@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../../components/common/footer';
 import Header from '../../components/common/Header';
-import { RoomDetailBox, RoomDetailHeader, RoomDetailImgBox, RoomDetailContent, RoomHosterInfo, RoomAboutInfo, RoomDetailInfo, RoomPlace, RoomFacility, RoomCheckIn, ReservationBox, CommentBox, HostingMap } from './styled';
+import { RoomDetailBox, RoomDetailHeader, RoomDetailImgBox, RoomDetailContent, RoomHosterInfo, RoomAboutInfo, RoomDetailInfo, RoomPlace, RoomFacility, ReservationBox, CommentBox, HostingMap } from './styled';
 import StarRateIcon from '@material-ui/icons/StarRate';
 import PersonIcon from '@material-ui/icons/Person';
 import ShareIcon from '@material-ui/icons/Share';
@@ -10,11 +10,8 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
-import AddIcon from '@material-ui/icons/Add';
-import RemoveIcon from '@material-ui/icons/Remove';
 import { useDispatch } from 'react-redux';
 import { storeCapacity, storeCheckInDate, storeCheckOutDate } from '../../store/reserveInfo';
-import MapAPI from '../../components/common/map'
 import SimpleMap from '../../components/common/map';
 
 const RoomDetailPage = ({ history, match }) => {
@@ -32,7 +29,6 @@ const RoomDetailPage = ({ history, match }) => {
 
     const onClickMinus = (e) => {
         const value = capacity[e.target.name];
-
         e.target.name === "adult" ?
             (value > 1 && setCapacity({ ...capacity, [e.target.name]: value - 1 }))
             :
@@ -56,7 +52,6 @@ const RoomDetailPage = ({ history, match }) => {
         history.push(`/book/${roomIdx}`)
     };
 
-
     useEffect(() => {
         setRoomIdx(match.params.roomId);
     }, [match.params.roomId]);
@@ -64,14 +59,12 @@ const RoomDetailPage = ({ history, match }) => {
     useEffect(() => {
         const onLoadRoom = async () => {
             const response = await axios.get(`https://dev.rodin.club/rooms/${roomIdx}`);
-
             setRoomDetailInfo(response.data.result);
         }
-
         roomIdx && onLoadRoom();
     }, [roomIdx]);
 
-    const [curRoomDetail, setRoomDetail] = useState(null);
+    const [curRoomDetail, setRoomDetail] = useState([]);
 
     useEffect(() => {
         const onLoadAllRooms = async () => {
@@ -81,7 +74,6 @@ const RoomDetailPage = ({ history, match }) => {
         }
         onLoadAllRooms();
     }, [roomIdx])
-
 
     const room = {
         imgURL: ["/images/local/area/area1.png",
@@ -139,7 +131,6 @@ const RoomDetailPage = ({ history, match }) => {
         window.scrollTo(0, 0);
     }, [])
 
-
     return (
         <>
             {
@@ -159,7 +150,6 @@ const RoomDetailPage = ({ history, match }) => {
                                         <div>∙</div>
                                         <div>
                                             <PersonIcon className="stress" />
-                                            {/* <div>{room.hoster.grade}</div> */}
                                             <div>슈퍼호스트</div>
                                         </div>
                                         <div>∙</div>
@@ -242,13 +232,6 @@ const RoomDetailPage = ({ history, match }) => {
                                     <RoomDetailInfo>
                                         <div className="location">{roomDetailInfo.roomLocation}에 위치한 숙소입니다.</div>
                                         <div className="detailInfo">
-                                            {/* <div>- 전철까지 도보 30초</div>
-                                            <div>- 침구로 매번 깨끗이 교체</div>
-                                            <div>- 코너창층으로 좋은 전망</div>
-                                            <div>- 세탁기 + 건조기</div>
-                                            <div>- 지하창고에 짐 보관 무료</div>
-                                            <div>- 주차는 1시간에 1000원으로 꼭 미리 문의 주셔야합니다</div>
-                                            <div>- 정말 좋은 헬스장 도보 3분 (하루 만원)</div> */}
                                             <div>{roomDetailInfo.roomInfo}</div>
                                         </div>
                                     </RoomDetailInfo>
@@ -284,12 +267,10 @@ const RoomDetailPage = ({ history, match }) => {
                                                 <div className="checkIn">
                                                     <div className="opt_tit">체크인</div>
                                                     <input className="opt_txt checkin_date" name="checkin" type="date" />
-                                                    {/* <div className="opt_txt">날짜 추가</div> */}
                                                 </div>
                                                 <div className="checkOut">
                                                     <div className="opt_tit" >체크아웃</div>
                                                     <input className="opt_txt checkout_date" name="checkout" type="date" />
-                                                    {/* <div className="opt_txt">날짜 추가</div> */}
                                                 </div>
                                             </div>
                                             <div className="guest">
@@ -342,7 +323,6 @@ const RoomDetailPage = ({ history, match }) => {
                                     <div>∙</div>
                                     <div>후기 6개</div>
                                 </div>
-
                                 <div className="commentList">
                                     {
                                         room.commentList.map(v => (

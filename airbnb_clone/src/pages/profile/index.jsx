@@ -9,7 +9,6 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserInfo } from '../../store/userInfo';
 
-
 const ProfilePage = () => {
     const [openModifyBox, setOpenModifyBox] = useState(false);
     const { userId, userData } = useSelector(({ userInfo }) => ({
@@ -38,9 +37,7 @@ const ProfilePage = () => {
         userLanguage: "",
     });
 
-    const onChange = (e) => {
-        setMyInfo({ ...myInfo, [e.target.name]: e.target.value });
-    }
+    const onChange = (e) => setMyInfo({ ...myInfo, [e.target.name]: e.target.value });
 
     const onModifyInfo = () => {
         const headers = {
@@ -53,7 +50,6 @@ const ProfilePage = () => {
         modifyUser();
         setOpenModifyBox(false);
     }
-
 
     return (
         <>
@@ -140,9 +136,7 @@ const ProfilePage = () => {
                                 <MyCommentBox>
                                     <div className="tit">내가 작성한 후기</div>
                                 </MyCommentBox>
-
                             </ProfileInfoBox>
-
                         </div>
                     </ProfilePageBlock>
                 )

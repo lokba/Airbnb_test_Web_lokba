@@ -7,7 +7,6 @@ import Pagination from '../../components/common/pagination ';
 import LocalContentList from '../../components/common/localContentList';
 
 const LocalSearchPage = ({ location }) => {
-
     const [area, setArea] = useState(null);
 
     useEffect(() => {

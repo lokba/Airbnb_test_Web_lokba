@@ -8,7 +8,6 @@ import LocalContentList from '../../components/common/localContentList';
 import axios from 'axios';
 import SimpleMap from '../../components/common/map';
 
-
 const TravelSearchPage = ({ location }) => {
     const [area, setArea] = useState(null);
     const [rooms, setRooms] = useState(null);

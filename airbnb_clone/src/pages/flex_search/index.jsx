@@ -7,7 +7,6 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 const FlexSearchPage = () => {
-
     const [menuOn, setMenuOn] = useState(0);
 
     useEffect(() => {
@@ -162,7 +161,6 @@ const FlexSearchPage = () => {
         },
     ];
 
-
     return (
         <FlexSearchBox>
             <Header flex_search />
@@ -225,7 +223,6 @@ const FlexSearchPage = () => {
 
 export default FlexSearchPage;
 
-
 const SearchItem = ({
     imgURL,
     distance,
@@ -235,7 +232,6 @@ const SearchItem = ({
     checkout,
     heart,
 }) => {
-
     //한글, 영어 문자열의 바이트 계산하는 함수
     let getTextLength = function (str) {
         let len = 0;

@@ -8,12 +8,10 @@ export const getUserId = createAction(GET_USER_ID);
 export const getUserInfo = createAction(GET_USER_INFO);
 export const initUserInfo = createAction(INIT_USER_INFO);
 
-
 const initialState = {
     userIdx: null,
     userData: null,
 }
-
 
 const userInfo = handleActions(
     {

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { HostPageBox } from './styled';
 import { Link, withRouter } from 'react-router-dom';
 import SignModal from '../../components/common/sign';
-import Header from '../../components/common/Header';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { getUserId } from '../../store/userInfo';
@@ -57,7 +56,6 @@ const HostPage = ({ history }) => {
         }
     };
 
-
     // 이메일 존재 확인 api
     const clickStageTwoBtn = () => {
         const email = document.querySelector(".email");
@@ -102,24 +100,16 @@ const HostPage = ({ history }) => {
             catch (e) {
                 console.log(e);
             }
-
         }
         signIn();
     }
 
-
     useEffect(() => {
         localStorage.getItem("ACCESS_TOKEN") ?
-            setCheckLogin(true)
-            :
-            setCheckLogin(false);
-
+            setCheckLogin(true) : setCheckLogin(false);
 
         localStorage.getItem("HOST_ACCESS_TOKEN") ?
-            setCheckHost(true)
-            :
-            setCheckHost(false);
-
+            setCheckHost(true) : setCheckHost(false);
     }, [checkLogin]);
 
     const onCloseModal = () => {
@@ -128,9 +118,8 @@ const HostPage = ({ history }) => {
         setError(false);
         initSignForm();
     }
-    const onClickStartBtn = () => {
-        checkLogin ? history.push('/become-a-host') : setSignModal(true);
-    }
+
+    const onClickStartBtn = () => checkLogin ? history.push('/become-a-host') : setSignModal(true);
 
     return (
         <HostPageBox>
@@ -159,7 +148,6 @@ const HostPage = ({ history }) => {
                     onClickSignIn={onClickSignIn}
                 />
             }
-
         </HostPageBox>
     );
 };

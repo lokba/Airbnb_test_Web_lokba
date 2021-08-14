@@ -1,15 +1,11 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
-import { LiveTvSharp } from '@material-ui/icons';
-
-const AnyReactComponent = ({ text }) => <div style={{ color: "red", fontSize: "20px", }}>{text}</div>;
-
 
 export const SimpleMap = ({ detail, list }) => {
     let center = { lat: Number(detail[0].roomLati), lng: Number(detail[0].roomLongi) };
 
     if (list) {
-        center = { lat: Number(detail[19].roomLati), lng: Number(detail[19].roomLongi) };
+        center = { lat: Number(detail[19].roomLati), lng: Number(detail[19].roomLongi) + 3 };
     }
 
     return (
@@ -21,8 +17,7 @@ export const SimpleMap = ({ detail, list }) => {
                             <GoogleMapReact
                                 bootstrapURLKeys={{ key: "AIzaSyBS03vrPecVdQPL69tU-wl_4nedBvRYcDk" }}
                                 defaultCenter={center}
-                                defaultZoom={7}
-                            >
+                                defaultZoom={7}>
                                 {
                                     detail.map(v => (
                                         <AnyReactComponent
@@ -32,7 +27,6 @@ export const SimpleMap = ({ detail, list }) => {
                                         />
                                     ))
                                 }
-
                             </GoogleMapReact>
                         </div >
                     )
@@ -42,8 +36,7 @@ export const SimpleMap = ({ detail, list }) => {
                             <GoogleMapReact
                                 bootstrapURLKeys={{ key: "AIzaSyBS03vrPecVdQPL69tU-wl_4nedBvRYcDk" }}
                                 defaultCenter={center}
-                                defaultZoom={14}
-                            >
+                                defaultZoom={14}>
                                 {
                                     detail.map(v => (
                                         <AnyReactComponent
@@ -53,11 +46,16 @@ export const SimpleMap = ({ detail, list }) => {
                                         />
                                     ))
                                 }
-
                             </GoogleMapReact>
-                        </div >)
+                        </div >
+                    )
             }
         </>
     );
 }
 export default SimpleMap;
+
+
+//마커 출력하는 컴포넌트
+const AnyReactComponent = ({ text }) =>
+    <div style={{ color: "red", fontSize: "20px", }}>{text}</div>;

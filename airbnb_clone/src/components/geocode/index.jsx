@@ -9,7 +9,7 @@ const GoogleMap = (currentAddr) => {
     return Geocode.fromAddress(currentAddr)
         .then(response => {
             const { lat, lng } = response.results[0].geometry.location;
-            return { lat, lng }
+            return { lat, lng };
         })
         .catch(err => console.log(err));
 };

@@ -5,7 +5,6 @@ import { HostingListBlock, HostingListBox } from './styled';
 import AddIcon from '@material-ui/icons/Add';
 import axios from 'axios';
 
-
 const HostingListPage = () => {
     const { userIdx } = useSelector(({ userInfo }) => ({
         userIdx: userInfo.userIdx
@@ -23,8 +22,6 @@ const HostingListPage = () => {
     useEffect(() => {
         console.log(myRoom);
     }, [myRoom])
-
-
 
     return (
         <>
@@ -48,10 +45,8 @@ const HostingListPage = () => {
                                 <div className="bathroomSector">욕실</div>
                                 <div className="locationSector">위치</div>
                                 <div className="updateSector">최종 수정일</div>
-
                             </nav>
                             <body>
-
                                 {
                                     myRoom.map(({
                                         roomImageUrl,
@@ -79,7 +74,6 @@ const HostingListPage = () => {
                                             <div className="locationSector">{roomLocation}</div>
                                             <div className="updateSector">{updatedAt.slice(0, 10)}</div>
                                         </div>
-
                                     ))
                                 }
                             </body>
