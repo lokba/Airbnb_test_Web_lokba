@@ -14,6 +14,7 @@ Airbnb URL : https://www.airbnb.co.kr/
 
 ## 🔧 Skills
 - React, Redux, Firebase
+<br>
 
 ## 🎬 기능 구현 시연영상
 
