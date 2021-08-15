@@ -12,6 +12,9 @@ Airbnb URL : https://www.airbnb.co.kr/
 |최준혁|백엔드서버 개발|
 <br>
 
+## 🔧 Skills
+- React, Redux, Firebase
+
 ## 🎬 기능 구현 시연영상
 
 ### 1.로그인&회원가입
